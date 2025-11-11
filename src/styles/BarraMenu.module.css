@@ -1,0 +1,46 @@
+
+.div-padre-barraMenu{
+  display: flex;
+  background-color: #DCD7CB;
+  width: 20%;
+  box-sizing: border-box;
+  font-family: 'Open Sans';
+}
+
+ .div-barra{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: rgb(11, 10, 10);
+    padding: 1%;
+    font-size: 20px;
+    background-color: #DCD7CB;
+}
+
+.div-barra a {
+  text-decoration: none;
+  padding: 2%;
+  color: #5E5951;
+  
+}
+
+.div-barra a:hover {
+  color: #4A463E; 
+}
+
+.div-barra h1 {
+ font-size: 24px;
+ color:#71B0C5;
+}
+
+.hrPersonalizada {
+  border: none;            
+  height: 2px;               
+  background-color: #71B0C5; 
+  width:90%;                
+  margin-left: 1%;      
+}
+
+.div-barra img {
+  width: 10%;
+}

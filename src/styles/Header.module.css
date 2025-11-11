@@ -1,0 +1,34 @@
+.div-padre-header{
+    display: flex;
+    width: 100%;
+    height: 100px;
+
+    
+}
+
+.contenedor-barra {
+  position: relative;
+  width: 100%;
+  height: 100px; /* Altura de tu barra */
+  overflow: visible; /* IMPORTANTE para que el logo sobresalga */
+}
+
+.barra {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Aquí haces que el logo sobresalga */
+.logo {
+  position: absolute;
+  top: 100%; /* Coloca el logo justo debajo de la barra */
+  right: 30px; /* O left: 30px si lo quieres al otro lado */
+  transform: translateY(-50%); /* Lo sube para que quede la mitad sobresalida */
+  height: 100px; /* Ajusta según el tamaño del logo */
+   z-index: 2;
+}

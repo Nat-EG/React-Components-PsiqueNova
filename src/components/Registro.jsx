@@ -176,6 +176,8 @@ function Registro() {
             
 
             {/* Formulario de registro */ }
+
+            <div className={styles["div-formulario"]}>
             <form onSubmit={handleSubmit} noValidate>
                 {[
                     { name: "nombre", label: "Nombres y Apellidos" },
@@ -329,6 +331,7 @@ function Registro() {
                         Crear cuenta
                     </button>
             </form>
+            </div>
         </div>
     );
 }
