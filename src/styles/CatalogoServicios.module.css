@@ -1,0 +1,156 @@
+
+/*Estructura general*/
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--background);
+}
+
+.CajaPadre {
+    width: 100%;
+    min-height: 100vh;
+    flex-wrap: wrap;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+/*Estilos header del catalogo*/
+.headerCatalogo {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 5%;
+    margin-top: 20px;
+    gap: 10px;
+    text-align: left;
+}
+
+.btnAtras {
+  align-self: flex-start;
+  display:flex;
+  align-items:center;
+  justify-content: flex-start;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: var(--textTitle);
+  cursor: pointer;
+  padding: 0;
+  margin-left: 0;
+}
+
+
+.iconAtras {
+  width: 30px;
+  margin-right: 12px;
+}
+
+
+.btnAtras:hover {
+    color: var(--primaryB);
+}
+
+.headerCatalogo h1 {
+  color: var(--primaryB);
+  font-size: 30px;
+  margin: 0;
+  text-align: left;
+}
+
+.CajaPadre hr {
+  border: none;
+  border-top: 2px solid var(--primaryB); 
+  width: 90%;
+  margin: 10px auto 30px;
+}
+
+/*Tarjetas de los servicios*/
+
+.contenidoServicios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.tarjetaServicio {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 250px;
+    min-height: 300px;
+    border: 2px solid var(--primaryB);
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+    background-color: var(--background);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.tarjetaServicio:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.tarjetaServicio img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.tarjetaServicio h3{
+    color: var(--textTitle);
+    margin: 5px;
+}
+
+.tarjetaServicio p {
+    color: var(--textBody);
+    padding: 0 10px;
+    margin: 5px;
+
+}
+
+.tarjetaServicio span {
+    margin: 5px 0;
+    font-weight: bold;
+    color: var(--textTitle)
+}
+
+.precio {
+    margin-top: 5px;
+    font-weight: normal;
+}
+
+.tarjetaServicio button {
+    margin: 10px auto 20px;
+    padding: 10px;
+    background-color: var(--primaryG);
+    border-radius: 11px;
+    border: none;
+    color: var(--textTitle);
+    cursor: pointer;
+    width: 120px;
+}
+
+.tarjetaServicio button:hover {
+    transform: scale(1.08);
+}
+
+/*Responsive*/
+@media (max-width: 768px) {
+    .headerCatalogo {
+        align-items: center;
+    }
+
+    .contenidoServicios {
+        flex-direction: column;
+        align-items: center;
+    }
+}

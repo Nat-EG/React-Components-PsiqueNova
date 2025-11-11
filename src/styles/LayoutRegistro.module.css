@@ -1,0 +1,144 @@
+/* Paleta de colores SEGURA-MENTE */
+:root {
+    --background:rgba(245, 243, 238, 1);
+    --primaryG: rgba(166, 216, 133, 1);
+    --primaryB: rgba(113, 176, 197, 1);
+    --surface1: rgba(220, 215, 203, 1);
+    --surface2: rgba(242, 237, 224, 1);
+    --textTitle:rgba(74, 70, 62, 1);
+    --textBody: rgba(94, 89, 81, 1);
+    --textSubtle: rgba(136, 128, 113, 1);
+    --borderInput: rgba(177, 177, 177, 1);
+    --feedbackError: rgba(226, 84, 84, 1);
+    --inputFill: rgba(255, 255, 255, 1);
+}
+
+
+/*body, html {
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--background);
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
+}
+*/
+
+.container {
+    gap: 0 !important; 
+    align-items: stretch; 
+    gap: 0; 
+}
+
+
+.imagenL, .imagenR {
+    align-self: stretch;
+    flex: 0 0 auto;
+    display: flex;
+}
+
+
+
+.imagenL img,
+.imagenR img {
+    height: 100%;
+    width: auto;
+    display: block;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+
+.imagenL img {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 20px;
+}
+
+.imagenR img {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .imagenL img,
+    .imagenR img {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+    }
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+
+.formContainer {
+    padding-left: 0; 
+    padding-right: 0;
+    background-color: var(--surface1);
+    display: flex;
+    flex: 0 0 700px;
+    flex-direction: column;
+    margin: 0px;
+    align-items: stretch;
+    justify-content: center;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+
+.imagenL, .imagenR{
+    display: flex;
+    position: relative;
+    flex: 0 0 auto;
+    z-index: 10;
+}
+
+
+.imagenL img, .imagenR img {
+    display: block;
+    object-fit: cover;
+    position: relative;
+    z-index: 10;
+}
+
+.imagenL img {
+    
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.imagenR img {
+    
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+}
+@media (max-width: 900px) {
+    .main-content {
+        flex-direction: column;
+        margin: 20px 0;
+    }
+
+    .imagenL img, .imagenR img {
+        border-radius: 20px;
+    }
+}
+
+@media (max-width: 992px) {
+  .formContainer {
+    flex: 0 0 90%;
+    padding: 15px;
+  }
+
+
+}

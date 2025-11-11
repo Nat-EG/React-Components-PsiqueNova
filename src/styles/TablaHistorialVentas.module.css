@@ -1,0 +1,289 @@
+
+
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+/* CONTENEDOR DEL HEADER */
+.headerWrapper {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/* TITULO */
+.title {
+    color: var(--primaryB);
+    font-size: 30px;
+    margin: 0;
+}
+
+/* LÍNEA */
+.hr {
+    width: 90%;
+    margin: 10px auto 30px; 
+    border: 2px solid var(--primaryB);
+}
+
+/* ATRÁS */
+.btnAtras {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--textTitle);
+    font-size: 16px;
+    padding: 0;
+}
+
+.iconAtras {
+    width: 30px;
+    margin-right: 12px;
+}
+
+
+.btnAtras:hover {
+    color: var(--primaryB);
+}
+
+.title {
+    color: var(--primaryB);
+    font-size: 30px;
+    margin: 0;
+}
+
+/* LÍNEA */
+.hr {
+    border: 2px solid var(--primaryB);
+    width: 90%;
+    margin: 10px auto 30px;
+}
+
+/* CONTENEDOR PRINCIPAL DE LA TABLA */
+.tableMainContainer {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* BUSCADOR */
+.searchContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.searchContainer label {
+    padding: 0 10px;
+    color: var(--textBody);
+    font-weight: 600;
+}
+
+.inputSearch {
+    width: 200px;
+    padding: 7px 10px;
+    border: 2px solid var(--borderInput);
+    background-color: var(--inputFill);
+    border-radius: 6px;
+    font-size: 16px;
+    color: var(--textBody);
+}
+
+.inputSearch:focus {
+    border-color: var(--primaryB);
+}
+
+/* TABLA */
+.tableContainer {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--textBody);
+    font-size: 14px;
+}
+
+.table thead {
+    border-bottom: 2px solid var(--primaryB);
+}
+
+.table th {
+    padding: 10px;
+    font-weight: 600;
+    color: var(--textTitle);
+}
+
+.table td {
+    padding: 10px;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: var(--surface2);
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: var(--surface1);
+}
+
+.table td,
+.table th {
+    border-right: 2px solid var(--background);
+}
+
+/* ICONOS DE FILTRO Y SORT */
+.thFechaHora {
+    position: relative;
+}
+
+.iconSort {
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 2px;
+    color: var(--primaryB);
+}
+
+.iconSort:hover {
+    background-color: var(--borderInput);
+    border-radius: 4px;
+    color: var(--inputFill);
+}
+
+.iconCalendar {
+    margin-left: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 2px;
+    color: var(--primaryB);
+}
+
+.iconCalendar:hover {
+    background-color: var(--borderInput);
+    border-radius: 4px;
+    color: var(--inputFill);
+}
+
+/* FOOTER */
+.footerTable {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* EXPORTAR */
+.btnExportarExcel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    padding: 10px 20px;
+    background-color: var(--primaryB);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--background);
+    font-size: 14px;
+    min-width: 150px;
+    height: 40px;
+}
+
+.btnExportarExcel:hover {
+    background-color: var(--textSubtle);
+    color: white;
+}
+
+/* NAV - PAGINACIÓN */
+
+.footerTable nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 25px;
+    flex-wrap: nowrap;
+}
+
+.rowSelector {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--textTitle);
+    font-weight: 600;
+}
+
+.rowSelector select {
+    padding: 4px 8px;
+    border: 2px solid var(--borderInput);
+    border-radius: 5px;
+    background-color: var(--inputFill);
+    margin: 10px;
+}
+
+/*Paginación*/
+
+.paginationNav {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 4px;
+}
+
+.pageItem button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    color: var(--textBody);
+}
+
+.pageItem button:hover {
+    background-color: var(--primaryB);
+    color: white;
+    border-radius: 4px;
+}
+
+.pageInfo {
+    font-size: 14px;
+    color: var(--textTitle);
+    font-weight: 500;
+}
+
+.headerWrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 90% !important;
+
+    /* Esto rompe el centrado global */
+    margin-left: 0 !important;
+    margin-right: auto !important;
+
+    text-align: left !important;
+    padding-left: 5% !important;
+}
+.btnAtras {
+    align-self: flex-start !important;
+    margin: 0 !important;
+    
+}

@@ -1,0 +1,36 @@
+
+
+.filterContainer {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 999;
+    background: var(--primaryB);
+    padding: 15px;
+    border-radius: 8px;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.18);
+}
+
+.filterContainer label {
+    color: var(--inputFill);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.filterContainer input[type="datetime-local"] {
+    border: 1px solid var(--borderInput);
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-size: 14px;
+    background-color: var(--background);
+    color: var(--textBody);
+}
+
+.filterContainer input[type="datetime-local"]:focus {
+    border-color: var(--primaryB);
+    box-shadow: 0 0 4px var(--primaryB);
+}
