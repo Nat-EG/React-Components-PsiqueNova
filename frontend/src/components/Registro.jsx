@@ -3,7 +3,6 @@ import styles from "../styles/Registro.module.css";
 
 
 // Importación de imagenes desde src/includes
-import Logo from "../includes/Logo.svg";
 import BackUpIcon from "../includes/Back UpiconSvg.co.svg";
 
 // Componente de formulario de registro
@@ -121,7 +120,7 @@ function Registro() {
     };
 
     //Función del envío del formulario
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         // Verificar si hay errores
@@ -129,12 +128,44 @@ function Registro() {
 
         if (hayErrores) {
             alert("Por favor corrige los errores en el formulario.");
-        } else {
-            //Simulacion de guardado de datos en LocalStorage: posteriormente se debe cambiar por una llamada a la API
-            localStorage.setItem('usuario', JSON.stringify(formData));
-            alert("Registro exitoso!");
+            return;
+        } 
 
-            // Reiniciar/Limpiar el formulario
+        //construir el objeto de datos a enviar
+        const payload = {
+            nombresApellidos: formData.nombre,
+            documentoIdentidad: formData.documento,
+            tipoDocumento: formData.tipoDocumento,
+            fechaNacimiento: formData.fechaNacimiento,
+            telefono: formData.telefono,
+            direccion: formData.direccion,
+            email: formData.email,
+            password: formData.password,
+            rol: 'paciente',
+        }; 
+
+        //Enviar los datos al backend
+        try {
+            const reponse = await fetch("http://localhost:4000/api/usuarios/registro", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+
+            // Obtener la respuesta del servidor
+            const data = await reponse.json();
+
+            if (!reponse.ok) {
+                alert(data.mensaje || "Error al registrar el usuario. Por favor, intenta nuevamente.");
+                return;
+            }
+
+            //Registro exitoso
+            alert("Usuario registrado correctamente.");
+            //Redirigir al usuario a la página de inicio de sesión
+            window.location.href = "/login";
+
+            //Reiniciar el formulario
             setFormData({
                 nombre: '',
                 documento: '',
@@ -146,11 +177,16 @@ function Registro() {
                 password: '',
                 confirmPassword: '',
             });
-            // Reiniciar los errores
+
             setErrores({});
             setStrength({ width: "0%", color: "", text: "" });
-        }
-    };
+
+ } catch (error) {
+    alert("Error del servidor. Por favor, intenta nuevamente más tarde.");
+    console.error(error);
+
+    }
+ };
 
     //Estructura visual del formulario
     return (

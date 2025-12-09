@@ -1,10 +1,10 @@
 import React from "react"; 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Registro from "./components/LayoutRegistro";
-import CatalogoServicios from "./components/CatalogoServicios";
-import LugarSeguro from "./components/MiLugarSeguro";
-import HistorialVentas from "./components/TablaHistorialVentas";
+import Registro from "./components/LayoutRegistro.jsx";
+import CatalogoServicios from "./components/CatalogoServicios.jsx";
+import LugarSeguro from "./components/MiLugarSeguro.jsx";
+import HistorialVentas from "./components/TablaHistorialVentas.jsx";
 import BarraMenu from './components/BarraMenu.jsx';
 import Header from './components/Header.jsx';
 import TablaUsuarios from './components/TablaUsuarios.jsx';
