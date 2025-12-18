@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#Preview de los componentes que desarrollé
+AppPreview*.js

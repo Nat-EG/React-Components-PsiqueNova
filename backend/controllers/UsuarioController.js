@@ -5,6 +5,8 @@ import bcrypt from "bcryptjs";
 //POST para registrar un nuevo usuario
 export const registrarUsuario = async (req, res) => {
     try {
+        console.log("BODY RECIBIDO:", req.body);
+        
         const { 
             nombresApellidos, 
             documentoIdentidad,
@@ -69,5 +71,30 @@ export const registrarUsuario = async (req, res) => {
         return res.status(500).json({ mensaje: 'Error del servidor. Por favor, intente nuevamente más tarde.' });
     }
 };
+
+//DELETE para eliminar un usuario por su ID
+export const eliminarUsuario = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        //Buscar y eliminar el usuario por su ID
+        const usuarioEliminado = await Usuario.findByIdAndDelete(id);
+
+        if (!usuarioEliminado) {
+            return res.status(404).json({ mensaje: 'Usuario no encontrado.' });
+        }
+
+        res.status(200).json({ mensaje: 'Usuario eliminado correctamente.' 
+        });
+    } catch (error) {
+        res.status(500).json({ mensaje: 'Error al eliminar cuenta. Por favor, intente nuevamente más tarde.',
+            error: error.message
+        });
+    }
+};
+
+
+
+
     
 
