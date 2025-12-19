@@ -21,19 +21,35 @@ function BarraMenuPsicologo() {
 
         <div>
           <button onClick={toggleSubmenuGestionarAgenda} className={stylesBarraMenuPsicologo["submenu-button"]}>
-            <img src="IconoGestionarAgenda.svg" alt="" /> Gestionar Agenda
+            <div className={stylesBarraMenuPsicologo["opcion-menu"]}>
+              <img src="IconoGestionarAgenda.svg" alt="" /> Gestionar Agenda
+            </div>
           </button>
           {submenuGestionarAgenda && (
             <div className={stylesBarraMenuPsicologo["submenu"]}>
-              <img src="IconoGestionarDisponibilidad.svg" alt="" /> <a href="/Gestionar-disponibilidad">Gestionar disponibilidad</a>  
+              <div className={stylesBarraMenuPsicologo["opcion-menu"]}>
+                <img src="IconoGestionarDisponibilidad.svg" alt="" /> <a href="/Gestionar-disponibilidad">Gestionar disponibilidad</a>
+              </div>
               <hr className={stylesBarraMenuPsicologo.hrPersonalizada} />
-              <img src="IconoVerCitas.svg" alt="" /><a href="/Ver-citas-pendientes">Ver citas pendientes</a>
+              <div className={stylesBarraMenuPsicologo["opcion-menu"]}>
+                <img src="IconoVerCitas.svg" alt="" /><a href="/Ver-citas-pendientes">Ver citas pendientes</a>
+              </div>
               <hr className={stylesBarraMenuPsicologo.hrPersonalizada} />
             </div>
           )}
         </div>
         
       </div>
+
+      <div className={stylesBarraMenuPsicologo["div-barra"]}>
+        <div className={stylesBarraMenuPsicologo["opcion-menu"]}>
+          <img src="IconoConfig.svg" alt="" /> <a href="/configuracion">Ajustes</a>
+        </div>
+        <div className={stylesBarraMenuPsicologo["opcion-menu"]}>
+          <img src="IconoCerrarSesion.svg" alt="" /> <a href="/cerrar-sesion">Cerrar Sesión</a>
+        </div>
+      </div>
+        
     </div>
   );
 }
