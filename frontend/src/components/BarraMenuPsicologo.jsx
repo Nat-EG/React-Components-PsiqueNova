@@ -1,5 +1,6 @@
 import { useState } from "react";
 import stylesBarraMenuPsicologo from "../styles/BarraMenuPsicologo.module.css";
+import CerrarSesion from "./CerrarSesion";
 
 function BarraMenuPsicologo() {
   /* Estado para controlar la visibilidad del submenú "Gestionar Agenda" */
@@ -46,7 +47,7 @@ function BarraMenuPsicologo() {
           <img src="IconoConfig.svg" alt="" /> <a href="/configuracion">Ajustes</a>
         </div>
         <div className={stylesBarraMenuPsicologo["opcion-menu"]}>
-          <img src="IconoCerrarSesion.svg" alt="" /> <a href="/cerrar-sesion">Cerrar Sesión</a>
+          <CerrarSesion />
         </div>
       </div>
         

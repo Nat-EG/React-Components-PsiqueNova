@@ -24,7 +24,7 @@ const ConfirmModal = ({
                 <p className={styles.text}>{message}</p>
 
                 <div className={styles.actions}>
-                    <button className={`${styles.primary} ${styles.danger}`} onClick={onConfirm}>Eliminar</button>
+                    <button className={`${styles.primary} ${styles.danger}`} onClick={onConfirm}>{confirmText}</button>
                     <button className={styles.secondary} onClick={onClose}>{cancelText}</button>
                 </div>
             </div>

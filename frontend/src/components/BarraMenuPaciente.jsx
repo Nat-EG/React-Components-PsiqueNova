@@ -1,4 +1,5 @@
 import stylesBarraMenuPaciente from "../styles/BarraMenuPaciente.module.css";
+import CerrarSesion from "./CerrarSesion";
 
 function BarraMenuPaciente() {
 
@@ -26,7 +27,7 @@ function BarraMenuPaciente() {
           <img src="IconoConfig.svg" alt="" /> <a href="/configuracion">Ajustes</a>
         </div>
         <div className={stylesBarraMenuPaciente["opcion-menu"]}>
-          <img src="IconoCerrarSesion.svg" alt="" /> <a href="/cerrar-sesion">Cerrar Sesión</a>
+          <CerrarSesion />
         </div>
       </div>
         
