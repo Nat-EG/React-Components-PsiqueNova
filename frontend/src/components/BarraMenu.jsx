@@ -1,5 +1,6 @@
 import { useState } from "react";
 import stylesBarraMenu from "../styles/BarraMenu.module.css";
+import CerrarSesion from "./CerrarSesion";
 
 function BarraMenu() {
   /* Estado para controlar la visibilidad del submenú "Gestionar Catálogo de Servicios" */
@@ -74,7 +75,7 @@ function BarraMenu() {
           <img src="IconoConfig.svg" alt="" /> <a href="/configuracion">Ajustes</a>
         </div>
         <div className={stylesBarraMenu["opcion-menu"]}>
-          <img src="IconoCerrarSesion.svg" alt="" /> <a href="/cerrar-sesion">Cerrar Sesión</a>
+          <CerrarSesion />
         </div>
       </div>
         
