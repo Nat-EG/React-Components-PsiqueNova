@@ -133,22 +133,38 @@ body {
     font-weight: normal;
 }
 
-.tarjetaServicio button {
-    margin: 10px auto 20px;
-    padding: 10px;
-    background-color: var(--primaryG);
-    border-radius: 11px;
-    border: none;
-    color: var(--textTitle);
-    cursor: pointer;
-    font-weight: bold;
-    width: 120px;
+
+/*Acciones*/
+.acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding: 5px 15px 15px;
 }
 
-.tarjetaServicio button:hover {
-    transform: scale(1.08);
-    color: white;
-    background-color: #8dcf63;
+.btnEditar,
+.btnEliminar {
+    background: var(--borderInput);
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.btnEditar img,
+.btnEliminar img {
+    color: var(--textBody);
+    width: 22px;
+    height: 25px;
+}
+.btnEditar:hover {
+    background: var(--primaryG);
+    transform: scale(1.1);
+}
+.btnEliminar:hover {
+    background: var(--feedbackError);
+    transform: scale(1.1);
 }
 
 /*Responsive*/
