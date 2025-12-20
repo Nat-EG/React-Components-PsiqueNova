@@ -4,24 +4,28 @@ import styles from "../styles/LayoutRegistro.module.css";
 // Importación de imagenes desde src/includes
 import ImagenL from "../includes/ImagenL.png";
 import ImagenR from "../includes/ImagenR.png";
-import Registro from "./RegistroForm";
-import FranjaInferior from "./FranjaInferiorRegistro";
 
-//importar componente HeaderLogoRegistro
+//importar componentes
+import RegistroForm from "./RegistroForm";
+import FranjaInferior from "./FranjaInferiorRegistro";
 import HeaderLogoRegistro from "./HeaderLogoRegistro";
 
-function LayoutRegistro() {
+
+const RegistroPaciente = () => {
     return (
+        <div className={styles.mainContainer}>
 
-    <div className={styles.mainContainer}>
         <HeaderLogoRegistro />
-    
-
                 
         <div className={styles.container}>
             {/* Imagen decorativa lateral izq */}
             <img src={ImagenL} alt="Imagen decorativa izquierda" className={styles.imagenL} />
-            <Registro />
+
+            <RegistroForm
+                endpoint="http://localhost:4000/api/usuarios/registro"
+                rol = "paciente"
+                mostrarCorrientePsicologica={false}
+            />
             {/* Imágenes decorativa lateral der */}
             <img src={ImagenR} alt="Imagen decorativa derecha" className={styles.imagenR} />
         </div>
@@ -29,8 +33,6 @@ function LayoutRegistro() {
         <FranjaInferior />
 
     </div>
-   
-
     );
 }
-export default LayoutRegistro;
+export default RegistroPaciente;

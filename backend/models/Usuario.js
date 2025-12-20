@@ -13,11 +13,27 @@ const usarioSchema = new mongoose.Schema({
     fechaNacimiento: { type: Date, required: true},
     fechaRegistro: { type: Date, default: Date.now},
 
-    rol: { type: String, enum: ['paciente', 'psicologo', 'admin'], default: 'paciente' },
-    estadoUsuario: { type: String, enum: ['activo', 'inactivo'], default: 'activo' },
+    rol: { 
+        type: String, 
+        enum: ['paciente', 'psicologo', 'admin'],
+         default: 'paciente' },
+    
+    corrientePsicologica: { 
+        type: String,
+        required: function() {
+            return this.rol === 'psicologo';
+        }
+    },
+
+    estadoUsuario: {
+        type: String, 
+        enum: ['activo', 'inactivo'],
+        default: 'activo' 
+    },
+
 }, {collection: 'usuarios', versionKey: false });
 
 //exportar el modelo
-const Usuario = mongoose.model('Usuario', usarioSchema);
-export default Usuario;
+export default mongoose.model('Usuario', usarioSchema);
+
    
