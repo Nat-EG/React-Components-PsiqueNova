@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import styles from "../styles/CatalogoServicios.module.css";
 
 // Importación de iconos
@@ -9,6 +11,7 @@ function CatalogoServicios() {
 
     //Datos de los servicios
     const [servicios, setServicios] = useState([]);
+    const navigate = useNavigate();
 
     //Obtener servicios del backend
     useEffect(() => {
@@ -21,7 +24,7 @@ function CatalogoServicios() {
     
     // Funcion al hacer click en seleccionar servicio
     const handleSeleccionarServicio = (servicio) => {
-        alert(`Has seleccionado el servicio: ${servicio.nombre}`);
+        navigate(`/servicios/${servicio._id}`);
     };
 
     return (

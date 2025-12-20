@@ -85,11 +85,11 @@ body {
     justify-content: space-between;
     width: 250px;
     height: 450px;
-    border: 2px solid var(--primaryB);
+    border-radius: 10px;
     text-align: center;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    box-shadow: 0 0 10px rgba(17, 146, 201, 1);
     transition: transform 0.3s ease;
-    background-color: var(--background);
+    background-color: white;
     overflow: hidden;
     transition: transform 0.3s ease;
 }
@@ -143,6 +143,7 @@ body {
     cursor: pointer;
     font-weight: bold;
     width: 120px;
+    box-shadow: 0 0 10px rgb(102, 105, 106);
 }
 
 .tarjetaServicio button:hover {

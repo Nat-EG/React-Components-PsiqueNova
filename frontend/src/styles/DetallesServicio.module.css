@@ -1,0 +1,125 @@
+.contenedor {
+    width: 100%;
+    min-height: 100vh;
+    flex-wrap: wrap;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+/*Estilos header del catalogo*/
+.headerCatalogo {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 5%;
+    margin-top: 20px;
+    gap: 10px;
+    text-align: left;
+}
+
+.btnAtras {
+  align-self: flex-start;
+  display:flex;
+  align-items:center;
+  justify-content: flex-start;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: var(--textTitle);
+  cursor: pointer;
+  padding: 0;
+  margin-left: 0;
+}
+
+
+.iconAtras {
+  width: 30px;
+  margin-right: 12px;
+}
+
+
+.btnAtras:hover {
+    color: var(--primaryB);
+}
+
+.headerCatalogo h1 {
+  color: var(--primaryB);
+  font-size: 30px;
+  margin: 0;
+  text-align: left;
+}
+
+.contenedor hr {
+  border: none;
+  border-top: 2px solid var(--primaryB); 
+  width: 90%;
+  margin: 10px auto 30px;
+}
+
+.tarjeta {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.imagenServicio {
+    width: 100%;
+    height: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.infoServicio {
+    color: var(--textTitle);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.infoServicio h1 {
+    font-size: 28px;
+    margin-bottom: 16px;
+    color: #2c3e50;
+}
+
+.descripcion {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--textBody);
+    margin-bottom: 24px;
+}
+
+.precio {
+    font-size: 20px;
+    font-weight: 600;
+    color: #71B0C5;
+    margin-bottom: 32px;
+}
+
+.btnSeleccionar {
+    align-self: flex-start;
+    background-color: #71B0C5;
+    color: #fff;
+    border: none;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnSeleccionar:hover {
+    background-color: #5a9bab;
+}

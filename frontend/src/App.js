@@ -1,7 +1,6 @@
 import React from "react"; 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Registro from "./components/LayoutRegistro.jsx";
 import CatalogoServicios from "./components/CatalogoServicios.jsx";
 import LugarSeguro from "./components/MiLugarSeguro.jsx";
 import HistorialVentas from "./components/TablaHistorialVentas.jsx";
@@ -23,7 +22,6 @@ function App() {
     <BrowserRouter>
       {/* Aqui  van las rutas de la aplicación */}
       <Routes>
-        <Route path="/registro" element={<Registro />} />
         <Route path="/catalogo" element={<CatalogoServicios />} />
         <Route path="/lugarSeguro" element={<LugarSeguro />} />
         <Route path="/historial" element={<HistorialVentas />} />
