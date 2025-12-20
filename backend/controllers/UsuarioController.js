@@ -16,7 +16,8 @@ export const registrarUsuario = async (req, res) => {
             direccion, 
             telefono, 
             fechaNacimiento, 
-            rol
+            rol,
+            corrientePsicologica
          } = req.body;
 
         //Validar campos obligatorios
@@ -28,18 +29,24 @@ export const registrarUsuario = async (req, res) => {
             !password || 
             !direccion || 
             !telefono || 
-            !fechaNacimiento
+            !fechaNacimiento || 
+            !rol
         ) {   
-        return res.status(400).json({ mensaje: 'Por favor, complete todos los campos obligatorios.' });
+        return res.status(400).json({ mensaje: 'Complete todos los campos obligatorios.' });
         }
+    //Validar psicologo
+    if (rol === 'psicologo' && !corrientePsicologica) {
+        return res.status(400).json({ mensaje: 'La corriente psicológica es obligatoria para psicólogos.' });
+    }
+
     //Verificar si el usuario ya existe
-     const usuarioExistente = await Usuario.findOne({ email });
-      if (usuarioExistente) {
+     const existeUsuario = await Usuario.findOne({ email });
+      if (existeUsuario) {
         return res.status(400).json({ mensaje: 'El correo ya está registrado.' });
       }
 
     //Hashear la contraseña
-    const contraseñaHasheada = await bcrypt.hash(password, 10);
+    const passwordHash = await bcrypt.hash(password, 10);
 
     //CREAR NUEVO USUARIO
     const nuevoUsuario = new Usuario({
@@ -47,11 +54,12 @@ export const registrarUsuario = async (req, res) => {
         documentoIdentidad,
         tipoDocumento,
         email,
-        password: contraseñaHasheada,
+        password: passwordHash,
         direccion,
         telefono,
         fechaNacimiento,
         rol,
+        corrientePsicologica: rol === 'psicologo' ? corrientePsicologica : undefined,
         estadoUsuario: 'activo',
     });
 
