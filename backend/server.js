@@ -1,9 +1,11 @@
 import express from "express";
+import path from "path";
 import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
 import usuarioRoutes from "./routes/usuarioRoutes.js";
 import LoginRoutes from "./routes/LoginRoutes.js";
+import servicioRoutes from "./routes/servicioRoutes.js";
 
 
 
@@ -18,6 +20,12 @@ app.use(express.json()); //habilitar el parseo de JSON en las solicitudes
 //rutas
 app.use("/api/usuarios", usuarioRoutes);
 app.use("/api/auth", LoginRoutes);
+app.use("/api/servicios", servicioRoutes);
+
+//servir imagenes de la carpeta uploads
+app.use('/uploads/servicios',
+    express.static(path.join (process.cwd(), 'uploads/servicios'))
+);
 
 //puerto de escucha
 const PORT = process.env.PORT || 4000;

@@ -5,17 +5,47 @@ import Header from "./Header.jsx";
 
 
 function RegistroServicio() {
-  const [datos, setDatos] = useState({});
+  const [datos, setDatos] = useState({
+    nombreServicio: "",
+    descripcionServicio: "",
+    precioServicio: "",
+    imagenServicio: null
+  });
 
   function handleChange(e) {
-    const { name, value } = e.target;
-    setDatos({ ...datos, [name]: value });
+    const { name, value, files, type } = e.target;
+    setDatos({ ...datos, 
+      [name]: type === "file" ? files[0] : value
+    });
   }
 
-  function verData() {
-    console.log(datos);
-  }
+  async function guardarServicio() {
+    try {
+      const formData = new FormData();
 
+      formData.append("nombreServicio", datos.nombreServicio);
+      formData.append("descripcionServicio", datos.descripcionServicio);
+      formData.append("precioServicio", datos.precioServicio);
+
+      if (datos.imagenServicio) {
+        formData.append("imagenServicio", datos.imagenServicio);
+      }
+      const response = await fetch("http://localhost:4000/api/servicios", {
+        method: "POST",
+        body: formData
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al guardar el servicio");
+      }
+      const data = await response.json();
+      console.log("Servicio creado:", data);
+      alert("Servicio creado exitosamente");
+    } catch (error) {
+      console.error(error);
+      alert("Error al crear el servicio");
+    }
+  }
   return ( 
      <div className={stylesRegistroServicio['contenedor']}> 
      <Header />
@@ -40,34 +70,39 @@ function RegistroServicio() {
         <span>Nombre del servicio</span>
         <input
           type="text"
-          name="nombre_servicio"
+          name="nombreServicio"
           placeholder="Nombre del servicio"
           onChange={handleChange}
         />
 
         <span>Precio del servicio</span>
         <input
-          type="text"
-          name="precio_servicio"
+          type="number"
+          name="precioServicio"
           placeholder="Precio servicio"
           onChange={handleChange}
         />
-        <input id={stylesRegistroServicio["input-img"]} type="file" name="añadir_imagen" onChange={handleChange} />
+
+        <input 
+        id={stylesRegistroServicio["input-img"]}
+        type="file" 
+        name="imagenServicio"
+        accept="image/*"
+        onChange={handleChange} />
       </div>
       {/* ------------------------------------------------------------------- */}
 
       <div className={stylesRegistroServicio["div-hijo-2"]}>
         <span>Descripcion del servicio</span>
         <textarea
-          type="text"
-          name="descripcion_servicio"
+          name="descripcionServicio"
           placeholder="..."
           onChange={handleChange}
         />
       </div>
 
       <div className={stylesRegistroServicio["div-hijo-3"]}>
-      <button type="button" onClick={verData}>
+      <button type="button" onClick={guardarServicio}>
         Guardar cambios
       </button>
       <button id={stylesRegistroServicio["boton_2"]}>Cancelar</button>
@@ -78,5 +113,6 @@ function RegistroServicio() {
      
   );
 }
+
 
 export default RegistroServicio;
