@@ -19,7 +19,8 @@ export const obtenerServicioPorId = async (req, res) => {
         }
         res.json(servicio);
     } catch (error) {
-        res.status(500).json({ message: "Error al obtener el servicio", error });
+        console.error(error)
+        res.status(500).json({ message: "Error al obtener el servicio" });
     }
 };
 
