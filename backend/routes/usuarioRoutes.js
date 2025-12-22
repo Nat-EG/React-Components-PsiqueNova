@@ -1,6 +1,6 @@
 import express from "express";
-import { registrarUsuario } from "../controllers/UsuarioController.js";
-import { eliminarUsuario } from "../controllers/UsuarioController.js";
+import { registrarUsuario, eliminarUsuario, obtenerPsicologos } from "../controllers/UsuarioController.js";
+
 
 const router = express.Router();
 
@@ -8,6 +8,9 @@ const router = express.Router();
 
 //Ruta para registrar un nuevo usuario
 router.post("/registro", registrarUsuario);
+
+//Ruta para obtener solo psicologos
+router.get("/psicologos", obtenerPsicologos);
 
 //Ruta para eliminar un usuario por su ID
 router.delete("/:id", eliminarUsuario);

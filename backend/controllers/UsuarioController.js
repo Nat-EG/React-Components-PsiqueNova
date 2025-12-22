@@ -101,8 +101,20 @@ export const eliminarUsuario = async (req, res) => {
     }
 };
 
+//GET para obtener solo psicologos
+export const obtenerPsicologos = async (req, res) => {
+    try {
+        //Buscar usuarios con rol de psicologo
+        const psicologos = await Usuario.find({ 
+            rol: 'psicologo',
+            estadoUsuario:"activo" 
+        }).select("nombresApellidos corrientePsicologica");
 
+        res.json(psicologos);
+    } catch (error) {
+        console.error('Error al obtener psicólogos:', error);
+        res.status(500).json({ mensaje: 'Error del servidor. Por favor, intente nuevamente más tarde.' });
+    }
+};
 
-
-    
 
