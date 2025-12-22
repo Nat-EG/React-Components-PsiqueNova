@@ -26,6 +26,8 @@ function BarraMenuPaciente() {
         <div className={stylesBarraMenuPaciente["opcion-menu"]}>
           <img src="IconoConfig.svg" alt="" /> <a href="/configuracion">Ajustes</a>
         </div>
+
+        
         <div className={stylesBarraMenuPaciente["opcion-menu"]}>
           <CerrarSesion />
         </div>

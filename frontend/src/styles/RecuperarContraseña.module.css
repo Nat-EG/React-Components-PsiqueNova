@@ -1,0 +1,152 @@
+body {
+    background-color: #F5F3EE;
+    font-family: 'Open Sans';
+}
+
+ .contenedor {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  background-color: #F5F3EE;
+  height: 100vh;
+}
+
+.div-padre{
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  min-height: 500px;
+  box-sizing: border-box;
+}
+
+.div-1{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    background-color: #F5F3EE;
+    box-sizing: border-box;
+    align-content: flex-start;
+}
+.logo-seguramente{
+  display: flex;
+  width: 100%;
+  height: 100px;
+  box-sizing: border-box;
+}
+.div-titulos{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.div-hijo-1{
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    width: 100%;
+    margin: auto;
+    flex-direction: column;
+    padding: 1%;
+    place-content: center;
+    margin-top: 0;
+}
+
+.div-hijo-1 span{
+    text-align: start;
+    color: #4A463E;
+    font-weight: bold;
+    
+}
+
+.div-hijo-1 input{
+  border: none;
+  padding: 3%;
+  border-bottom: 2px solid #A6D885; 
+  width: 60%;
+  outline: none;
+  margin-bottom: 5%;
+  
+}
+
+.div-hijo-1 input:focus {
+  border-bottom-color: #8feb51; 
+} 
+
+
+
+/* ------------------------------------------------------ */
+.div-2{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    box-sizing: border-box;
+    
+}
+.div-2 img {
+  height: 100vh;
+  width: 100%; 
+    
+}
+
+
+.div-padre h1 {
+    width: 100%;
+    font-size: 25px;
+    color: #4A463E;
+    
+}
+
+.div-padre h3 {
+    width: 100%;
+    font-size: 20px;
+  color: #5E5951;
+} 
+
+
+/* ---------------hijo 2---------------------------------- */
+
+.div-hijo-2 {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 100%;  
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  margin-top: 0;
+  align-content: flex-start;
+  
+}
+
+
+.div-enlaces{
+  display: flex;
+  width: 100%;
+  margin: auto;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+.div-enlaces a {
+  padding:2%;
+  text-decoration: none;
+  color: #5E5951;
+}
+
+.div-hijo-2 button {
+    padding: 2%;
+    width: 49%;
+    background-color: #A6D885;
+    border-bottom: none;
+    border-right: none;
+    border-left: none;
+    border-top:none;
+    color: white;
+    font-weight: bold;
+}

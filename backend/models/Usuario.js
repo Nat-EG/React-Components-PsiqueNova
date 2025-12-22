@@ -13,6 +13,11 @@ const usarioSchema = new mongoose.Schema({
     fechaNacimiento: { type: Date, required: true},
     fechaRegistro: { type: Date, default: Date.now},
 
+    rol: { type: String, enum: ['paciente', 'psicologo', 'admin'], default: 'paciente' },
+    estadoUsuario: { type: String, enum: ['activo', 'inactivo'], default: 'activo' },
+
+    resetToken: { type: String },
+    resetTokenExpiry: { type: Date },
     rol: { 
         type: String, 
         enum: ['paciente', 'psicologo', 'admin'],
