@@ -1,0 +1,179 @@
+
+body {
+    background-color: #F5F3EE;
+    font-family: 'Open Sans';
+}
+
+/* -------------------- CONTENEDOR PRINCIPAL -------------------- */
+ .contenedor {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  background-color: #F5F3EE;
+  height: 100vh;
+}
+
+.div-padre{
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  min-height: 500px;
+  box-sizing: border-box;
+}
+/* -------------------- COLUMNA IZQUIERDA -------------------- */
+.div-1{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    background-color: #F5F3EE;
+    box-sizing: border-box;
+    align-content: flex-start;
+}
+
+.logo-seguramente{
+  display: flex;
+  width: 100%;
+  height: 100px;
+  box-sizing: border-box;
+  
+
+}
+
+.logo-seguramente img {
+  height: 70px;
+}
+
+
+
+/* Títulos */
+.div-titulos{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.div-padre h1 {
+    width: 100%;
+    font-size: 25px;
+    color: #4A463E;
+    
+}
+
+.div-padre h3 {
+    width: 100%;
+    font-size: 20px;
+  color: #5E5951;
+} 
+
+/* -------------------- FORMULARIO -------------------- */
+.div-hijo-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  align-items: center;
+}
+
+/* Labels */
+.div-hijo-1 label {
+  width: 60%;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4A463E;
+}
+
+/* Input container */
+.input-container {
+  position: relative;
+  width: 60%;
+  
+  
+}
+
+/* Inputs */
+.input-container input {
+  width: 100%;
+  height: 50px; 
+  border: none;
+  border-bottom: 2px solid #A6D885;
+  padding: 0 40px 0 12px; 
+  outline: none;
+  background-color: #FFFFFF; 
+  font-size: 14px;
+  color: #4A463E;
+  border-radius: 4px; 
+  box-sizing: border-box;
+}
+
+
+.input-container input::placeholder {
+  color: #9C9C9C;
+}
+
+.input-container input:focus {
+  border-bottom-color: #8FEB51;
+}
+
+/* Ojito */
+.eye-icon {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #B0B0B0; /* gris */
+  user-select: none;
+}
+
+.eye-icon:hover {
+  color: #7A7A7A;
+}
+
+/* -------------------- BOTÓN -------------------- */
+.div-hijo-2 {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.div-hijo-2 button {
+  width: 50%;
+  padding: 12px;
+  background-color: #A6D885;
+  border: none;
+  border-radius: 4px;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.div-hijo-2 button:hover {
+  background-color: #8FEB51;
+}
+
+/* -------------------- COLUMNA DERECHA -------------------- */
+.div-2{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    box-sizing: border-box;
+    
+}
+.div-2 img {
+  height: 100vh;
+  width: 100%; 
+    
+}
+
+
+

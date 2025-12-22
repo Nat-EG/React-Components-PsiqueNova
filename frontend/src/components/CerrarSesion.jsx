@@ -31,7 +31,7 @@ const CerrarSesion = () => {
         <img src="IconoCerrarSesion.svg" alt="" style={{width: '8%', marginRight: '5px'}} /> Cerrar Sesión
       </button>
 
-/* Modal de confirmación para el cierre de sesión */
+
 
       <ConfirmModal
         isOpen={isModalOpen}

@@ -15,6 +15,9 @@ const usarioSchema = new mongoose.Schema({
 
     rol: { type: String, enum: ['paciente', 'psicologo', 'admin'], default: 'paciente' },
     estadoUsuario: { type: String, enum: ['activo', 'inactivo'], default: 'activo' },
+
+    resetToken: { type: String },
+    resetTokenExpiry: { type: Date },
 }, {collection: 'usuarios', versionKey: false });
 
 //exportar el modelo
