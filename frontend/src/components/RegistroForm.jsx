@@ -1,29 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from "../styles/Registro.module.css";
+
+//importacion del modal de confirmacion
+import ConfirmModal from './modals/ConfirmModal';
 
 
 // Importación de imagenes desde src/includes
 import BackUpIcon from "../includes/Back UpiconSvg.co.svg";
 
-// Componente de formulario de registro
-function Registro() {
-    //Estado inicial de los campos del formulario
-    const [formData, setFormData] = useState({
-        nombre: '',
-        documento: '',
-        tipoDocumento: '',
-        fechaNacimiento: '',
-        telefono: '',
-        direccion: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-    });
+const initialFormData = {
+    nombre: '',
+    documento: '',
+    tipoDocumento: '',
+    fechaNacimiento: '',
+    telefono: '',
+    direccion: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    corrientePsicologica: '',
+};
 
+// Componente de formulario de registro
+function RegistroForm({
+    //props
+    endpoint,
+    rol,
+    mostrarCorrientePsicologica = false,
+}) {
+  //Estado para los datos del formulario
+    const [formData, setFormData] = useState(initialFormData);
+
+    
     //Estado para los mensajes de error en la entrada de datos
     const [errores, setErrores] = useState({});
     const [strength, setStrength] = useState({ width: "0%", color: "", text: "" });
     const [showPassword, setShowPassword] = useState(false);
+
+     //Estado para modal
+    const [mostrarModal, setMostrarModal] = useState(false);
 
     //Validación de los campos del formulario
     const validarCampo = (name, value) => {
@@ -104,49 +119,62 @@ function Registro() {
                     : "";
         }
 
+        // Validar corriente psicológica (si se muestra)
+        if (name === 'corrientePsicologica') {
+            newErrors.corrientePsicologica = !value ?
+            "Debes seleccionar una corriente psicológica."
+             : "";
+        }
+
         //Actualizar los errores en el estado
         setErrores(newErrors);
     };
 
     //Manejo de cambios en los campos del formulario
     const handleChange = (e) => {
-        const { name, value } = e.target;
-
-        //Actualizar los valores del formulario
-        setFormData({ ...formData, [name]: value });
+        setFormData ({ ...formData, [e.target.name]: e.target.value });
 
         //Validar el campo modificado
-        validarCampo(name, value);
-    };
+        validarCampo(e.target.name, e.target.value);
+    }
+
 
     //Función del envío del formulario
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+
         // Verificar si hay errores
         const hayErrores = Object.values(errores).some(error => error);
 
-        if (hayErrores) {
-            alert("Por favor corrige los errores en el formulario.");
-            return;
-        } 
+            if (hayErrores) {
+                alert("Por favor corrige los errores en el formulario.");
+                return;
+            } 
+
 
         //construir el objeto de datos a enviar
-        const payload = {
-            nombresApellidos: formData.nombre,
-            documentoIdentidad: formData.documento,
-            tipoDocumento: formData.tipoDocumento,
-            fechaNacimiento: formData.fechaNacimiento,
-            telefono: formData.telefono,
-            direccion: formData.direccion,
-            email: formData.email,
-            password: formData.password,
-            rol: 'paciente',
-        }; 
+            const payload = {
+                nombresApellidos: formData.nombre,
+                documentoIdentidad: formData.documento,
+                tipoDocumento: formData.tipoDocumento,
+                fechaNacimiento: formData.fechaNacimiento,
+                telefono: formData.telefono,
+                direccion: formData.direccion,
+                email: formData.email,
+                password: formData.password,
+                rol,
+            }; 
 
+            if (mostrarCorrientePsicologica) {
+                payload.corrientePsicologica = formData.corrientePsicologica;
+            }
+
+
+             
         //Enviar los datos al backend
         try {
-            const reponse = await fetch("http://localhost:4000/api/usuarios/registro", {
+            const reponse = await fetch(endpoint, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
@@ -156,37 +184,36 @@ function Registro() {
             const data = await reponse.json();
 
             if (!reponse.ok) {
-                alert(data.mensaje || "Error al registrar el usuario. Por favor, intenta nuevamente.");
+                alert(data.mensaje);
                 return;
             }
 
-            //Registro exitoso
-            alert("Usuario registrado correctamente.");
-            //Redirigir al usuario a la página de inicio de sesión
-            window.location.href = "/login";
+        //Mostrar modal con Registro exitoso
+        setMostrarModal(true);
 
-            //Reiniciar el formulario
-            setFormData({
-                nombre: '',
-                documento: '',
-                tipoDocumento: '',
-                fechaNacimiento: '',
-                telefono: '',
-                direccion: '',
-                email: '',
-                password: '',
-                confirmPassword: '',
-            });
-
-            setErrores({});
-            setStrength({ width: "0%", color: "", text: "" });
-
- } catch (error) {
-    alert("Error del servidor. Por favor, intenta nuevamente más tarde.");
-    console.error(error);
-
-    }
+        //Resetear el formulario
+        setFormData(initialFormData);
+        setErrores({});
+        setStrength({ width: "0%", color: "", text: "" });
+        setShowPassword(false);
+        
+        } catch (error) {
+            alert("Error de conexión con el servidor. Por favor, intenta nuevamente más tarde.");
+        }
+        
+          
  };
+
+    //Función para manejar la confirmación del registro en el modal
+        const handleConfirmarRegistro = () => {
+            setMostrarModal(false);
+            window.location.href = "/login";
+        };
+        const handleCerrarModal = () => {
+            setMostrarModal(false);
+        };
+
+    
 
     //Estructura visual del formulario
     return (
@@ -363,12 +390,52 @@ function Registro() {
                     required
                 />
 
+                {/* Selector tipo de terapia (opcional) */}
+                {mostrarCorrientePsicologica && (
+                    <div className={errores.corrientePsicologica ? styles.error : ""}>
+                        <label> 
+                            <span className={styles.required}>*</span> Corriente psicológica
+                        </label>
+
+                        {errores.corrientePsicologica && (
+                            <span className={`${styles.errorMessage} ${styles.active}`}>
+                                {errores.corrientePsicologica}
+                            </span>
+                        )}
+
+                        <select
+                            name="corrientePsicologica"
+                            value={formData.corrientePsicologica}
+                            onChange={handleChange}
+                            required
+                        >
+                            <option value="">Seleccione corriente psicológica</option>
+                            <option value="Cognitivo Conductual">Cognitivo Conductual</option>
+                            <option value="Psicoanálisis">Psicoanálisis</option>
+                            <option value="Humanista">Humanista</option>
+                            <option value="Gestalt">Gestalt</option>
+                            <option value="Terapia Sistémica">Terapia Sistémica</option>
+                        </select>
+                    </div>
+                )}
+
                 <button type="submit" className={styles.btnCreate}>
                         Crear cuenta
                     </button>
             </form>
             </div>
+
+            {/* Modal de confirmación de registro exitoso */}
+            <ConfirmModal
+                isOpen={mostrarModal}
+                title= "Registro Exitoso"
+                message= "Tu cuenta ha sido creada exitosamente. ahora puede iniciar sesion."
+                confirmText="Iniciar sesión"
+                cancelText="Quedarme aquí"
+                onConfirm={handleConfirmarRegistro}
+                onClose={handleCerrarModal}
+            />
         </div>
     );
 }
-export default Registro;
+export default RegistroForm;
