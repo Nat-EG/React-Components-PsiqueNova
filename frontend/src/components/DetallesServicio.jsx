@@ -39,7 +39,7 @@ function DetallesServicio() {
 
     const handleSeleccionarPsicologo =
     () => {
-        navigate(`/psicologos/${servicio._Id}`);
+        navigate(`/seleccionar-psicologo/${servicio._id}`);
     };
 
     return (
