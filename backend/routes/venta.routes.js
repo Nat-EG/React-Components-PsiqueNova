@@ -1,14 +1,8 @@
-import express from 'express';
-import { 
-    crearVenta, 
-    obtenerVentas
- } from '../controllers/VentaController.js';
+import express from "express";
+import { procesarPago } from "../controllers/PagoController.js";
 
- const router = express.Router();
+const router = express.Router();
 
+router.post("/pago", procesarPago);
 
-// Crear venta (automatica tras el pago aprobado): POST /api/ventas
-router.post('/', crearVenta);
-
-//Listado de ventas (Admin): GET /api/ventas
-router.get('/', obtenerVentas);
+export default router;

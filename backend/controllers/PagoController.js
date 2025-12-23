@@ -1,77 +1,69 @@
 import Pago from "../models/Pago.js";
-import Cita from "../models/Cita.js";
 import Agenda from "../models/Agenda.js";
+import Cita from "../models/Cita.js";
+import Venta from "../models/Venta.js";
 
 export const procesarPago = async (req, res) => {
-    try {
-        const { 
-            metodo,
-            paciente,
-            psicologo,
-            servicio,
-            fecha,
-            horainicio,
-            horafin,
-            valor
-        } = req.body;
+  try {
+    const {
+      paciente,
+      psicologo,
+      servicio,
+      fecha,
+      horaInicio,
+      horaFin,
+      metodo,
+      valor
+    } = req.body;
 
-        // Crear pago en estado pendiente
-        const pago = await Pago.create({
-            paciente,
-            psicologo,
-            servicio,
-            metodo,
-            valor,
-        });
+    // 1️. Crear pago
+    const pago = await Pago.create({
+      paciente,
+      psicologo,
+      servicio,
+      metodo,
+      valor,
+      estado: "aprobado", // simulación
+      referenciaPasarela: `REF-${Date.now()}`,
+      respuestaPasarela: { ok: true }
+    });
 
-        // Simular integración con pasarela de pagos 
-        const pagoAprobado = true; // Aquí se simula la aprobación del pago
+    // 2️. Crear cita
+    const cita = await Cita.create({
+      paciente,
+      psicologo,
+      servicio,
+      fecha,
+      horaInicio,
+      horaFin,
+      pago: pago._id
+    });
 
-        if (!pagoAprobado) {
-            pago.estado = "Pago rechazado",
-            await pago.save();
+    // 3️. Actualizar agenda
+    await Agenda.updateOne(
+      { psicologo, fecha, "bloques.horaInicio": horaInicio },
+      { $set: { "bloques.$.disponible": false } }
+    );
 
-            return res.status(400).json({ message: "El pago fue rechazado.", pago });
-        }
+    // 4️. Crear venta
+    const venta = await Venta.create({
+      paciente,
+      psicologo,
+      servicio,
+      cita: cita._id,
+      pago: pago._id,
+      total: valor
+    });
 
-        // Actualizar estado del pago a aprobado
-        pago.estado = "aprobado";
-        pago.referenciaPasarela = "REF-" + Date.now(); // Simulación de referencia
-        pago.respuestaPasarela = { mensaje: "Pago aprobado (simulado)." };
-        await pago.save();
+    res.status(201).json({
+      mensaje: "Pago realizado con éxito",
+      pago,
+      cita,
+      venta
+    });
 
-        // Crear la cita asociada al pago
-        const cita = await Cita.create({
-            paciente,
-            psicologo,
-            servicio,
-            fecha,
-            horainicio,
-            horafin,
-            estado: "programada",
-            pago: pago._id
-        });
-
-        //Asociar la cita al pago
-        pago.cita = cita._id;
-        await pago.save();
-
-        //Bloquear agenda
-        await Agenda.updateOne(
-            {
-                idPsicologo: psicologo,
-                fecha,
-                "bloques.horaInicio": horainicio
-            },
-            {
-                $set: { "bloques.$.disponible": false }
-            }
-        );
-
-        res.status(201).json({ message: "Pago aprobado y cita creada exitosamente.", pago, cita });
-
-    } catch (error) {
-        console.error("Error procesando el pago:", error);
-        res.status(500).json({ message: "Error procesando el pago." });
-    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ mensaje: "Error al procesar el pago" });
+  }
 };

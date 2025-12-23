@@ -3,9 +3,14 @@ import path from "path";
 import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
+
 import usuarioRoutes from "./routes/usuarioRoutes.js";
 import LoginRoutes from "./routes/LoginRoutes.js";
 import servicioRoutes from "./routes/servicioRoutes.js";
+import pagoRoutes from "./routes/pago.routes.js";
+import ventaRoutes from "./routes/venta.routes.js";
+import agendaRoutes from "./routes/agenda.routes.js";
+import citaRoutes from "./routes/cita.routes.js";
 
 
 
@@ -21,6 +26,10 @@ app.use(express.json()); //habilitar el parseo de JSON en las solicitudes
 app.use("/api/usuarios", usuarioRoutes);
 app.use("/api/auth", LoginRoutes);
 app.use("/api/servicios", servicioRoutes);
+app.use("/api/pagos", pagoRoutes);
+app.use("/api/ventas", ventaRoutes);
+app.use("/api/agendas", agendaRoutes);
+app.use("/api/citas", citaRoutes);
 
 //servir imagenes de la carpeta uploads
 app.use('/uploads/servicios',

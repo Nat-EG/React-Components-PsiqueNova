@@ -33,11 +33,6 @@ const pagoSchema = new mongoose.Schema({
         required: true
     },
 
-    referenciaPasarela: {
-        type: String,
-        required: true
-    },
-
      valor: {
         type: Number,
         required: true
@@ -51,6 +46,7 @@ const pagoSchema = new mongoose.Schema({
     
      referenciaPasarela: {
         type: String,
+        required: true
     },
    
     respuestaPasarela: {

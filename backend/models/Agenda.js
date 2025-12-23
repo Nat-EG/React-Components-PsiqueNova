@@ -31,9 +31,10 @@ const agendaSchema = new mongoose.Schema({
     //Datos de la agenda abierta
     fecha : {type: Date, required: true },
 
-    bloques: { 
-        type: [bloqueSchema], 
-        required: true 
+    bloques: [bloqueSchema],
+    creadoEn: { 
+        type: Date, 
+        default: Date.now 
     }
 }, { versionKey: false });
 
