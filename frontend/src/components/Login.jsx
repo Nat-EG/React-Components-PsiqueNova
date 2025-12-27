@@ -36,7 +36,8 @@ function Login() {
       alert("Inicio de sesión exitoso");
 
       // Guardar usuario 
-      localStorage.setItem("usuario", JSON.stringify(data.usuario));
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("usuario", JSON.stringify(data.usuario));
 
       // Redirigir al inicio
       navigate("/Inicio");

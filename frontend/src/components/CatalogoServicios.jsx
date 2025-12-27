@@ -26,6 +26,8 @@ function CatalogoServicios() {
     const handleSeleccionarServicio = (servicio) => {
         navigate(`/servicios/${servicio._id}`);
     };
+
+    
     
     return (
 

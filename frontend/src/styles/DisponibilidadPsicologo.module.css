@@ -1,0 +1,154 @@
+
+.CajaPadre {
+    width: 100%;
+    min-height: 100vh;
+    flex-wrap: wrap;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+/*Estilos header */
+.headerSeleccionarPsicologo {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 5%;
+    margin-top: 20px;
+    gap: 10px;
+    text-align: left;
+}
+
+.btnAtras {
+  align-self: flex-start;
+  display:flex;
+  align-items:center;
+  justify-content: flex-start;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: var(--textTitle);
+  cursor: pointer;
+  padding: 0;
+  margin-left: 0;
+}
+
+
+.iconAtras {
+  width: 30px;
+  margin-right: 12px;
+}
+
+
+.btnAtras:hover {
+    color: var(--primaryB);
+}
+
+.headerSeleccionarPsicologo h1 {
+  color: var(--primaryB);
+  font-size: 30px;
+  margin: 0;
+  text-align: left;
+}
+.CajaPadre hr {
+  border: none;
+  border-top: 2px solid var(--primaryB); 
+  width: 90%;
+  margin: 10px auto 30px;
+}
+
+.contenedor {
+    width: 90%;
+    margin: 0 auto 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.calendario {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: flex-start;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.diaDisponible {
+    background-color: var(--surface1);
+    color: var(--textTitle);
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.diaActivo {
+    background-color: var(--primaryG) !important;
+    color: white !important;
+    border: none;
+    font-weight: 600;
+}
+
+:global(.rdp-day_disabled) {
+   opacity: 0.5;
+   cursor: not-allowed
+}
+
+.dia {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--borderInput);
+    color: var(--textTitle);
+    font-weight: 600;
+}
+
+
+.bloques {
+    margin-bottom: 30px;
+}
+
+.bloquesGrid {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.bloque {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--surface2);
+    color: var(--textTitle);
+    font-weight: 600;
+}
+.bloqueActivo {
+    background-color: var(--surface1);
+    color: var(--textTitle);
+    border: none;
+}
+
+.bloques h2 {
+    font-size: 16px;
+    color: var(--textTitle);
+}
+
+.botonContinuar {
+    padding: 12px 20px;
+    max-width: 150px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primaryB);
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.botonContinuar:disabled {
+    background-color: var(--borderInput);
+    cursor: not-allowed;
+}
+
+

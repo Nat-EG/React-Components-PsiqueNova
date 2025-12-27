@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import styles from "../styles/SeleccionarPsicologo.module.css";
 import IconoAtras from "../includes/Back UpiconSvg.co.svg";
 
+
+
 const SeleccionarPsicologo = () => {
     const [psicologos, setPsicologos] = useState([]);
     const [psicologoSeleccionado, setPsicologoSeleccionado] = useState(null);
@@ -18,8 +20,14 @@ const SeleccionarPsicologo = () => {
 
     const verDisponibilidad = () => {
         if (!psicologoSeleccionado) return;
+        // Guardar el psicólogo seleccionado en el localStorage
+        localStorage.setItem(
+            "psicologoSeleccionado",
+            JSON.stringify(psicologoSeleccionado)
+        );
+
         // Navegar a la página de disponibilidad del psicólogo seleccionado
-        navigate(`/disponibilidad/${psicologoSeleccionado}`);
+        navigate(`/disponibilidad/${psicologoSeleccionado._id}`);
     };
 
     return (
@@ -41,8 +49,11 @@ const SeleccionarPsicologo = () => {
                 <div className={styles.selectorWrapper}>
                     <select 
                         className={styles.selector}
-                        value={psicologoSeleccionado}
-                        onChange={(e) => setPsicologoSeleccionado(e.target.value)}
+                        value={psicologoSeleccionado?._id || ""}
+                        onChange={(e) => {
+                            const psico = psicologos.find(p => p._id === e.target.value);
+                            setPsicologoSeleccionado(psico);
+                        }}
                     >
                         <option value="">Seleccionar un Psicólogo</option>
                         {psicologos.map(psico => (
@@ -54,7 +65,7 @@ const SeleccionarPsicologo = () => {
                 </div>
                 <button
                     className={styles.boton}
-                    disabled={!psicologoSeleccionado}
+                    disabled={!psicologoSeleccionado || psicologos.length === 0}
                     onClick={verDisponibilidad}
                 >
                     Ver disponibilidad

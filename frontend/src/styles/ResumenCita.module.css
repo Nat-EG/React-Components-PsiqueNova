@@ -1,4 +1,4 @@
-.headerPago{
+.headerResumenCita {
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -35,7 +35,7 @@
     color: var(--primaryB);
 }
 
-.headerPago h1 {
+.headerResumenCita h1 {
   color: var(--primaryB);
   font-size: 30px;
   margin: 0;
@@ -53,88 +53,44 @@
     margin: 0 auto 40px auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-  
-
-.resumen {
-    background-color: var(--surface2);
-    padding: 15px;
-    border-radius: 8px;
-    margin: 0 50px;
-    color: var(--textBody);
-    box-shadow: 0 2px 8px var(--primaryB);
-}
-h2 {
-    color: var(--textBody);
-    margin: 10px 50px;
-
-}
-.metodos {
-    display: flex;
     gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
     margin: 0 50px;
-}
-
-.opcion {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 16px;
-    font-family: 'Open Sans', sans-serif;
-    color: var(--textBody);
-
-
-}
-
-.formPago {
-    align-items: column;
-    display: flex;
-    background-color: white;
     padding: 20px;
-    border-radius: 8px;
-    margin: 20px 50px   ;
-    gap: 20px;
-    box-shadow: 0 2px 8px var(--primaryB);
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px var(--primaryB);
+    font-family: 'Open Sans', sans-serif;
 }
 
-.formPago input,
-.formPago select {
-    width: 100%;
-    padding: 10px;
+.card h2 {
     margin-bottom: 10px;
-    border-radius: 8px;
-    border: 1px solid var(--borderInput);
-    font-size: 16px;
-    font-family: 'Open Sans', sans-serif;
+    color: var(--primaryB);
+}
+
+.card p {
+    margin: 15px 0;
     color: var(--textBody);
 }
 
-.fila {
-    display: flex;
-    gap: 10px;
-}
-
-.botonPagar {
-    width: 200px;
+.botonConfirmar {
+    max-width: 200px;
     padding: 14px;
     background-color: var(--primaryB);
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
-    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin: 20px 50px;
 }
 
-.botonPagar:hover {
+.botonConfirmar:hover {
     background-color: #5a9bb3;
 }
 
-.botonPagar:disabled {
-    background-color: var(--borderInput);
-    cursor: not-allowed;
-}

@@ -32,11 +32,10 @@ export const procesarPago = async (req, res) => {
     const cita = await Cita.create({
       paciente,
       psicologo,
-      servicio,
       fecha,
       horaInicio,
       horaFin,
-      pago: pago._id
+      estado: "pendiente"
     });
 
     // 3️. Actualizar agenda
@@ -63,7 +62,12 @@ export const procesarPago = async (req, res) => {
     });
 
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ mensaje: "Error al procesar el pago" });
-  }
+  console.error("❌ ERROR PAGO:", error);
+
+  res.status(500).json({
+    mensaje: "Error al procesar el pago",
+    error: error.message,
+    stack: error.stack
+  });
+}
 };
