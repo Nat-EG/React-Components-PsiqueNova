@@ -41,6 +41,8 @@ const ResumenCita = () => {
         return <p className={styles.cargando}>Cargando resumen...</p>;
     }
 
+    
+
     return (
         <div className={styles.contenedor}>
             <div className={styles.headerResumenCita}>
@@ -53,7 +55,7 @@ const ResumenCita = () => {
                     <img src={IconoAtras} alt="Atrás" className={styles.iconAtras} />
                     Atrás
                 </button>
-                <h1>SELECCIONAR FECHA Y HORA</h1>
+                <h1>RESUMEN DE LA CITA</h1>
             </div>
             <hr />
 

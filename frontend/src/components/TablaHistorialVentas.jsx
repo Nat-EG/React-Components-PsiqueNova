@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as XLSX from "xlsx";
 import styles from "../styles/TablaHistorialVentas.module.css";
 import DateRangeFilter from "./DateRangeFilter";
@@ -14,6 +14,8 @@ import {
     faAnglesRight,
 } from "@fortawesome/free-solid-svg-icons";
 
+
+
 export default function TablaHistorialVentas() {
     const [search, setSearch] = useState("");
     const [recordsPerPage, setRecordsPerPage] = useState(15);
@@ -21,23 +23,47 @@ export default function TablaHistorialVentas() {
     const [showFilter, setShowFilter] = useState(false);
     const [dateRange, setDateRange] = useState({ start: null, end: null });
     const [sortOrder, setSortOrder] = useState("asc");
+    const [ventas, setVentas] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    const data = [
-        { idFactura: "001", fechaHora: "2024-06-01 10:32", nombrePaciente: "Juan Perez", idPaciente: "12312314", psicologo: "Eliana Arroyave", servicio: "03", valor: 150000 },
-        { idFactura: "002", fechaHora: "2024-06-02 11:15", nombrePaciente: "Maria Gomez", idPaciente: "45645615", psicologo: "Carlos Ruiz", servicio: "01", valor: 200000 },
-        { idFactura: "003", fechaHora: "2024-06-03 09:45", nombrePaciente: "Luis Martinez", idPaciente: "78978916", psicologo: "Ana Torres", servicio: "02", valor: 180000 },
-        { idFactura: "004", fechaHora: "2024-06-04 14:20", nombrePaciente: "Carmen Diaz", idPaciente: "32132117", psicologo: "Eliana Arroyave", servicio: "03", valor: 220000 },
-        { idFactura: "005", fechaHora: "2024-06-05 16:00", nombrePaciente: "Pedro Sanchez", idPaciente: "65465418", psicologo: "Carlos Ruiz", servicio: "01", valor: 160000 },
-        { idFactura: "006", fechaHora: "2024-06-06 13:30", nombrePaciente: "Ana Lopez", idPaciente: "98798719", psicologo: "Ana Torres", servicio: "02", valor: 190000 },
-        { idFactura: "007", fechaHora: "2024-06-07 12:10", nombrePaciente: "Jorge Ramirez", idPaciente: "14714720", psicologo: "Eliana Arroyave", servicio: "03", valor: 210000 },
-        { idFactura: "008", fechaHora: "2024-06-08 15:45", nombrePaciente: "Lucia Fernandez", idPaciente: "25825821", psicologo: "Carlos Ruiz", servicio: "01", valor: 170000 },
-        { idFactura: "009", fechaHora: "2024-06-09 11:55", nombrePaciente: "Miguel Torres", idPaciente: "36936922", psicologo: "Ana Torres", servicio: "02", valor: 200000 },
-        { idFactura: "010", fechaHora: "2024-06-10 10:05", nombrePaciente: "Sofia Morales", idPaciente: "15915923", psicologo: "Eliana Arroyave", servicio: "03", valor: 230000 }, 
-        { idFactura: "011", fechaHora: "2024-06-11 14:30", nombrePaciente: "Diego Castro", idPaciente: "75375324", psicologo: "Carlos Ruiz", servicio: "01", valor: 180000 },
-        { idFactura: "012", fechaHora: "2024-06-12 09:20", nombrePaciente: "Valentina Rojas", idPaciente: "85285225", psicologo: "Ana Torres", servicio: "02", valor: 210000 }, 
-    ];
+    useEffect(() => {
+  const cargarVentas = async () => {
+    try {
+      const token = localStorage.getItem("token");
 
-    const filteredData = data.filter((row) => {
+      const res = await fetch("http://localhost:4000/api/ventas", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await res.json();
+
+      // 🔁 Adaptar estructura backend → tabla
+      const ventasFormateadas = data.map((venta) => ({
+        idFactura: venta._id.slice(-6).toUpperCase(), // o tu idFactura si lo agregas
+        fechaHora: new Date(venta.createdAt).toLocaleString("es-CO"),
+        nombrePaciente: `${venta.paciente.nombres} ${venta.paciente.apellidos}`,
+        idPaciente: venta.paciente._id,
+        psicologo: `${venta.psicologo.nombres} ${venta.psicologo.apellidos}`,
+        servicio: venta.servicio.nombre,
+        valor: venta.servicio.precio,
+      }));
+
+      setVentas(ventasFormateadas);
+    } catch (error) {
+      console.error("Error cargando ventas:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  cargarVentas();
+}, []);
+
+    
+
+    const filteredData = ventas.filter((row) => {
         const term = search.toLowerCase();
         return (
             row.idFactura.toLowerCase().includes(term) ||
