@@ -36,7 +36,7 @@ const Pago = () => {
   try {
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    const response = await fetch("http://localhost:4000/api/citas", {
+    const response = await fetch("http://localhost:4000/api/pagos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,11 +46,11 @@ const Pago = () => {
         paciente: usuario._id,
         psicologo: psicologo._id,
         servicio: servicio._id,
-        fecha: new Date(fecha + "T00:00:00"),
-        horaInicio,
-        horaFin,
         metodo: metodoPago === "pse" ? "PSE" : "TARJETA",
         valor: servicio.precioServicio,
+        fecha,
+        horaInicio,
+        horaFin,
       }),
     });
 

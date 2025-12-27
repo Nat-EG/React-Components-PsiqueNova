@@ -1,8 +1,10 @@
 import express from "express";
-import { procesarPago } from "../controllers/PagoController.js";
+import { obtenerVentas } from "../controllers/VentaController.js";
+import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/pago", procesarPago);
+// GET /api/ventas
+router.get("/", authMiddleware, obtenerVentas);
 
 export default router;

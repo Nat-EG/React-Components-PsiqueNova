@@ -1,73 +1,93 @@
 import Pago from "../models/Pago.js";
-import Agenda from "../models/Agenda.js";
 import Cita from "../models/Cita.js";
+import Agenda from "../models/Agenda.js";
 import Venta from "../models/Venta.js";
+import crypto from "crypto";
 
 export const procesarPago = async (req, res) => {
   try {
-    const {
-      paciente,
-      psicologo,
-      servicio,
-      fecha,
-      horaInicio,
-      horaFin,
-      metodo,
-      valor
-    } = req.body;
+    const { id: pacienteId } = req.usuario;
+    const { psicologo, servicio, metodo, valor, fecha, horaInicio, horaFin } = req.body;
 
-    // 1️. Crear pago
+    // 1. Crear pago
     const pago = await Pago.create({
-      paciente,
+      paciente: pacienteId,
       psicologo,
       servicio,
       metodo,
       valor,
-      estado: "aprobado", // simulación
-      referenciaPasarela: `REF-${Date.now()}`,
-      respuestaPasarela: { ok: true }
+      estado: "pendiente",
+      referenciaPasarela: crypto.randomUUID(),
     });
 
-    // 2️. Crear cita
+    // 2. Simular pago aprobado
+    pago.estado = "aprobado";
+    pago.fechaPago = new Date();
+    await pago.save();
+
+    // 3. Normalizar fecha (UNA SOLA VEZ)
+    const fechaAgenda = new Date(fecha);
+    fechaAgenda.setUTCHours(0, 0, 0, 0);
+
+    // 4. Crear cita
     const cita = await Cita.create({
-      paciente,
+      paciente: pacienteId,
       psicologo,
-      fecha,
+      fecha: fechaAgenda,
       horaInicio,
       horaFin,
-      estado: "pendiente"
+      estado: "pendiente",
     });
 
-    // 3️. Actualizar agenda
-    await Agenda.updateOne(
-      { psicologo, fecha, "bloques.horaInicio": horaInicio },
-      { $set: { "bloques.$.disponible": false } }
+    // 5. Actualizar agenda (FORMA CORRECTA)
+    const result = await Agenda.updateOne(
+      {
+        psicologo,
+        fecha: fechaAgenda,
+        bloques: {
+          $elemMatch: {
+            horaInicio,
+            disponible: true,
+          },
+        },
+      },
+      {
+        $set: {
+          "bloques.$.disponible": false,
+        },
+      }
     );
 
-    // 4️. Crear venta
-    const venta = await Venta.create({
-      paciente,
-      psicologo,
-      servicio,
+    if (result.matchedCount === 0) {
+      console.warn("No se encontró bloque de agenda para actualizar", {
+        psicologo,
+        fecha: fechaAgenda,
+        horaInicio,
+      });
+    }
+
+    // 6. Crear venta
+    await Venta.create({
+      idFactura: crypto.randomUUID(),
       cita: cita._id,
       pago: pago._id,
-      total: valor
+      paciente: pacienteId,
+      psicologo,
+      servicio,
+      valor,
     });
 
-    res.status(201).json({
-      mensaje: "Pago realizado con éxito",
+    res.status(200).json({
+      mensaje: "Pago procesado y cita creada con éxito",
       pago,
       cita,
-      venta
     });
 
   } catch (error) {
-  console.error("❌ ERROR PAGO:", error);
-
-  res.status(500).json({
-    mensaje: "Error al procesar el pago",
-    error: error.message,
-    stack: error.stack
-  });
-}
+    console.error("Error al procesar el pago:", error);
+    res.status(500).json({
+      mensaje: "Error al procesar el pago",
+      error: error.message,
+    });
+  }
 };

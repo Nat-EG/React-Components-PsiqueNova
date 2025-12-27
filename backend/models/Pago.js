@@ -21,11 +21,6 @@ const pagoSchema = new mongoose.Schema({
         required: true
     },
 
-    cita: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Cita"
-    },
-
     //Datos del pago
     metodo: {
         type: String,
@@ -43,15 +38,17 @@ const pagoSchema = new mongoose.Schema({
         enum: ["pendiente", "aprobado", "rechazado"],
         default: "pendiente"
     },
-    
-     referenciaPasarela: {
+
+    referenciaPasarela: {
         type: String,
+        unique: true,
         required: true
-    },
-   
-    respuestaPasarela: {
-        type: Object,
-    },
-}, { timestamps: true }
+        },
+        
+    fechaPago: {
+        type: Date
+        }
+    
+}, { timestamps: true, versionKey: false }
 );
 export default mongoose.model("Pago", pagoSchema);

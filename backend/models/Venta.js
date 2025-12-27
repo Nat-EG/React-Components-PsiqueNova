@@ -1,72 +1,47 @@
 import mongoose from "mongoose";
 
-const ventaScehema = new mongoose.Schema({
-    idFactura: {
-        type: String,
-        unique: true,
-        required: true
-    },
+const ventaSchema = new mongoose.Schema({
+  idFactura: {
+    type: String,
+    required: true,
+    unique: true
+  },
 
-    fechaHora: {
-        type: Date,
-        default: Date.now,
-    },
+  cita: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Cita",
+    required: true
+  },
 
-    paciente: {
-        idUsuario: { 
-            type: mongoose.Schema.Types.ObjectId, 
-            ref: "Usuario",
-            required: true
-        },
+  pago: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Pago",
+    required: true
+  },
 
-        nombre: {
-            type: String,
-            required: true,
-        },
-    },
+  paciente: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Usuario",
+    required: true
+  },
 
-    psicologo: {
-        idUsuario: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Usuario",
-            required: true,
-        },
-        nombre: {
-            type: String,
-            required: true,
-        },
-    },
+  psicologo: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Usuario",
+    required: true
+  },
 
-    servicio: {
-        idServicio: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Servicio",
-            required: true,
-        },
-        nombre: {
-            type: String,
-            required: true,
-        }
-    },
+  servicio: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Servicio",
+    required: true
+  },
 
-    valor: {
-        type: Number,
-        required: true,
-    },
+  valor: {
+    type: Number,
+    required: true
+  }
 
-    pago: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Pago",
-        required: true,
-    },
+}, { timestamps: true });
 
-    cita: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Cita",
-        required: true,
-    }
-}, { timestamps: true, 
-
-});
-
-export default mongoose.model("Venta", ventaScehema);
+export default mongoose.model("Venta", ventaSchema);

@@ -1,49 +1,6 @@
 import Cita from "../models/Cita.js";
 
 
-// Crear una nueva cita
-export const crearCita = async (req, res) => {
-  try {
-    const { id: usuarioId, rol } = req.usuario;
-
-    if (rol !== "paciente") {
-      return res.status(403).json({ 
-        mensaje: "Solo los pacientes pueden crear citas" 
-      });
-    }
-
-    const { 
-      psicologo, 
-      fecha, 
-      horaInicio, 
-      horaFin 
-    } = req.body;
-  
-
-    const cita = await Cita.create({
-      paciente: usuarioId,
-      psicologo,
-      fecha,
-      horaInicio,
-      horaFin,
-      estado: "pendiente",
-    });
-
-    res.status(201).json(cita);
-
-  } catch (error) {
-  console.error("❌ ERROR CREAR CITA:", error);
-
-  return res.status(500).json({
-    mensaje: "Error al crear cita",
-    error: error.message,
-    stack: error.stack
-  });
-}
-
-  
-};
-
 // Obtener citas
 
 export const obtenerMisCitas = async (req, res) => {
