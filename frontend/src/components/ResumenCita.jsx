@@ -20,7 +20,7 @@ const ResumenCita = () => {
 
         if (!usuarioLS || !servicioLS || !psicologoLS) {
             alert("Faltan datos para mostrar el resumen de la cita.");
-            navigate("/inicio");
+            navigate("/InicioPaciente");
             return;
         }
 

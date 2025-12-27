@@ -39,16 +39,22 @@ export default function TablaHistorialVentas() {
 
       const data = await res.json();
 
-      // 🔁 Adaptar estructura backend → tabla
+
+      // Adaptar estructura backend → tabla
       const ventasFormateadas = data.map((venta) => ({
-        idFactura: venta._id.slice(-6).toUpperCase(), // o tu idFactura si lo agregas
-        fechaHora: new Date(venta.createdAt).toLocaleString("es-CO"),
-        nombrePaciente: `${venta.paciente.nombres} ${venta.paciente.apellidos}`,
-        idPaciente: venta.paciente._id,
-        psicologo: `${venta.psicologo.nombres} ${venta.psicologo.apellidos}`,
-        servicio: venta.servicio.nombre,
-        valor: venta.servicio.precio,
-      }));
+        idFactura: venta.idFactura.slice(-6).toUpperCase(),
+
+        fechaHora: new Date(venta.createdAt).toLocaleString("es-CO", {
+            timeZone: "America/Bogota",
+        }),
+
+        nombrePaciente: venta.paciente?.nombresApellidos || "—",
+        idPaciente: venta.paciente?.documentoIdentidad || "—",
+        psicologo: venta.psicologo?.nombresApellidos || "—",
+        servicio: venta.servicio?.nombreServicio || "—",
+        valor: venta.valor,
+        }));
+
 
       setVentas(ventasFormateadas);
     } catch (error) {

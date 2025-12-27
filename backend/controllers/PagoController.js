@@ -2,6 +2,7 @@ import Pago from "../models/Pago.js";
 import Cita from "../models/Cita.js";
 import Agenda from "../models/Agenda.js";
 import Venta from "../models/Venta.js";
+import mongoose from "mongoose";
 import crypto from "crypto";
 
 export const procesarPago = async (req, res) => {
@@ -25,7 +26,7 @@ export const procesarPago = async (req, res) => {
     pago.fechaPago = new Date();
     await pago.save();
 
-    // 3. Normalizar fecha (UNA SOLA VEZ)
+    // 3. Normalizar fecha 
     const fechaAgenda = new Date(fecha);
     fechaAgenda.setUTCHours(0, 0, 0, 0);
 
@@ -36,10 +37,10 @@ export const procesarPago = async (req, res) => {
       fecha: fechaAgenda,
       horaInicio,
       horaFin,
-      estado: "pendiente",
+      estado: "programada",
     });
 
-    // 5. Actualizar agenda (FORMA CORRECTA)
+    // 5. Actualizar agenda
     const result = await Agenda.updateOne(
       {
         psicologo,

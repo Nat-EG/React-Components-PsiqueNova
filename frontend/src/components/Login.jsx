@@ -39,8 +39,9 @@ function Login() {
     localStorage.setItem("token", data.token);
     localStorage.setItem("usuario", JSON.stringify(data.usuario));
 
-      // Redirigir al inicio
-      navigate("/Inicio");
+      // Redirigir al inicio paciente si es rol paciente
+      if (data.usuario.rol === "paciente")
+        navigate("/InicioPaciente");
 
     } catch (error) {
       console.error("Error al iniciar sesión:", error);

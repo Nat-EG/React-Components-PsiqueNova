@@ -1,0 +1,26 @@
+const API_URL = "http://localhost:4000/api/citas";
+
+export const obtenerCitaPaciente = async (pacienteId, token) => {
+  const res = await fetch(
+    `http://localhost:4000/api/citas/paciente/${pacienteId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return res.json();
+};
+
+export const cancelarCita = async (citaId, motivo, token) => {
+  const res = await fetch(`${API_URL}/${citaId}/cancelar`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ motivo }),
+  });
+  return res.json();
+};

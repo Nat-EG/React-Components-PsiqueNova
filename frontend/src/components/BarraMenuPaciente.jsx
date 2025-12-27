@@ -8,7 +8,7 @@ function BarraMenuPaciente() {
     <div className={stylesBarraMenuPaciente["div-padre-barraMenu"]}>
       <div className={stylesBarraMenuPaciente["div-barra"]}>
         <h1>¡Te damos la bienvenidad!</h1>
-        <a href="/inicio">Inicio</a>
+        <a href="/inicioPaciente">Inicio</a>
         <hr className={stylesBarraMenuPaciente.hrPersonalizada} />
 
         <div className={stylesBarraMenuPaciente["opcion-menu"]}>

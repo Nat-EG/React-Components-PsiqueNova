@@ -20,7 +20,7 @@ const Pago = () => {
     useEffect(() => {
         if (!usuario || !servicio || !psicologo) {
             alert("Faltan datos para procesar el pago.");
-            navigate("/inicio");
+            navigate("/InicioPaciente");
         }
     }, [navigate, usuario, servicio, psicologo]);
 
@@ -62,7 +62,7 @@ const Pago = () => {
     }
 
     alert("Pago realizado y cita creada con éxito");
-    navigate("/inicio");
+    navigate("/InicioPaciente");
 
   } catch (error) {
     console.error(error);

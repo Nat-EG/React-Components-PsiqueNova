@@ -4,6 +4,7 @@ import IconoAtras from "../includes/Back UpiconSvg.co.svg";
 import { DayPicker } from 'react-day-picker';
 import { es } from 'date-fns/locale';
 import 'react-day-picker/dist/style.css';
+import { useSearchParams } from "react-router-dom";
 import styles from '../styles/DisponibilidadPsicologo.module.css';
 
 const DisponibilidadPsicologo = () => {
@@ -16,6 +17,11 @@ const DisponibilidadPsicologo = () => {
     const [bloquesDisponibles, setBloquesDisponibles] = useState([]);
     const [bloqueSeleccionado, setBloqueSeleccionado] = useState(null);
     const [cargando, setCargando] = useState(true);
+
+    // Para reprogramación
+    const [searchParams] = useSearchParams();
+    const esReprogramacion = searchParams.get("reprogramar") === "true";
+    const citaId = searchParams.get("citaId");
 
     //parsear fecha sin zona horaria
     const parseFechaLocal =(fechaISO) => {
@@ -54,20 +60,33 @@ const DisponibilidadPsicologo = () => {
     };
 
     // Continuar al resumen de la cita
-    const continuar = () => {
-        if (!fechaSeleccionada || !bloqueSeleccionado) return;
+    const continuar = async () => {
+    if (!fechaSeleccionada || !bloqueSeleccionado) return;
+    
+   // Si es reprogramación
+    if (esReprogramacion) {
+        await fetch(`http://localhost:4000/api/citas/${citaId}/reprogramar`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+            fecha: fechaSeleccionada,
+            horaInicio: bloqueSeleccionado.horaInicio,
+            horaFin: bloqueSeleccionado.horaFin,
+        }),
+        });
 
-        // Guardar la información de la cita en el localStorage
+        navigate("/inicioPaciente");
+    } else {
+        // flujo normal
         localStorage.setItem("fechaCita", fechaSeleccionada);
         localStorage.setItem("horaInicio", bloqueSeleccionado.horaInicio);
         localStorage.setItem("horaFin", bloqueSeleccionado.horaFin);
-
         navigate("/resumenCita");
-    };
-
-    if (cargando) {
-        return <p className={styles.cargando}>Cargando disponibilidad...</p>;
     }
+    };
 
     // Convertir las fechas a objetos Date
     const fechasDisponibles = Array.isArray(diasDisponibles)
