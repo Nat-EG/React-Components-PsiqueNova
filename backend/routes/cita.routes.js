@@ -1,14 +1,22 @@
 import express from "express";
 import {
+  crearCita,
+  obtenerMisCitas,
   cancelarCita,
-  obtenerCitasPaciente,
-  obtenerCitasPsicologo
 } from "../controllers/CitaController.js";
+
+import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-router.get("/paciente/:id", obtenerCitasPaciente);
-router.get("/psicologo/:id", obtenerCitasPsicologo);
-router.put("/:id/cancelar", cancelarCita);
+// Crear una nueva cita paciente autenticado
+router.post("/", authMiddleware, crearCita);
+
+// Obtener citas de un paciente o psicólogo autenticado
+router.get("/mis-citas", authMiddleware, obtenerMisCitas);
+
+// Cancelar una cita
+router.put("/:id/cancelar", authMiddleware, cancelarCita);
+
 
 export default router;

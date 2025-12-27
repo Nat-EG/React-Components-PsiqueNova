@@ -1,6 +1,7 @@
 import stylesInicio from "../styles/Inicio.module.css";
 import BarraMenu from "./BarraMenu.jsx";
 import Header from "./Header.jsx";
+import BarraMenuPaciente from "./BarraMenuPaciente.jsx";
 
 
 function Inicio () {
@@ -30,7 +31,7 @@ function Inicio () {
     return(
     <div className={stylesInicio['contenedor']}>
       <Header />
-      <BarraMenu />
+      <BarraMenuPaciente />
 
 
       <div className={stylesInicio['contenedor-imagen']}>

@@ -37,8 +37,11 @@ function DetallesServicio() {
     if (loading) return <p>Cargando Servicio...</p>
     if (!servicio) return <p>Servicio no encontrado</p>
 
-    const handleSeleccionarPsicologo =
-    () => {
+    const handleSeleccionarPsicologo = () => {
+        localStorage.setItem(
+            "servicioSeleccionado",
+             JSON.stringify(servicio));
+             
         navigate(`/seleccionar-psicologo/${servicio._id}`);
     };
 

@@ -12,7 +12,7 @@ function BarraMenuPaciente() {
         <hr className={stylesBarraMenuPaciente.hrPersonalizada} />
 
         <div className={stylesBarraMenuPaciente["opcion-menu"]}>
-          <img src="IconoCatalogoServicios.svg" alt="" /> <a href="/catalogo-servicios">Catálogo de Servicios</a>
+          <img src="IconoCatalogoServicios.svg" alt="" /> <a href="/catalogo">Catálogo de Servicios</a>
         </div>
         <hr className={stylesBarraMenuPaciente.hrPersonalizada} />
 

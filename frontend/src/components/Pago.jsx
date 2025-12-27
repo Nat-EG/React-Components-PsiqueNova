@@ -1,90 +1,156 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import IconoAtras from "../includes/Back UpiconSvg.co.svg";
 import styles from '../styles/Pago.module.css';
-import { obtenerAgendaPsicologo } from '../services/agendaService';
-import { procesarPago } from '../services/PagoService';
 
 const Pago = () => {
-    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    const navigate = useNavigate();
 
-    const [agenda, setAgenda] = useState(null);
-    const [bloqueSeleccionado, setBloqueSeleccionado] = useState(null);
-    const [metodo, setMetodo] = useState("PSE");
-    const [mensaje, setMensaje] = useState("");
+    const [metodoPago, setMetodoPago] = useState("");
+    const [cargando, setCargando] = useState(false);
 
-    const psicologoId = "64a7f0c2e1b1f5a3c4d2e8b9";
-    const fechaSeleccionada = "2024-07-10";
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+    const servicio = JSON.parse(localStorage.getItem("servicioSeleccionado"));
+    const psicologo = JSON.parse(localStorage.getItem("psicologoSeleccionado"));
 
-    const cargarAgenda = async () => {
-        try {
-            const data = await obtenerAgendaPsicologo(psicologoId, fechaSeleccionada);
-            console.log("AGENDA RECIBIDA:", data);
-            setAgenda(data);
-        } catch (error) {
-            console.error("Error al cargar la agenda:", error);
-        }
-    };
+    const fecha = localStorage.getItem("fechaCita");
+    const horaInicio = localStorage.getItem("horaInicio");
+    const horaFin = localStorage.getItem("horaFin");
 
     useEffect(() => {
-        cargarAgenda();
-    }, [psicologoId, fechaSeleccionada]);
-
-    const pagar = async () => {
-        if (!bloqueSeleccionado) return;
-
-        try {
-            const datosPago = {
-                paciente: usuario.id,
-                psicologo: psicologoId,
-                servicio: "64a7f1d3e1b1f5a3c4d2e8bb",
-                fecha: fechaSeleccionada,
-                horaInicio: bloqueSeleccionado.horaInicio,
-                horaFin: bloqueSeleccionado.horaFin,
-                valor: 70000,
-                metodo
-            };
-
-            const response = await procesarPago(datosPago);
-            setMensaje(response.mensaje);
-        } catch (error) {
-            console.error("Error al procesar el pago", error);
-            setMensaje("Error al procesar el pago");
+        if (!usuario || !servicio || !psicologo) {
+            alert("Faltan datos para procesar el pago.");
+            navigate("/inicio");
         }
-    };
+    }, [navigate, usuario, servicio, psicologo]);
+
+    
+      const realizarPago = async () => {
+  if (!metodoPago) {
+    alert("Por favor, seleccione un método de pago.");
+    return;
+  }
+
+  setCargando(true);
+
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    const response = await fetch("http://localhost:4000/api/citas", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        paciente: usuario._id,
+        psicologo: psicologo._id,
+        servicio: servicio._id,
+        fecha: new Date(fecha + "T00:00:00"),
+        horaInicio,
+        horaFin,
+        metodo: metodoPago === "pse" ? "PSE" : "TARJETA",
+        valor: servicio.precioServicio,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error("Error backend:", data);
+      throw new Error(data.mensaje || "Error al procesar el pago");
+    }
+
+    alert("Pago realizado y cita creada con éxito");
+    navigate("/inicio");
+
+  } catch (error) {
+    console.error(error);
+    alert("Hubo un error al procesar el pago.");
+  } finally {
+    setCargando(false);
+  }
+};
 
     return (
-        <div className={styles.container}>
-            <h2>Selecciona tu horario</h2>
+        <div className={styles.contenedor}>
+            <div className={styles.headerPago}>
+                <button
+                    type='button'
+                    className={styles.btnAtras}
+                    onClick={() => window.history.back()}
+                >   
+                    <img src={IconoAtras} alt="Atrás" className={styles.iconAtras} />
+                    Atrás
+                </button>
+                <h1>MÉTODO DE PAGO</h1>
+            </div>
+            <hr />
 
-            {agenda?.bloques?.map((bloque, index) => (
-                bloque.disponible && (
-                    <button
-                        key={index}
-                        className={`${styles.bloque} ${bloqueSeleccionado === bloque ? styles.activo : ""}`}
-                        onClick={() => setBloqueSeleccionado(bloque)}
-                    >
-                        {bloque.horaInicio} - {bloque.horaFin}
-                    </button>
-                )
-            ))}
+            <div className={styles.resumen}>
+                <p><strong>Servicio:</strong> {servicio.nombreServicio}</p>
+                <p><strong>Psicólogo:</strong> {psicologo.nombresApellidos}</p>
+                <p><strong>Fecha:</strong> {fecha}</p>
+                <p><strong>Hora:</strong> {horaInicio} - {horaFin}</p>
+                <p className={styles.precio}>Total: ${servicio.precioServicio}</p>
+            </div>
 
-            {bloqueSeleccionado && (
-                <>
-                    <h3>Método de pago</h3>
+            <h2>Método de pago</h2>
 
-                    <select value={metodo} onChange={(e) => setMetodo(e.target.value)}>
-                        <option value="PSE">PSE</option>
-                        <option value="TARJETA">Tarjeta</option>
-                    </select>
+            <div className={styles.metodos}>
+                <label className={styles.opcion}>
+                    <input
+                        type="radio"
+                        name="metodo"
+                        value="tarjeta"
+                        onChange={(e) => setMetodoPago (e.target.value)}
+                    />
+                    Tarjeta de crédito/débito
+                </label>
 
-                    <button className={styles.pagarBtn} onClick={pagar}>
-                        Confirmar pago
-                    </button>
-                </>
+                <label className={styles.opcion}>
+                    <input
+                        type="radio"
+                        name="metodo"
+                        value="pse"
+                        onChange={(e) => setMetodoPago (e.target.value)}
+                    />
+                    PSE
+                </label>
+            </div>
+
+            {metodoPago === "tarjeta" && (
+                <div className={styles.formPago}>
+                    <input type="text" placeholder="Número de tarjeta" />
+                    <input type="text" placeholder="Nombre del titular" />
+                    <div className={styles.fila}>
+                        <input type="text" placeholder="MM/AA" />
+                        <input type="text" placeholder="CVV" />
+                    </div>
+                </div>
             )}
 
-            {mensaje && <p className={styles.mensaje}>{mensaje}</p>}
+            {metodoPago === "pse" && (
+                <div className={styles.formPago}>
+                    <select>
+                        <option >Seleccione su banco</option>
+                        <option >Bancolombia</option>
+                        <option >Davivienda</option>
+                        <option >BBVA</option>
+                        <option >DAVIbank</option>
+                    </select>
+                    <input type="text" placeholder="Correo de quien paga" />
+                </div>
+            )}
+
+            <button
+                className={styles.botonPagar}
+                onClick={realizarPago}
+                disabled={cargando}
+            >
+                {cargando ? "Procesando pago..." : "Pagar y confirmar cita"}
+            </button>
         </div>
     );
 };
-
 export default Pago;

@@ -34,12 +34,14 @@ const citaSchema = new mongoose.Schema(
     estado: { 
         type: String, 
         enum: [
-            "programada", 
-            "cancelada", 
+            "pendiente",
+            "programada",
+            "cancelada",
             "pendiente_reprogramacion",
             "reprogramada",
-            "finalizada"], 
-        default: "programada" 
+            "finalizada"
+        ], 
+        default: "pendiente"
     },
 
     motivoCancelacion: { 
@@ -48,8 +50,7 @@ const citaSchema = new mongoose.Schema(
     },
 
     canceladaPor: { 
-        type: String, 
-        enum: ["paciente", "psicologo"],
+        type: String,
         default: null          
     }
 

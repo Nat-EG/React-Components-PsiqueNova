@@ -29,7 +29,11 @@ const agendaSchema = new mongoose.Schema({
     },
 
     //Datos de la agenda abierta
-    fecha : {type: Date, required: true },
+    fecha : {
+        type: Date, 
+        required: true,
+        set: v => new Date(v.setHours(0,0,0,0)) //Normalizar
+    },
 
     bloques: [bloqueSchema],
     creadoEn: { 
