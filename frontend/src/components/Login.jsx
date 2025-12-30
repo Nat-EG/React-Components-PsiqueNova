@@ -43,6 +43,14 @@ function Login() {
       if (data.usuario.rol === "paciente")
         navigate("/InicioPaciente");
 
+      // Redirigir al inicio paciente si es rol paciente
+      if (data.usuario.rol === "psicologo")
+        navigate("/InicioPsicologo");
+
+      // Redirigir al inicio paciente si es rol paciente
+      if (data.usuario.rol === "administrador")
+        navigate("/InicioAdministrador");
+      
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
       alert("Error en el servidor.");
@@ -95,8 +103,8 @@ function Login() {
             </div>
 
             <div className={stylesLogin["div-enlaces"]}>
-              <a href="/registro">¿Aún no estás registrado?</a>
-              <a href="/recuperar">¿Olvidaste tu contraseña?</a>
+              <a href="/RegistroPaciente">¿Aún no estás registrado?</a>
+              <a href="/RecuperarContraseña">¿Olvidaste tu contraseña?</a>
 
               {/* Botón del formulario */}
               <button type="submit">Iniciar sesión</button>

@@ -17,7 +17,7 @@ function BarraMenuPsicologo() {
     <div className={stylesBarraMenuPsicologo["div-padre-barraMenu"]}>
       <div className={stylesBarraMenuPsicologo["div-barra"]}>
         <h1>¡Te damos la bienvenidad!</h1>
-        <a href="/inicio">Inicio</a>
+        <a href="/InicioPsicologo">Inicio</a>
         <hr className={stylesBarraMenuPsicologo.hrPersonalizada} />
 
         <div>
@@ -29,7 +29,7 @@ function BarraMenuPsicologo() {
           {submenuGestionarAgenda && (
             <div className={stylesBarraMenuPsicologo["submenu"]}>
               <div className={stylesBarraMenuPsicologo["opcion-menu"]}>
-                <img src="IconoGestionarDisponibilidad.svg" alt="" /> <a href="/Gestionar-disponibilidad">Gestionar disponibilidad</a>
+                <img src="IconoGestionarDisponibilidad.svg" alt="" /> <a href="/GestionarDisponibilidadPsicologo">Gestionar disponibilidad</a>
               </div>
               <hr className={stylesBarraMenuPsicologo.hrPersonalizada} />
               <div className={stylesBarraMenuPsicologo["opcion-menu"]}>
