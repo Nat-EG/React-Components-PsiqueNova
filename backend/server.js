@@ -11,7 +11,7 @@ import pagoRoutes from "./routes/pago.routes.js";
 import ventaRoutes from "./routes/venta.routes.js";
 import agendaRoutes from "./routes/agenda.routes.js";
 import citaRoutes from "./routes/cita.routes.js";
-
+import disponibilidadRoutes from "./routes/disponibilidad.routes.js";
 
 
 const app = express();
@@ -30,6 +30,9 @@ app.use("/api/pagos", pagoRoutes);
 app.use("/api/ventas", ventaRoutes);
 app.use("/api/agendas", agendaRoutes);
 app.use("/api/citas", citaRoutes);
+app.use("/api/disponibilidad", disponibilidadRoutes);
+
+
 
 //servir imagenes de la carpeta uploads
 app.use('/uploads/servicios',

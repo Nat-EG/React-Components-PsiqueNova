@@ -23,7 +23,7 @@ function BarraMenu() {
     <div className={stylesBarraMenu["div-padre-barraMenu"]}>
       <div className={stylesBarraMenu["div-barra"]}>
         <h1>¡Te damos la bienvenidad!</h1>
-        <a href="/inicio">Inicio</a>
+        <a href="/InicioAdministrqador">Inicio</a>
         <hr className={stylesBarraMenu.hrPersonalizada} />
 
         <div>
@@ -56,7 +56,7 @@ function BarraMenu() {
           {submenuUsuarios && (
             <div className={stylesBarraMenu["submenu"]}>
               <div className={stylesBarraMenu["opcion-menu"]}>
-                <img src="IconoRegistrarUsuario.svg" alt="" /> <a href="/registrar-psicologo">Registrar usuario psicólogo</a>
+                <img src="IconoRegistrarUsuario.svg" alt="" /> <a href="/RegistroPsicologo">Registrar usuario psicólogo</a>
               </div>
               <hr className={stylesBarraMenu.hrPersonalizada} />
               <div className={stylesBarraMenu["opcion-menu"]}>

@@ -1,10 +1,9 @@
-import stylesInicio from "../styles/Inicio.module.css";
-import BarraMenu from "./BarraMenu.jsx";
+import stylesInicioPaciente from "../styles/InicioPaciente.module.css";
 import Header from "./Header.jsx";
 import BarraMenuPaciente from "./BarraMenuPaciente.jsx";
 
 
-function Inicio () {
+function InicioPaciente () {
   let datosUsuarios = [
     { id: 1, Estado: "Activo", Usuario: "pgomez", Email: "paola@gmail.com", TipoUsuario:"Administrador" },
     { id: 2, Estado: "inactivo", Usuario: "agomez", Email: "paola@gmail.com", TipoUsuario:"Administrador" },
@@ -17,8 +16,6 @@ function Inicio () {
     { id: 9, Estado: "inactivo", Usuario: "Jhon", Email: "paola@gmail.com", TipoUsuario:"Administrador" },
     { id: 10, Estado: "Activo", Usuario: "Anyi", Email: "paola@gmail.com", TipoUsuario:"Administrador" },
     
-    
-
   ];
   
   const localS = JSON.stringify(datosUsuarios)
@@ -29,12 +26,12 @@ function Inicio () {
 
   
     return(
-    <div className={stylesInicio['contenedor']}>
+    <div className={stylesInicioPaciente['contenedor']}>
       <Header />
       <BarraMenuPaciente />
 
 
-      <div className={stylesInicio['contenedor-imagen']}>
+      <div className={stylesInicioPaciente['contenedor-imagen']}>
 
          <img src="ImagenInicioAdmin.png" alt="" />
     </div>
@@ -43,4 +40,4 @@ function Inicio () {
     );
 }
 
-export default Inicio;
+export default InicioPaciente;

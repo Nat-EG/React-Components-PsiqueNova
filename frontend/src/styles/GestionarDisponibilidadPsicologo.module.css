@@ -1,0 +1,401 @@
+.Contenedor {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  background-color: #F5F3EE;
+  height: 100vh;
+}
+
+.ContenedorCalendario {
+  width: 80%;
+  min-height: 60%;
+  background-color: #F5F3EE;
+}
+
+
+
+.ContenedorCalendario h2{
+  width: 100%;
+  margin-left: 2%;
+  color: #71B0C5;
+
+}
+
+.hrPersonalizada {
+  border: none;              
+  height: 2px;              
+  background-color: #71B0C5; 
+  width: 70%;                
+  margin-left: 1%;        
+}
+  
+.div-atras{
+  display: flex;
+  width: 65%; 
+}
+
+.div-atras a {
+margin-top: 1%;
+text-decoration: none;
+color: #5E5951;
+
+}
+.header {
+  border-left: 4px solid  #A6D885;
+  background: #f7f8ff;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.badge {
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.formCard,
+.listCard,
+.calendarCard {
+  background: #fff;
+  border: 1px solid #e5e7ef;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.field span {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.field input,
+.field select,
+.field button {
+  font-size: 14px;
+}
+
+.calendarSelector {
+  border: 1px solid #e5e7ef;
+  border-radius: 10px;
+  padding: 12px;
+  background: #fafbff;
+}
+
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.calendarHeader button {
+  background:  #A6D885;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.calendarHeader button:hover {
+  background: #8dcf63;
+}
+
+.daysOfWeek {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 12px;
+  text-align: center;
+  color: #4A463E;
+}
+
+.calendarDays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.dayBtn {
+  aspect-ratio: 1;
+  border: 1px solid #e5e7ef;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.dayBtn:hover:not(.disabled) {
+  border-color: #8dcf63;
+  background: #eef1ff;
+}
+
+.dayBtn.disabled {
+  color: #ccc;
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.dayBtn.selected {
+  background:  #A6D885;
+  color: #fff;
+  border-color:  #A6D885;
+}
+
+.dayBtn.hasAgenda {
+  border: 2px solid #8dcf63;
+}
+
+.dayBtn.hasAgenda.selected {
+  background: #A6D885;
+}
+
+.fechaSeleccionada {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #4A463E;
+  text-align: center;
+}
+
+.rangosHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rangosHeader button {
+  border: none;
+  background: #eef1ff;
+  color:  #A6D885;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.rangoRow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.primary {
+  background:  #A6D885;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.primary:disabled {
+  background:  #A6D885;
+  cursor: not-allowed;
+}
+
+.message {
+  margin-top: 8px;
+  color:  #A6D885;
+}
+
+.agendasGrid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.agendaItem {
+  border: 1px solid #e5e7ef;
+  border-radius: 10px;
+  padding: 10px;
+  background: #fafbff;
+}
+
+.agendaItem header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.danger {
+  background: #ffe9e9;
+  color: #c0392b;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.bloque {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px dashed #e5e7ef;
+}
+
+.bloque:last-child {
+  border-bottom: none;
+}
+
+.switch {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.day {
+  padding: 10px;
+  border: 1px solid #e5e7ef;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.dayWithAgenda {
+  border-color:  #A6D885;
+  background: #eef1ff;
+}
+
+.bloquesLista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.bloqueCard {
+  border: 2px solid #A6D885;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 4px 12px rgba(166, 216, 133, 0.12);
+  transition: all 0.3s ease;
+}
+
+.bloqueCard:hover {
+  border-color: #8dcf63;
+  box-shadow: 0 6px 16px rgba(166, 216, 133, 0.2);
+  transform: translateY(-2px);
+}
+
+.bloqueHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.bloqueInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bloqueInfo strong {
+  color: #4A463E;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bloqueHora {
+  color: #4A463E;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dangerSmall {
+  background: #ffe9e9;
+  color: #c0392b;
+  border: 1px solid #ffcccb;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.dangerSmall:hover {
+  background: #ffd6d6;
+  border-color: #ff9999;
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.switch input[type="checkbox"] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  accent-color: #A6D885;
+}
+
+.switch span {
+  font-size: 13px;
+  font-weight: 600;
+  flex: 1;
+}
+
+.disponible {
+  color:  #A6D885;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
+.noDisponible {
+  color: #4A463E;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Ajusta listCard para mejor espaciado */
+.listCard {
+  margin: 20px 0;
+}
+
+.listCard h3 {
+  color: #4A463E;
+  margin-bottom: 16px;
+  font-size: 18px;
+}

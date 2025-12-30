@@ -8,7 +8,7 @@ import BarraMenu from './components/BarraMenu.jsx';
 import Header from './components/Header.jsx';
 import TablaUsuarios from './components/TablaUsuarios.jsx';
 import RegistroServicio from './components/RegistroServicio.jsx';
-import Inicio from './components/Inicio.jsx';
+import InicioPaciente from './components/InicioPaciente.jsx';
 import Login from  './components/Login.jsx';
 import Editar from './components/Editar.jsx';
 import Eliminar from './components/Eliminar.jsx';
@@ -25,7 +25,7 @@ function App() {
         <Route path="/catalogo" element={<CatalogoServicios />} />
         <Route path="/lugarSeguro" element={<LugarSeguro />} />
         <Route path="/historial" element={<HistorialVentas />} />
-        <Route path='/inicio' Component={Inicio} />
+        <Route path='/InicioPaciente' Component={InicioPaciente} />
         <Route path='/RegistroServicio' Component={RegistroServicio} />
         <Route path='/TablaUsuarios' Component={TablaUsuarios} />
         <Route path='/Login' Component={Login} />
