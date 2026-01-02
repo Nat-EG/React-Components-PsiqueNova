@@ -3,22 +3,23 @@ import mongoose from "mongoose";
 import Agenda from "../models/Agenda.js";
 
 
-// Obtener citas pendientes
+// Obtener citas pendientes del paciente
 
+// Obtener citas pendientes del paciente
 export const obtenerCitaPaciente = async (req, res) => {
   try {
     const { pacienteId } = req.params;
 
-    const cita = await Cita.findOne({
+    const citas = await Cita.find({
       paciente: pacienteId,
       estado: { $in: ["programada", "cancelada"] }
     })
-      .sort({ updatedAt: -1 }) // la más reciente
+      .sort({ fecha: 1, horaInicio: 1 })
       .populate("psicologo", "nombresApellidos");
 
-    res.json(cita);
+    res.json(citas);
   } catch (error) {
-    res.status(500).json({ mensaje: "Error al obtener la cita" });
+    res.status(500).json({ mensaje: "Error al obtener las citas" });
   }
 };
 

@@ -27,8 +27,8 @@ const CerrarSesion = () => {
   // Renderizar el botón de cerrar sesión y el modal de confirmación
   return (
     <>
-      <button onClick={handleOpenModal} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '20px', color: '#5E5951', padding: '2%', fontFamily: 'Open Sans', display: 'flex', alignItems: 'center' }}>
-        <img src="IconoCerrarSesion.svg" alt="" style={{width: '8%', marginRight: '5px'}} /> Cerrar Sesión
+      <button onClick={handleOpenModal} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '20px', color: '#5E5951', padding: '2%', fontFamily: 'Open Sans, sans-serif', display: 'flex', alignItems: 'center' }}>
+        <img src="IconoCerrarSesion.svg" alt="" style={{width: '15%', marginRight: '5px'}} /> Cerrar Sesión
       </button>
 
 

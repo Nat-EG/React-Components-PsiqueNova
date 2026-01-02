@@ -1,18 +1,32 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import SidebarMenu from "./SidebarMenuLS";
 import FondoGallery from "./FondoGalleryLS";
 import VideoList from "./VideoListLS";
 import styles from "../styles/LugarSeguro.module.css";
 
+
 import playa from "../assets/images/fondosLugarSeguro/Playa.jpg";
 
+
+
 const LugarSeguro = ( {onClose} ) => {
+
+    
     // Estado para el fondo seleccionado
-    const [selectedBackground, setSelectedBackground] = useState(playa);
+    const STORAGE_KEY = "lugarSeguroBackground";
+
+    // Estado para el fondo seleccionado-guardado en localStorage
+    const [selectedBackground, setSelectedBackground] = useState(() => {
+        return localStorage.getItem(STORAGE_KEY) || playa;
+    });
     // Estado para la sección activa (opción del menú)
     const [activeSection, setActiveSection] = useState(null);
     // Estado del menú lateral (abierto/cerrado)
     const [menuOpen, setMenuOpen] = useState(false);
+
+    useEffect(() => {
+        localStorage.setItem(STORAGE_KEY, selectedBackground);
+    }, [selectedBackground]);
 
     // Cerrar sección al cerrar el menú
     const toggleMenu = () => {

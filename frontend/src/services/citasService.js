@@ -7,8 +7,11 @@ export const obtenerCitaPaciente = async (pacienteId, token) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+    });
+
+    if (!res.ok) {
+      throw new Error("Error al obtener las citas");
     }
-  );
 
   return res.json();
 };
@@ -22,5 +25,10 @@ export const cancelarCita = async (citaId, motivo, token) => {
     },
     body: JSON.stringify({ motivo }),
   });
+
+  if (!res.ok) {
+    throw new Error("Error al cancelar la cita");
+  }
+  
   return res.json();
 };

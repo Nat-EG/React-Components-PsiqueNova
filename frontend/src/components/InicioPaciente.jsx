@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import stylesInicio from "../styles/Inicio.module.css";
+import stylesInicio from "../styles/InicioPaciente.module.css";
 import Header from "./Header.jsx";
 import BarraMenuPaciente from "./BarraMenuPaciente.jsx";
 import ImagenInicioPaci from "../includes/ImagenInicioPaci.png";
@@ -9,7 +9,8 @@ import { obtenerCitaPaciente, cancelarCita } from "../services/citasService.js";
 import { useNavigate } from "react-router-dom";
 
 function InicioPaciente() {
-  const [cita, setCita] = useState(null);
+  const [citas, setCitas] = useState([]);
+  const [citaSeleccionada, setCitaSeleccionada] = useState(null);
   const [mostrarModal, setMostrarModal] = useState(false);
   const navigate = useNavigate();
 
@@ -21,18 +22,22 @@ function InicioPaciente() {
 
     obtenerCitaPaciente(usuario.id, token)
       .then(data => {
-        if (data) setCita(data);
+        if (Array.isArray(data)) {
+          setCitas(data);
+        }
       })
       .catch(err => console.error(err));
   }, []);
 
   const confirmarCancelacion = async (motivo) => {
-    const citaCancelada = await cancelarCita(cita._id, motivo, token);
-    setCita(citaCancelada);
+    const citaCancelada = await cancelarCita(citaSeleccionada._id, motivo, token);
+    setCitas(prev =>
+      prev.map (c=> c._id === citaCancelada._id ? citaCancelada : c));
     setMostrarModal(false);
+    setCitaSeleccionada(null);
   };
 
-  const reprogramar = () => {
+  const reprogramar = (cita) => {
     navigate(`/disponibilidad/${cita.psicologo._id}?reprogramar=true&citaId=${cita._id}`);
   };
 
@@ -41,13 +46,17 @@ function InicioPaciente() {
       <Header />
       <BarraMenuPaciente />
 
-      {cita && (
+      {citas.length > 0 && citas.map (cita => (
         <CitaCard
+          key={cita._id}
           cita={cita}
-          onCancelar={() => setMostrarModal(true)}
-          onReprogramar={reprogramar}
+          onCancelar={() => {
+            setCitaSeleccionada(cita);
+            setMostrarModal(true);
+          }}
+          onReprogramar={() => reprogramar(cita)}
         />
-      )}
+      ))}
 
       <div className={stylesInicio["contenedor-imagen"]}>
         <img src={ImagenInicioPaci} alt="Inicio paciente" />
