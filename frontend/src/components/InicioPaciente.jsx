@@ -1,43 +1,67 @@
-import stylesInicioPaciente from "../styles/InicioPaciente.module.css";
+import { useEffect, useState } from "react";
+import stylesInicio from "../styles/Inicio.module.css";
 import Header from "./Header.jsx";
 import BarraMenuPaciente from "./BarraMenuPaciente.jsx";
+import ImagenInicioPaci from "../includes/ImagenInicioPaci.png";
+import CitaCard from "./CitaCard.jsx";
+import InputModal from "./modals/InputModal.jsx";
+import { obtenerCitaPaciente, cancelarCita } from "../services/citasService.js";
+import { useNavigate } from "react-router-dom";
 
+function InicioPaciente() {
+  const [cita, setCita] = useState(null);
+  const [mostrarModal, setMostrarModal] = useState(false);
+  const navigate = useNavigate();
 
-function InicioPaciente () {
-  let datosUsuarios = [
-    { id: 1, Estado: "Activo", Usuario: "pgomez", Email: "paola@gmail.com", TipoUsuario:"Administrador" },
-    { id: 2, Estado: "inactivo", Usuario: "agomez", Email: "paola@gmail.com", TipoUsuario:"Administrador" },
-    { id: 3, Estado: "Activo", Usuario: "earias", Email: "paola@gmail.com", TipoUsuario:"Administrador" },
-    { id: 4, Estado: "Activo", Usuario: "nechavarria", Email: "paola@gmail.com", TipoUsuario:"Administrador" },
-    { id: 5, Estado: "inactivo", Usuario: "pgomez", Email: "paola@gmail.com", TipoUsuario:"Administrador" },
-    { id: 6, Estado: "inactivo", Usuario: "rgomez", Email: "paola@gmail.com", TipoUsuario:"Administrador" },
-    { id: 7, Estado: "Activo", Usuario: "Asaldarriags", Email: "paola@gmail.com", TipoUsuario:"Administrador" },
-    { id: 8, Estado: "Activo", Usuario: "gomez", Email: "paola@gmail.com", TipoUsuario:"Administrador" },
-    { id: 9, Estado: "inactivo", Usuario: "Jhon", Email: "paola@gmail.com", TipoUsuario:"Administrador" },
-    { id: 10, Estado: "Activo", Usuario: "Anyi", Email: "paola@gmail.com", TipoUsuario:"Administrador" },
-    
-  ];
-  
-  const localS = JSON.stringify(datosUsuarios)
-  localStorage.setItem('usuarios', localS);
-  const datos = JSON.parse( localStorage.getItem('usuarios'));
+  const usuario = JSON.parse(localStorage.getItem("usuario")); // donde guardas el login
+  const token = localStorage.getItem("token");
 
-  console.log(datos);
+  useEffect(() => {
+    if (!usuario) return;
 
-  
-    return(
-    <div className={stylesInicioPaciente['contenedor']}>
+    obtenerCitaPaciente(usuario.id, token)
+      .then(data => {
+        if (data) setCita(data);
+      })
+      .catch(err => console.error(err));
+  }, []);
+
+  const confirmarCancelacion = async (motivo) => {
+    const citaCancelada = await cancelarCita(cita._id, motivo, token);
+    setCita(citaCancelada);
+    setMostrarModal(false);
+  };
+
+  const reprogramar = () => {
+    navigate(`/disponibilidad/${cita.psicologo._id}?reprogramar=true&citaId=${cita._id}`);
+  };
+
+  return (
+    <div className={stylesInicio.contenedor}>
       <Header />
       <BarraMenuPaciente />
 
+      {cita && (
+        <CitaCard
+          cita={cita}
+          onCancelar={() => setMostrarModal(true)}
+          onReprogramar={reprogramar}
+        />
+      )}
 
-      <div className={stylesInicioPaciente['contenedor-imagen']}>
-
-         <img src="ImagenInicioAdmin.png" alt="" />
-    </div>
-    
+      <div className={stylesInicio["contenedor-imagen"]}>
+        <img src={ImagenInicioPaci} alt="Inicio paciente" />
       </div>
-    );
+
+      <InputModal
+        isOpen={mostrarModal}
+        title="Cancelar cita"
+        label="Indica el motivo de cancelación"
+        onConfirm={confirmarCancelacion}
+        onClose={() => setMostrarModal(false)}
+      />
+    </div>
+  );
 }
 
 export default InicioPaciente;

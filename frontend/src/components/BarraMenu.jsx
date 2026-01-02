@@ -23,7 +23,7 @@ function BarraMenu() {
     <div className={stylesBarraMenu["div-padre-barraMenu"]}>
       <div className={stylesBarraMenu["div-barra"]}>
         <h1>¡Te damos la bienvenidad!</h1>
-        <a href="/InicioAdministrqador">Inicio</a>
+        <a href="/InicioAdministrador">Inicio</a>
         <hr className={stylesBarraMenu.hrPersonalizada} />
 
         <div>
