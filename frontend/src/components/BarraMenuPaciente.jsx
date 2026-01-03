@@ -1,7 +1,5 @@
 import stylesBarraMenuPaciente from "../styles/BarraMenuPaciente.module.css";
 import CerrarSesion from "./CerrarSesion";
-import iconoInicio from "../includes/IconoInicio.svg";
-import iconoCatalogo from "../includes/IconoCatalogo.svg";
 
 function BarraMenuPaciente() {
 
@@ -12,12 +10,12 @@ function BarraMenuPaciente() {
         <h1>¡Te damos la bienvenidad!</h1>
 
         <div className={stylesBarraMenuPaciente["opcion-menu"]}>
-          <img src={iconoInicio} alt="Icono Inicio" /><a href="/inicioPaciente">Inicio</a>
+          <img src="IconoInicio.svg" alt="Icono Inicio" /><a href="/inicioPaciente">Inicio</a>
         </div>
         <hr className={stylesBarraMenuPaciente.hrPersonalizada} />
 
         <div className={stylesBarraMenuPaciente["opcion-menu"]}>
-          <img src={iconoCatalogo} alt="Icono Catálogo" /> <a href="/catalogo">Catálogo de Servicios</a>
+          <img src="IconoCatalogo.svg" alt="Icono Catálogo" /> <a href="/catalogo">Catálogo de Servicios</a>
         </div>
         <hr className={stylesBarraMenuPaciente.hrPersonalizada} />
 
