@@ -1,6 +1,6 @@
 import stylesRegistroServicio from "../styles/RegistroServicio.module.css";
 import { useState } from "react";
-import BarraMenu from "./BarraMenu.jsx";
+import BarraMenu from "./BarraMenuAdministrador.jsx";
 import Header from "./Header.jsx";
 
 

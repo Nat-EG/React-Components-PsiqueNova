@@ -1,3 +1,8 @@
+body {
+    background-color: #B1B1B1;
+    font-family: 'Open Sans';
+}
+
 .Contenedor {
   display: flex;
   width: 100%;

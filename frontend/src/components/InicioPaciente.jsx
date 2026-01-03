@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import stylesInicio from "../styles/Inicio.module.css";
+import stylesInicio from "../styles/InicioPaciente.module.css";
 import Header from "./Header.jsx";
 import BarraMenuPaciente from "./BarraMenuPaciente.jsx";
 import ImagenInicioPaci from "../includes/ImagenInicioPaci.png";
