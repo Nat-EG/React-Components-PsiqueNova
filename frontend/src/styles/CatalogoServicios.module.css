@@ -64,6 +64,8 @@ body {
   border-top: 2px solid var(--primaryB); 
   width: 90%;
   margin: 10px auto 30px;
+  flex: 1;
+  padding: 20px;
 }
 
 /*Tarjetas de los servicios*/
@@ -151,6 +153,12 @@ body {
     color: white;
     background-color: #8dcf63;
 }
+
+.layoutPrincipal {
+    display: flex;
+}
+
+
 
 /*Responsive*/
 @media (max-width: 768px) {

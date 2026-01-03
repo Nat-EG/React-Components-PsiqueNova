@@ -1,5 +1,7 @@
 import stylesBarraMenuPaciente from "../styles/BarraMenuPaciente.module.css";
 import CerrarSesion from "./CerrarSesion";
+import iconoInicio from "../includes/IconoInicio.svg";
+import iconoCatalogo from "../includes/IconoCatalogo.svg";
 
 function BarraMenuPaciente() {
 
@@ -8,16 +10,19 @@ function BarraMenuPaciente() {
     <div className={stylesBarraMenuPaciente["div-padre-barraMenu"]}>
       <div className={stylesBarraMenuPaciente["div-barra"]}>
         <h1>¡Te damos la bienvenidad!</h1>
-        <a href="/InicioPaciente">Inicio</a>
-        <hr className={stylesBarraMenuPaciente.hrPersonalizada} />
 
         <div className={stylesBarraMenuPaciente["opcion-menu"]}>
-          <img src="IconoCatalogoServicios.svg" alt="" /> <a href="/catalogo">Catálogo de Servicios</a>
+          <img src={iconoInicio} alt="Icono Inicio" /><a href="/inicioPaciente">Inicio</a>
         </div>
         <hr className={stylesBarraMenuPaciente.hrPersonalizada} />
 
         <div className={stylesBarraMenuPaciente["opcion-menu"]}>
-          <img src="IconoMiLugarSeguro.svg" alt="" /> <a href="/mi-lugar-seguro">Mi Lugar Seguro</a>
+          <img src={iconoCatalogo} alt="Icono Catálogo" /> <a href="/catalogo">Catálogo de Servicios</a>
+        </div>
+        <hr className={stylesBarraMenuPaciente.hrPersonalizada} />
+
+        <div className={stylesBarraMenuPaciente["opcion-menu"]}>
+          <img src="IconoMiLugarSeguro.svg" alt="" /> <a href="/lugarSeguro">Mi Lugar Seguro</a>
         </div>
         <hr className={stylesBarraMenuPaciente.hrPersonalizada} />
       </div>
