@@ -6,12 +6,16 @@ import bosque from "../assets/images/fondosLugarSeguro/bosque.jpg";
 import jardin from "../assets/images/fondosLugarSeguro/jardinJapones.png";
 import cascada from "../assets/images/fondosLugarSeguro/cascada.jpg";
 
+
+
+
 const fondos = [
     { name: "Playa", src: playa },
     { name: "Bosque", src: bosque },
     { name: "Jardín Japonés", src: jardin },
     { name: "Cascada", src: cascada },
 ];
+
 
 const FondoGallery = ({ onSelectBackground, selectedBackground }) => {
     return (

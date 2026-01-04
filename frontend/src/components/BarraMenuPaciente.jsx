@@ -8,16 +8,19 @@ function BarraMenuPaciente() {
     <div className={stylesBarraMenuPaciente["div-padre-barraMenu"]}>
       <div className={stylesBarraMenuPaciente["div-barra"]}>
         <h1>¡Te damos la bienvenidad!</h1>
-        <a href="/InicioPaciente">Inicio</a>
-        <hr className={stylesBarraMenuPaciente.hrPersonalizada} />
 
         <div className={stylesBarraMenuPaciente["opcion-menu"]}>
-          <img src="IconoCatalogoServicios.svg" alt="" /> <a href="/catalogo">Catálogo de Servicios</a>
+          <img src="IconoInicio.svg" alt="Icono Inicio" /><a href="/inicioPaciente">Inicio</a>
         </div>
         <hr className={stylesBarraMenuPaciente.hrPersonalizada} />
 
         <div className={stylesBarraMenuPaciente["opcion-menu"]}>
-          <img src="IconoMiLugarSeguro.svg" alt="" /> <a href="/mi-lugar-seguro">Mi Lugar Seguro</a>
+          <img src="IconoCatalogo.svg" alt="Icono Catálogo" /> <a href="/catalogo">Catálogo de Servicios</a>
+        </div>
+        <hr className={stylesBarraMenuPaciente.hrPersonalizada} />
+
+        <div className={stylesBarraMenuPaciente["opcion-menu"]}>
+          <img src="IconoMiLugarSeguro.svg" alt="" /> <a href="/lugarSeguro">Mi Lugar Seguro</a>
         </div>
         <hr className={stylesBarraMenuPaciente.hrPersonalizada} />
       </div>

@@ -2,12 +2,12 @@ import Cita from "../models/Cita.js";
 import mongoose from "mongoose";
 import Agenda from "../models/Agenda.js";
 
-// Obtener citas de un paciente
 
+
+// Obtener citas pendientes del paciente
 export const obtenerCitaPaciente = async (req, res) => {
   try {
     const { paciente} = req.params;
-
     const citas = await Cita.find({
       paciente: paciente,
       estado: { $in: ["programada", "cancelada"] }
