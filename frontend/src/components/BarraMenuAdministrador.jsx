@@ -1,6 +1,7 @@
 import { useState } from "react";
 import stylesBarraMenuAdministrador from "../styles/BarraMenuAdministrador.module.css";
 import CerrarSesion from "./CerrarSesion";
+import IconoInicio from '../includes/IconoInicio.svg';
 
 import IconoInicio from '../includes/IconoInicio.svg';
 import IconoCatalogo from '../includes/IconoCatalogo.svg';
@@ -37,12 +38,16 @@ function BarraMenuAdministrador() {
       <div className={stylesBarraMenuAdministrador["div-barra"]}>
         <h1>¡Te damos la bienvenidad!</h1>
 
-
-        <div className={stylesBarraMenu["opcion-menu"]}>
-          <img src={IconoInicio} alt="Icono Inicio" /><a href="/inicioAdmin">Inicio</a>
+        
+        <div className={stylesBarraMenuAdministrador["opcion-menu"]}>
+          <img src={IconoInicio} alt="Icono Inicio" /><a href="/InicioAdministrador">Inicio</a>
         </div>
+        <hr className={stylesBarraMenuAdministrador.hrPersonalizada} />
 
-        <hr className={stylesBarraMenu.hrPersonalizada} />
+
+
+       
+
 
         <div>
           <button onClick={toggleSubmenuCatalogo} className={stylesBarraMenu["submenu-button"]}>

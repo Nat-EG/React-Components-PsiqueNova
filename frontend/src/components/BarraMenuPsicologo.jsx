@@ -1,6 +1,7 @@
 import { useState } from "react";
 import stylesBarraMenuPsicologo from "../styles/BarraMenuPsicologo.module.css";
 import CerrarSesion from "./CerrarSesion";
+import IconoInicio from '../includes/IconoInicio.svg';
 
 function BarraMenuPsicologo() {
   /* Estado para controlar la visibilidad del submenú "Gestionar Agenda" */
@@ -17,7 +18,10 @@ function BarraMenuPsicologo() {
     <div className={stylesBarraMenuPsicologo["div-padre-barraMenu"]}>
       <div className={stylesBarraMenuPsicologo["div-barra"]}>
         <h1>¡Te damos la bienvenidad!</h1>
-        <a href="/InicioPsicologo">Inicio</a>
+        
+        <div className={stylesBarraMenuPsicologo["opcion-menu"]}>
+          <img src={IconoInicio} alt="Icono Inicio" /><a href="/InicioPsicologo">Inicio</a>
+        </div>
         <hr className={stylesBarraMenuPsicologo.hrPersonalizada} />
 
         <div>

@@ -1,0 +1,184 @@
+body {
+    background-color: #B1B1B1;
+    font-family: 'Open Sans';
+}
+
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0 0 30px;
+}
+
+/* CONTENEDOR DEL FORMULARIO */
+.formContainer {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: var(--surface1);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: solid 2px;
+}
+
+/* HEADER */
+.headerWrapper {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/* TITULO */
+.title {
+    color: var(--primaryB);
+    font-size: 30px;
+    margin: 0;
+}
+
+/* LÍNEA */
+.hr {
+    width: 90%;
+    margin: 10px 0 30px 0;
+    border: 2px solid var(--primaryB);
+}
+
+/* ATRÁS */
+.btnAtras {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--textTitle);
+    font-size: 16px;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.iconAtras {
+    width: 30px;
+    margin-right: 12px;
+}
+
+.btnAtras:hover {
+    color: var(--primaryB);
+}
+
+/* MENSAJES */
+.errorMessage {
+    padding: 12px 15px;
+    background-color: #ffebee;
+    color: #c62828;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border-left: 4px solid #c62828;
+    font-weight: 500;
+}
+
+.successMessage {
+    padding: 12px 15px;
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border-left: 4px solid #2e7d32;
+    font-weight: 500;
+}
+
+.loadingMessage {
+    padding: 20px;
+    text-align: center;
+    color: var(--textBody);
+    font-size: 18px;
+}
+
+/* FORMULARIO */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label {
+    color: var(--textTitle);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.input, .select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid var(--borderInput);
+    background-color: var(--inputFill);
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--textBody);
+    font-family: 'Open Sans', sans-serif;
+    transition: border-color 0.2s ease;
+}
+
+.input:focus, .select:focus {
+    outline: none;
+    border-color: var(--primaryB);
+}
+
+.select {
+    cursor: pointer;
+}
+
+/* BOTONES */
+.buttonGroup {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.btnActualizar {
+    flex: 1;
+    padding: 12px 24px;
+    background-color: var(--primaryB);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background-color 0.2s ease;
+}
+
+.btnActualizar:hover {
+    background-color: var(--textSubtle);
+}
+
+.btnActualizar:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.btnCancelar {
+    flex: 1;
+    padding: 12px 24px;
+    background-color: #999;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background-color 0.2s ease;
+}
+
+.btnCancelar:hover {
+    background-color: #777;
+}

@@ -1,5 +1,5 @@
 import Header from "../Header.jsx";
-import BarraMenuAdmin from "../BarraMenu.jsx";
+import BarraMenuAdmin from "../BarraMenuAdministrador.jsx";
 import styles from "../../styles/LayoutPrincipal.module.css";
 
 export default function LayoutAdmin({ children }) {

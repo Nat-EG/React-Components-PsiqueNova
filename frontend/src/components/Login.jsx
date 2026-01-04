@@ -33,7 +33,7 @@ function Login() {
         return;
       }
 
-      alert("Inicio de sesión exitoso");
+      
 
       // Guardar usuario 
     localStorage.setItem("token", data.token);

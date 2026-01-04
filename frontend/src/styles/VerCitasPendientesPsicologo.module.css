@@ -14,7 +14,7 @@ body {
 }
 
 .ContenedorPrincipal {
-  width: 80%;
+  width: 100%;
   min-height: 90%;
   background-color: #F5F3EE;
 }
@@ -40,6 +40,7 @@ body {
   display: flex;
   width: 65%;
   margin-top: 10px;
+  margin-left: 2%;
 }
 
 .div-atras a {

@@ -117,4 +117,66 @@ export const obtenerPsicologos = async (req, res) => {
     }
 };
 
+//GET para obtener todos los usuarios
+export const obtenerUsuarios = async (req, res) => {
+    try {
+        const usuarios = await Usuario.find()
+            .select("nombresApellidos documentoIdentidad email rol estadoUsuario telefono createdAt")
+            .sort({ createdAt: -1 });
+
+        res.json(usuarios);
+    } catch (error) {
+        console.error('Error al obtener usuarios:', error);
+        res.status(500).json({ mensaje: 'Error del servidor. Por favor, intente nuevamente más tarde.' });
+    }
+};
+
+//GET para obtener un usuario por ID
+export const obtenerUsuarioPorId = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const usuario = await Usuario.findById(id)
+            .select("nombresApellidos documentoIdentidad email rol estadoUsuario telefono direccion");
+
+        if (!usuario) {
+            return res.status(404).json({ mensaje: 'Usuario no encontrado.' });
+        }
+
+        res.json(usuario);
+    } catch (error) {
+        console.error('Error al obtener usuario:', error);
+        res.status(500).json({ mensaje: 'Error del servidor. Por favor, intente nuevamente más tarde.' });
+    }
+};
+
+//PUT para actualizar un usuario
+export const actualizarUsuario = async (req, res) => {
+  try {
+    const { id } = req.params;
+    let { nombresApellidos, email, telefono, direccion, estadoUsuario } = req.body;
+
+    //  Normalizar enum
+    if (estadoUsuario) {
+      estadoUsuario = estadoUsuario.toLowerCase();
+    }
+    const usuarioActualizado = await Usuario.findByIdAndUpdate(
+      id,
+      { nombresApellidos, email, telefono, direccion, estadoUsuario },
+      { new: true, runValidators: true }
+    );
+
+    if (!usuarioActualizado) {
+      return res.status(404).json({ mensaje: 'Usuario no encontrado.' });
+    }
+
+    res.status(200).json({ 
+      mensaje: 'Usuario actualizado correctamente.',
+      usuario: usuarioActualizado 
+    });
+  } catch (error) {
+    console.error('Error al actualizar usuario:', error);
+    res.status(500).json({ mensaje: 'Error del servidor. Por favor, intente nuevamente más tarde.' });
+  }
+};
 
