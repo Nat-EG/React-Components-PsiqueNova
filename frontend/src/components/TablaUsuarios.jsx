@@ -1,7 +1,8 @@
 import { useState } from "react";
 import stylesTablaUsuarios from "../styles/TablaUsuarios.module.css";
-import BarraMenu from "./BarraMenu.jsx";
+import BarraMenuAdministrador from "./BarraMenuAdministrador.jsx";
 import Header from "./Header.jsx";
+
 
 function TablaUsuarios() {
 
@@ -30,7 +31,7 @@ function TablaUsuarios() {
   return (
     <div className={stylesTablaUsuarios["contenedor"]}>
       <Header />
-      <BarraMenu />
+      <BarraMenuAdministrador />
 
       <div className={stylesTablaUsuarios["contenedor-tabla"]}>
         

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import stylesBarraMenu from "../styles/BarraMenu.module.css";
+import stylesBarraMenuAdministrador from "../styles/BarraMenuAdministrador.module.css";
 import CerrarSesion from "./CerrarSesion";
 
 import IconoInicio from '../includes/IconoInicio.svg';
@@ -13,7 +13,8 @@ import IconoActualizarEliminarUsuario from '../includes/IconoActualizarEliminarU
 import IconoConfig from '../includes/IconoConfig.svg';
 
 
-function BarraMenu() {
+
+function BarraMenuAdministrador() {
   /* Estado para controlar la visibilidad del submenú "Gestionar Catálogo de Servicios" */
   const [submenuCatalogo, setSubmenuCatalogo] = useState(false);
   
@@ -32,9 +33,10 @@ function BarraMenu() {
   
 
   return (
-    <div className={stylesBarraMenu["div-padre-barraMenu"]}>
-      <div className={stylesBarraMenu["div-barra"]}>
+    <div className={stylesBarraMenuAdministrador["div-padre-barraMenu"]}>
+      <div className={stylesBarraMenuAdministrador["div-barra"]}>
         <h1>¡Te damos la bienvenidad!</h1>
+
 
         <div className={stylesBarraMenu["opcion-menu"]}>
           <img src={IconoInicio} alt="Icono Inicio" /><a href="/inicioAdmin">Inicio</a>
@@ -58,14 +60,16 @@ function BarraMenu() {
               <hr className={stylesBarraMenu.hrPersonalizada} />
               <div className={stylesBarraMenu["opcion-menu"]}>
                 <img src={IconoRegistroVentas} alt="" /><a href="/historialVentas">Historial de ventas</a>
+
               </div>
-              <hr className={stylesBarraMenu.hrPersonalizada} />
+              <hr className={stylesBarraMenuAdministrador.hrPersonalizada} />
             </div>
           )}
         </div>
-        <hr className={stylesBarraMenu.hrPersonalizada} />
+        <hr className={stylesBarraMenuAdministrador.hrPersonalizada} />
 
         <div>
+
           <button onClick={toggleSubmenuUsuarios} className={stylesBarraMenu["submenu-button"]}>
             <img src={IconoGestionarUs} alt="" /> Gestionar Usuarios
           </button>
@@ -77,20 +81,23 @@ function BarraMenu() {
               <hr className={stylesBarraMenu.hrPersonalizada} />
               <div className={stylesBarraMenu["opcion-menu"]}>
                 <img src={IconoActualizarEliminarUsuario} alt="" /><a href="/TablaUsuarios">Editar o eliminar usuarios</a>
+
               </div>
-              <hr className={stylesBarraMenu.hrPersonalizada} />
+              <hr className={stylesBarraMenuAdministrador.hrPersonalizada} />
             </div>
           )}
         </div>
-        <hr className={stylesBarraMenu.hrPersonalizada} />
+        <hr className={stylesBarraMenuAdministrador.hrPersonalizada} />
       </div>
       
+
 
       <div className={stylesBarraMenu["div-barra"]}>
         <div className={stylesBarraMenu["opcion-menu"]}>
           <img src={IconoConfig} alt="" /> <a href="/configuracion">Ajustes</a>
+
         </div>
-        <div className={stylesBarraMenu["opcion-menu"]}>
+        <div className={stylesBarraMenuAdministrador["opcion-menu"]}>
           <CerrarSesion />
         </div>
       </div>
@@ -99,4 +106,4 @@ function BarraMenu() {
   );
 }
 
-export default BarraMenu;
+export default BarraMenuAdministrador;
