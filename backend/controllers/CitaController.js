@@ -2,24 +2,44 @@ import Cita from "../models/Cita.js";
 import mongoose from "mongoose";
 import Agenda from "../models/Agenda.js";
 
-
-// Obtener citas pendientes del paciente
+// Obtener citas de un paciente
 
 // Obtener citas pendientes del paciente
 export const obtenerCitaPaciente = async (req, res) => {
   try {
-    const { pacienteId } = req.params;
+    const { paciente} = req.params;
 
     const citas = await Cita.find({
-      paciente: pacienteId,
+      paciente: paciente,
       estado: { $in: ["programada", "cancelada"] }
     })
-      .sort({ fecha: 1, horaInicio: 1 })
+      .sort({ fecha: -1 })
       .populate("psicologo", "nombresApellidos");
 
     res.json(citas);
   } catch (error) {
     res.status(500).json({ mensaje: "Error al obtener las citas" });
+  }
+};
+
+
+// Obtener todas las citas de un psicólogo
+export const obtenerCitasPsicologo = async (req, res) => {
+  try {
+    const { psicologo } = req.params;
+
+    const citas = await Cita.find({
+      psicologo: psicologo,
+      estado: { $in: ["programada", "cancelada"] }
+    })
+      .sort({ fecha: -1 })
+      .populate("paciente", "nombresApellidos email telefono")
+      .populate("psicologo", "nombresApellidos");
+
+    res.json(citas);
+    res.json(citas);
+  } catch (error) {
+    res.status(500).json({ mensaje: "Error al obtener las citas del psicólogo" });
   }
 };
 

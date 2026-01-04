@@ -1,6 +1,7 @@
 import express from "express";
 import {
   obtenerCitaPaciente,
+  obtenerCitasPsicologo,
   cancelarCita,
   reprogramarCita
 } from "../controllers/CitaController.js";
@@ -9,11 +10,18 @@ import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-// Obtener citas pacientes
+// Obtener citas de un paciente
 router.get(
-  "/paciente/:pacienteId",
+  "/paciente/:paciente",
   authMiddleware,
   obtenerCitaPaciente
+);
+
+// Obtener citas de un psicólogo
+router.get(
+  "/psicologo/:psicologo",
+  authMiddleware,
+  obtenerCitasPsicologo
 );
 
 //cancelar cita

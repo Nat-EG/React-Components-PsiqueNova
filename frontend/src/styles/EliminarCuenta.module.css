@@ -1,3 +1,8 @@
+body {
+    background-color: #B1B1B1;
+    font-family: 'Open Sans';
+}
+
 .container {
     max-width: 500px;
     margin: 60px auto;

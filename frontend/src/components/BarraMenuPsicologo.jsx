@@ -33,7 +33,7 @@ function BarraMenuPsicologo() {
               </div>
               <hr className={stylesBarraMenuPsicologo.hrPersonalizada} />
               <div className={stylesBarraMenuPsicologo["opcion-menu"]}>
-                <img src="IconoVerCitas.svg" alt="" /><a href="/Ver-citas-pendientes">Ver citas pendientes</a>
+                <img src="IconoVerCitas.svg" alt="" /><a href="/VerCitasPendientesPsicologo">Ver citas pendientes</a>
               </div>
               <hr className={stylesBarraMenuPsicologo.hrPersonalizada} />
             </div>
