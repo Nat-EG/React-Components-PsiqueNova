@@ -67,11 +67,11 @@
   text-align: left;
   cursor: pointer;
   font-size: 20px;
-  color: #5E5951;
-  padding: 2%;
   font-family: 'Open Sans', sans-serif;
   display: flex;
   align-items: center;
+  color: var(--textBody);
+  margin: 30px 10px;
 }
 
 .submenu-button:hover {
@@ -79,8 +79,8 @@
 }
 
 .submenu-button img {
-  width: 10%;
-  margin-right: 5px;
+  width: 20%;
+  
 }
 
 .submenu {

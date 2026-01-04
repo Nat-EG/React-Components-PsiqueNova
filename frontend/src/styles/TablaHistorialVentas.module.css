@@ -27,9 +27,10 @@
 
 /* LÍNEA */
 .hr {
-    width: 90%;
-    margin: 10px auto 30px; 
-    border: 2px solid var(--primaryB);
+  border: none;
+  border-top: 2px solid var(--primaryB); 
+  width: 90%;
+  margin: 10px auto 30px;
 }
 
 /* ATRÁS */

@@ -53,7 +53,7 @@
 }
 
 .contenedor hr {
-  border: none;
+border: none;
   border-top: 2px solid var(--primaryB); 
   width: 90%;
   margin: 10px auto 30px;

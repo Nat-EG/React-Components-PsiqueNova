@@ -49,7 +49,7 @@ function Login() {
 
       // Redirigir al inicio paciente si es rol paciente
       if (data.usuario.rol === "administrador")
-        navigate("/InicioAdministrador");
+        navigate("/InicioAdmin");
       
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
