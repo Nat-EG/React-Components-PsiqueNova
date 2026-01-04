@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as XLSX from "xlsx";
 import styles from "../styles/TablaHistorialVentas.module.css";
+import LayoutAdmin from "./Layouts/LayoutAdmin";
 import DateRangeFilter from "./DateRangeFilter";
 import IconAtras from "../includes/Back UpiconSvg.co.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -116,6 +117,7 @@ export default function TablaHistorialVentas() {
     };
 
     return (
+        <LayoutAdmin>
         <div className={styles.wrapper}>
             <div className={styles.headerWrapper}>
                 <button className={styles.btnAtras} onClick={() => window.history.back()}>
@@ -188,7 +190,7 @@ export default function TablaHistorialVentas() {
                                         <td>{row.idPaciente}</td>
                                         <td>{row.psicologo}</td>
                                         <td>{row.servicio}</td>
-                                        <td>{row.valor}</td>
+                                        <td>COP ${row.valor}</td>
                                     </tr>
                                 ))
                             ) : (
@@ -257,5 +259,6 @@ export default function TablaHistorialVentas() {
                 </div>
             </div>
         </div>
+        </LayoutAdmin>
     );
 }

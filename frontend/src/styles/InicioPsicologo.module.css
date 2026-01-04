@@ -1,18 +1,20 @@
-body {
-    background-color: #B1B1B1;
-    font-family: 'Open Sans';
-}
-.contenedor {
+/* CONTENEDOR DE MENÚ + CONTENIDO */
+.cuerpo {
   display: flex;
+
   width: 100%;
   height: 100vh;
   flex-wrap: wrap;
   background-color: #F5F3EE;
   height: 100vh;
   position: relative;
+
+
 }
 
+/* IMAGEN */
 .contenedor-imagen {
+
     position: absolute;
     bottom: 0;
     right: 0;

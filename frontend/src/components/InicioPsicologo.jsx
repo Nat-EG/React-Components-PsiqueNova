@@ -10,7 +10,9 @@ function InicioPsicologo () {
     
       <div className={stylesInicioPsicologo['contenedor-imagen']}>
 
+
          <img src="ImagenInicioPsicologo.svg" alt="" />
+
     </div>
     
       </div>

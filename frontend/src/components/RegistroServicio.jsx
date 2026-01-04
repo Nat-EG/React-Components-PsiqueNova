@@ -1,8 +1,12 @@
 import stylesRegistroServicio from "../styles/RegistroServicio.module.css";
 import { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import LayoutAdmin from "./Layouts/LayoutAdmin";
 import ConfirmModal from "./modals/ConfirmModal";
+
+
+
 
 // Componente para registrar un nuevo servicio
 function RegistroServicio() {
@@ -64,8 +68,10 @@ function RegistroServicio() {
 
   // Renderizado del componente
   return ( 
+
     <LayoutAdmin>
      <div className={stylesRegistroServicio['contenedor']}> 
+
      <div className={stylesRegistroServicio["contenedor-2"]}>
      
       <button className={stylesRegistroServicio["btnAtras"]} onClick={() => navigate(-1)} type="button">
@@ -143,6 +149,7 @@ function RegistroServicio() {
         </button>
       </form>
     </div>
+
     </div>
 
     <ConfirmModal
@@ -155,6 +162,9 @@ function RegistroServicio() {
       onClose={() => setMostrarConfirmacion(false)}
     />
     </ LayoutAdmin > 
+
+    
+
   );
 }
 
