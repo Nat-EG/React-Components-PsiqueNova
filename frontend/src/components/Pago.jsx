@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import IconoAtras from "../includes/Back UpiconSvg.co.svg";
 import styles from '../styles/Pago.module.css';
+import LayoutPaciente from './Layouts/LayoutPaciente';
 
 const Pago = () => {
     const navigate = useNavigate();
@@ -73,6 +74,8 @@ const Pago = () => {
 };
 
     return (
+
+        <LayoutPaciente>
         <div className={styles.contenedor}>
             <div className={styles.headerPago}>
                 <button
@@ -151,6 +154,7 @@ const Pago = () => {
                 {cargando ? "Procesando pago..." : "Pagar y confirmar cita"}
             </button>
         </div>
+        </LayoutPaciente>
     );
 };
 export default Pago;

@@ -1,14 +1,18 @@
 .div-padre-barraMenu{
-  
+  top: 0;  
+  position: sticky;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  flex-shrink: 0;
   background-color: #DCD7CB;
-  width: 350px;
-  min-height: 150vh;
+  width: 25%;
+  min-width: 260px;
+  min-height: calc(100vh - var(--header-height));
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   overflow: hidden;
+  overflow-y: auto;
 }
 
  .div-barra{

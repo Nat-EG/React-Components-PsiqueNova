@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/SeleccionarPsicologo.module.css";
 import IconoAtras from "../includes/Back UpiconSvg.co.svg";
+import LayoutPaciente from "./Layouts/LayoutPaciente";
 
 
 
@@ -31,6 +32,8 @@ const SeleccionarPsicologo = () => {
     };
 
     return (
+
+        <LayoutPaciente>
         <div className={styles.CajaPadre}>
             {/* Botón de regresar atrás */ }
         
@@ -72,6 +75,7 @@ const SeleccionarPsicologo = () => {
                 </button>
             </div>
         </div>
+        </LayoutPaciente>
 
     );
 } 

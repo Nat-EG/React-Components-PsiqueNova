@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import React, { useState, useEffect } from 'react';
 import styles from './EditarServicioModal.module.css';
 
@@ -37,7 +38,7 @@ function EditarServicioModal({ servicio, onClose, onSave }) {
         onSave(formData);
     };
 
-    return (
+    return createPortal(
         <div className={styles.overlay}>
             <div className={styles.modal}>
 
@@ -108,6 +109,7 @@ function EditarServicioModal({ servicio, onClose, onSave }) {
                 </form>
             </div>
         </div>
+    , document.body
     );
 }
 export default EditarServicioModal;

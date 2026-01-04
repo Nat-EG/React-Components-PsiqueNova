@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import stylesInicio from "../styles/InicioPaciente.module.css";
-import Header from "./Header.jsx";
-import BarraMenuPaciente from "./BarraMenuPaciente.jsx";
+import LayoutPaciente from "./Layouts/LayoutPaciente.jsx";
 import ImagenInicioPaci from "../includes/ImagenInicioPaci.png";
 import CitaCard from "./CitaCard.jsx";
 import InputModal from "./modals/InputModal.jsx";
@@ -14,7 +13,7 @@ function InicioPaciente() {
   const [mostrarModal, setMostrarModal] = useState(false);
   const navigate = useNavigate();
 
-  const usuario = JSON.parse(localStorage.getItem("usuario")); // donde guardas el login
+  const usuario = JSON.parse(localStorage.getItem("usuario")); // donde se guarda la info del usuario logueado
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -42,35 +41,41 @@ function InicioPaciente() {
   };
 
   return (
-    <div className={stylesInicio.contenedor}>
-      <Header />
-      <BarraMenuPaciente />
 
-      {citas.length > 0 && citas.map (cita => (
-        <CitaCard
-          key={cita._id}
-          cita={cita}
-          onCancelar={() => {
-            setCitaSeleccionada(cita);
-            setMostrarModal(true);
-          }}
-          onReprogramar={() => reprogramar(cita)}
-        />
-      ))}
+    <LayoutPaciente>
+    
+      <div className={stylesInicio.cuerpo}>
 
-      <div className={stylesInicio["contenedor-imagen"]}>
-        <img src={ImagenInicioPaci} alt="Inicio paciente" />
+      {/* CONTENIDO */}
+      <div className={stylesInicio.contenido}>
+        {citas.length > 0 && citas.map(cita => (
+          <CitaCard
+            key={cita._id}
+            cita={cita}
+            onCancelar={() => {
+              setCitaSeleccionada(cita);
+              setMostrarModal(true);
+            }}
+            onReprogramar={() => reprogramar(cita)}
+          />
+        ))}
+
+        <div className={stylesInicio["contenedor-imagen"]}>
+          <img src={ImagenInicioPaci} alt="Inicio paciente" />
+        </div>
       </div>
-
-      <InputModal
-        isOpen={mostrarModal}
-        title="Cancelar cita"
-        label="Indica el motivo de cancelación"
-        onConfirm={confirmarCancelacion}
-        onClose={() => setMostrarModal(false)}
-      />
     </div>
-  );
+
+    <InputModal
+      isOpen={mostrarModal}
+      title="Cancelar cita"
+      label="Indica el motivo de cancelación"
+      onConfirm={confirmarCancelacion}
+      onClose={() => setMostrarModal(false)}
+    />
+    </LayoutPaciente>
+
+);
 }
 
 export default InicioPaciente;

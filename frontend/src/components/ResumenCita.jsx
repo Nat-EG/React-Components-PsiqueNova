@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/ResumenCita.module.css";
 import IconoAtras from "../includes/Back UpiconSvg.co.svg";
+import LayoutPaciente from "./Layouts/LayoutPaciente";
 
 const ResumenCita = () => {
     const navigate = useNavigate();
@@ -44,6 +45,8 @@ const ResumenCita = () => {
     
 
     return (
+
+        <LayoutPaciente>
         <div className={styles.contenedor}>
             <div className={styles.headerResumenCita}>
                 <button
@@ -88,6 +91,7 @@ const ResumenCita = () => {
                 Confirmar y pagar
             </button>
         </div>
+        </LayoutPaciente>
     );
 };
 

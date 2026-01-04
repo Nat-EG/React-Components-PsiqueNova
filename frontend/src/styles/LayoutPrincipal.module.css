@@ -1,0 +1,22 @@
+:root {
+    --header-height: 140px;
+}
+
+.layoutRoot {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.layoutBody {
+    display: flex;
+    flex: 1;
+    min-height: calc(100vh - var(--header-height));
+}
+
+.layoutContent {
+    flex: 1;
+    background-color: var(--background);
+    overflow-y: auto;
+    padding-top: 20px;
+}

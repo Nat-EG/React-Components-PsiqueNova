@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Header from "./Header";
-import BarraMenuPaciente from "./BarraMenuPaciente";
+import LayoutPaciente from "./Layouts/LayoutPaciente";
 
 import styles from "../styles/CatalogoServicios.module.css";
 
@@ -33,61 +32,54 @@ function CatalogoServicios() {
     
     
     return (
-        <>
-
-        {/* Header */ }
-        <Header />
         
-        <div className={styles.layoutPrincipal}>
+       
+          <LayoutPaciente>
 
-            <BarraMenuPaciente />
-        
-        
-            <div className={styles.CajaPadre}>
+                <div className={styles.CajaPadre}>
 
-                {/* Botón de regresar atrás */ }
+                    {/* Botón de regresar atrás */ }
 
-                <div className={styles.headerCatalogo}>
+                    <div className={styles.headerCatalogo}>
 
-                    <button type='button' className={styles.btnAtras} onClick={() => window.history.back()}>
-                        <img src={IconoAtras} alt="Atrás" className={styles.iconAtras} />
-                        Atrás
-                    </button>  
+                        <button type='button' className={styles.btnAtras} onClick={() => window.history.back()}>
+                            <img src={IconoAtras} alt="Atrás" className={styles.iconAtras} />
+                            Atrás
+                        </button>  
 
-                    {/* Titulo */ }
-                    <h1>CATÁLOGO DE SERVICIOS</h1>
-                </div>
-                <hr />
-
-                {/* Seccion de servicios */ }
-                <section className={styles.servicios}>
-                    <div className={styles.contenidoServicios}>
-                        {/* Mapeo de los servicios */}
-                        {servicios.map((servicio) =>(
-                            <div key={servicio._id} className={styles.tarjetaServicio}>
-
-                                <img src={`http://localhost:4000/uploads/servicios/${servicio.imagenServicio}`} alt={servicio.nombreServicio} />
-                                
-                                <h3>{servicio.nombreServicio}</h3>
-
-                                <p>{servicio.descripcionServicio}</p>
-
-                                <span>
-                                    Precio:
-                                    <p className={styles.precio}>{servicio.precioServicio}</p>
-                                </span>
-
-                                {/* Botón de seleccionar servicio */ }
-                                <button onClick={() => handleSeleccionarServicio(servicio)}>
-                                    Seleccionar
-                                </button>
-                            </div>
-                        ))}
+                        {/* Titulo */ }
+                        <h1>CATÁLOGO DE SERVICIOS</h1>
                     </div>
-                </section>
-            </div>
-        </div>
-        </>
+                    <hr />
+
+                    {/* Seccion de servicios */ }
+                    <section className={styles.servicios}>
+                        <div className={styles.contenidoServicios}>
+                            {/* Mapeo de los servicios */}
+                            {servicios.map((servicio) =>(
+                                <div key={servicio._id} className={styles.tarjetaServicio}>
+
+                                    <img src={`http://localhost:4000/uploads/servicios/${servicio.imagenServicio}`} alt={servicio.nombreServicio} />
+                                    
+                                    <h3>{servicio.nombreServicio}</h3>
+
+                                    <p>{servicio.descripcionServicio}</p>
+
+                                    <span>
+                                        Precio:
+                                        <p className={styles.precio}>{servicio.precioServicio}</p>
+                                    </span>
+
+                                    {/* Botón de seleccionar servicio */ }
+                                    <button onClick={() => handleSeleccionarServicio(servicio)}>
+                                        Seleccionar
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+                </div>
+         </LayoutPaciente>
     );
 
 }
