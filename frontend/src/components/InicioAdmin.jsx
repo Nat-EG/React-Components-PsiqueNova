@@ -1,21 +1,24 @@
 import stylesInicioPsicologo from "../styles/InicioPsicologo.module.css";
 import Header from "./Header.jsx";
-import BarraMenuPsicologo from "./BarraMenuPsicologo.jsx";
+import BarraMenuAdmin from "./BarraMenu.jsx";
+import LayoutAdmin from "./Layouts/LayoutAdmin.jsx";
 
-function InicioPsicologo () {
+function InicioAdmin () {
 
     return(
+      <LayoutAdmin>
     <div className={stylesInicioPsicologo['contenedor']}>
 
-    <Header />
-    <BarraMenuPsicologo />
+    
       <div className={stylesInicioPsicologo['contenedor-imagen']}>
 
-         <img src="ImagenInicioPsic.png" alt="" />
+         <img src="ImagenInicioAdmin.png" alt="" />
     </div>
     
       </div>
-    ); }
+      </LayoutAdmin>
+    ); 
+}
 
 
-export default InicioPsicologo;
+export default InicioAdmin;

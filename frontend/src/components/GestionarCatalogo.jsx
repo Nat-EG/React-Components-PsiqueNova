@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/GestionarCatalogo.module.css";
+import LayoutAdmin from "./Layouts/LayoutAdmin";
 
 // Importación de iconos
 import IconoAtras from "../includes/Back UpiconSvg.co.svg";
@@ -104,6 +105,7 @@ function GestionarCatalogo() {
 
     return (
 
+        <LayoutAdmin>
         <div className={styles.CajaPadre}>
             {/* Botón de regresar atrás */ }
 
@@ -176,6 +178,7 @@ function GestionarCatalogo() {
                  }}
             />
         </div>
+        </LayoutAdmin>
     );
 
 }

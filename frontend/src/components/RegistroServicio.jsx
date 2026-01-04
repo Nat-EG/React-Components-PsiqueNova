@@ -1,7 +1,6 @@
 import stylesRegistroServicio from "../styles/RegistroServicio.module.css";
 import { useState } from "react";
-import BarraMenu from "./BarraMenu.jsx";
-import Header from "./Header.jsx";
+import LayoutAdmin from "./Layouts/LayoutAdmin.jsx";
 
 
 function RegistroServicio() {
@@ -47,10 +46,7 @@ function RegistroServicio() {
     }
   }
   return ( 
-     <div className={stylesRegistroServicio['contenedor']}> 
-     <Header />
-     <BarraMenu />
-
+      <LayoutAdmin>
      <div className={stylesRegistroServicio["contenedor-2"]}>
      
      <div className={stylesRegistroServicio["div-atras"]} >
@@ -109,7 +105,8 @@ function RegistroServicio() {
       </div>
     </form>
     </div>
-    </div>
+    </LayoutAdmin>
+  
      
   );
 }
