@@ -1,6 +1,11 @@
 import stylesBarraMenuPaciente from "../styles/BarraMenuPaciente.module.css";
 import CerrarSesion from "./CerrarSesion";
 
+import IconoInicio from '../includes/IconoInicio.svg';
+import IconoCatalogo from '../includes/IconoCatalogo.svg';
+import IconoMiLugarSeguro from '../includes/IconoMiLugarSeguro.svg';
+import IconoConfig from '../includes/IconoConfig.svg';
+
 function BarraMenuPaciente() {
 
 // Estructura del componente BarraMenuPaciente
@@ -10,24 +15,24 @@ function BarraMenuPaciente() {
         <h1>¡Te damos la bienvenidad!</h1>
 
         <div className={stylesBarraMenuPaciente["opcion-menu"]}>
-          <img src="IconoInicio.svg" alt="Icono Inicio" /><a href="/inicioPaciente">Inicio</a>
+          <img src={IconoInicio} alt="Icono Inicio" /><a href="/inicioPaciente">Inicio</a>
         </div>
         <hr className={stylesBarraMenuPaciente.hrPersonalizada} />
 
         <div className={stylesBarraMenuPaciente["opcion-menu"]}>
-          <img src="IconoCatalogo.svg" alt="Icono Catálogo" /> <a href="/catalogo">Catálogo de Servicios</a>
+          <img src={IconoCatalogo} alt="Icono Catálogo" /> <a href="/catalogo">Catálogo de Servicios</a>
         </div>
         <hr className={stylesBarraMenuPaciente.hrPersonalizada} />
 
         <div className={stylesBarraMenuPaciente["opcion-menu"]}>
-          <img src="IconoMiLugarSeguro.svg" alt="" /> <a href="/lugarSeguro">Mi Lugar Seguro</a>
+          <img src={IconoMiLugarSeguro} alt="" /> <a href="/lugarSeguro">Mi Lugar Seguro</a>
         </div>
         <hr className={stylesBarraMenuPaciente.hrPersonalizada} />
       </div>
 
       <div className={stylesBarraMenuPaciente["div-barra"]}>
         <div className={stylesBarraMenuPaciente["opcion-menu"]}>
-          <img src="IconoConfig.svg" alt="" /> <a href="/configuracion">Ajustes</a>
+          <img src={IconoConfig} alt="" /> <a href="/configuracion">Ajustes</a>
         </div>
 
         

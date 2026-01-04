@@ -11,4 +11,7 @@
     --borderInput: rgba(177, 177, 177, 1); /* #B1B1B1 */
     --feedbackError: rgba(226, 84, 84, 1); /* #E25454 */
     --inputFill: rgba(255, 255, 255, 1); /* # */
+
+
+    --header-height: 100px;
 }

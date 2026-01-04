@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ConfirmModal from './modals/ConfirmModal';
+import IconoCerrarSesion from '../includes/IconoCerrarSesion.svg';
 
 const CerrarSesion = () => {
     // Estado para controlar la visibilidad del modal de confirmación
@@ -28,7 +29,7 @@ const CerrarSesion = () => {
   return (
     <>
       <button onClick={handleOpenModal} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '20px', color: '#5E5951', padding: '2%', fontFamily: 'Open Sans, sans-serif', display: 'flex', alignItems: 'center' }}>
-        <img src="IconoCerrarSesion.svg" alt="" style={{width: '15%', marginRight: '5px'}} /> Cerrar Sesión
+        <img src={IconoCerrarSesion} alt="" style={{width: '15%', marginRight: '5px'}} /> Cerrar Sesión
       </button>
 
 

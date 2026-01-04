@@ -1,7 +1,9 @@
+
 .div-padre-header{
     display: flex;
     width: 100%;
-    height: 100px;
+    height: var(--header-height);
+    position: relative;
 
     
 }
@@ -9,26 +11,30 @@
 .contenedor-barra {
   position: relative;
   width: 100%;
-  height: 100px; /* Altura de tu barra */
-  overflow: visible; /* IMPORTANTE para que el logo sobresalga */
+  height: var(--header-height); /* Altura de tu barra */
 }
 
 .barra {
   width: 100%;
-  height: 100%;
+  height: 100%; /* Altura de tu barra */
   object-fit: cover;
   position: absolute;
+  background: 
+        url(../includes/PatronGeometrico.svg) repeat,
+        linear-gradient(to right, var(--primaryG), var(--primaryB));
+    background-size: 176px 48px, cover;
   top: 0;
   left: 0;
   z-index: 1;
 }
 
-/* Aquí haces que el logo sobresalga */
+/* Logo*/
 .logo {
   position: absolute;
-  top: 100%; /* Coloca el logo justo debajo de la barra */
-  right: 30px; /* O left: 30px si lo quieres al otro lado */
-  transform: translateY(-50%); /* Lo sube para que quede la mitad sobresalida */
-  height: 100px; /* Ajusta según el tamaño del logo */
-   z-index: 2;
+  top: 100%;
+  right: 30px; 
+  transform: translateY(-50%);
+  height: 200px; 
+  z-index: 10;
+  pointer-events: none;
 }

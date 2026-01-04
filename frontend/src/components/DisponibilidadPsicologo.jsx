@@ -5,6 +5,7 @@ import { DayPicker } from 'react-day-picker';
 import { es } from 'date-fns/locale';
 import 'react-day-picker/dist/style.css';
 import { useSearchParams } from "react-router-dom";
+import LayoutPaciente from './Layouts/LayoutPaciente';
 import styles from '../styles/DisponibilidadPsicologo.module.css';
 
 const DisponibilidadPsicologo = () => {
@@ -102,6 +103,8 @@ const DisponibilidadPsicologo = () => {
 
 
     return (
+
+        <LayoutPaciente>
         <div className={styles.CajaPadre}>
             <div className={styles.headerSeleccionarPsicologo}>
                 <button
@@ -164,6 +167,7 @@ const DisponibilidadPsicologo = () => {
                 </button>
             </div>
         </div>
+        </LayoutPaciente>
     );
 };
 

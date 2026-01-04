@@ -21,13 +21,13 @@ const CitaCard = ({ cita, onCancelar, onReprogramar }) => {
       </p>
 
       {cita.estado === "programada" && (
-        <button className={styles.cancelar} onClick={onCancelar}>
+        <button className={styles.cancelar} type="button" onClick={onCancelar}>
           Cancelar cita
         </button>
       )}
 
       {cita.estado === "cancelada" && (
-        <button className={styles.reprogramar} onClick={onReprogramar}>
+        <button className={styles.reprogramar} type="button" onClick={onReprogramar}>
           Reprogramar cita
         </button>
       )}

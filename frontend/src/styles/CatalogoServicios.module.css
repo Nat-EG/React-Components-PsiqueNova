@@ -1,18 +1,24 @@
 
-/*Estructura general*/
-body {
-  font-family: 'Open Sans', sans-serif;
-  background-color: var(--background);
+.contenedorPagina {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.layoutPrincipal {
+   display: flex;
+   width: 100%;
 }
 
 .CajaPadre {
-    width: 100%;
-    min-height: 100vh;
+    flex: 1;
+    overflow: auto;
     flex-wrap: wrap;
     background-color: var(--background);
     display: flex;
     flex-direction: column;
-    align-items: stretch;
 }
 /*Estilos header del catalogo*/
 .headerCatalogo {
@@ -154,9 +160,6 @@ body {
     background-color: #8dcf63;
 }
 
-.layoutPrincipal {
-    display: flex;
-}
 
 
 

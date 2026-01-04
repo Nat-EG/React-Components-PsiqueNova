@@ -3,6 +3,7 @@ import React, {  useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styles from "../styles/DetallesServicio.module.css";
 import IconoAtras from "../includes/Back UpiconSvg.co.svg";
+import LayoutPaciente from "./Layouts/LayoutPaciente";
 
 function DetallesServicio() {
     const { id } = useParams();
@@ -46,6 +47,8 @@ function DetallesServicio() {
     };
 
     return (
+
+    <LayoutPaciente>
         <div className={styles.contenedor}>
                 {/* Botón de regresar atrás */ }
 
@@ -85,6 +88,7 @@ function DetallesServicio() {
                     </div>
                 </div>
         </div>
+    </LayoutPaciente>
     );
 }
 export default DetallesServicio;

@@ -1,11 +1,11 @@
 import React from "react"; 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import './App.css'
+
 import CatalogoServicios from "./components/CatalogoServicios.jsx";
 import LugarSeguro from "./components/MiLugarSeguro.jsx";
 import HistorialVentas from "./components/TablaHistorialVentas.jsx";
-import BarraMenu from './components/BarraMenu.jsx';
-import Header from './components/Header.jsx';
 import TablaUsuarios from './components/TablaUsuarios.jsx';
 import RegistroServicio from './components/RegistroServicio.jsx';
 import InicioPaciente from './components/InicioPaciente.jsx';
