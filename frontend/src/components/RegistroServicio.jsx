@@ -1,10 +1,13 @@
 import stylesRegistroServicio from "../styles/RegistroServicio.module.css";
 import { useState } from "react";
-import BarraMenu from "./BarraMenuAdministrador.jsx";
-import Header from "./Header.jsx";
+import { useNavigate } from "react-router-dom";
+import LayoutAdmin from "./Layouts/LayoutAdmin";
+import ConfirmModal from "./modals/ConfirmModal";
 
-
+// Componente para registrar un nuevo servicio
 function RegistroServicio() {
+  const navigate = useNavigate();
+  const [mostrarConfirmacion, setMostrarConfirmacion] = useState(false);
   const [datos, setDatos] = useState({
     nombreServicio: "",
     descripcionServicio: "",
@@ -12,6 +15,7 @@ function RegistroServicio() {
     imagenServicio: null
   });
 
+  // Manejar cambios en los inputs
   function handleChange(e) {
     const { name, value, files, type } = e.target;
     setDatos({ ...datos, 
@@ -19,6 +23,7 @@ function RegistroServicio() {
     });
   }
 
+// Guardar el nuevo servicio
   async function guardarServicio() {
     try {
       const formData = new FormData();
@@ -40,77 +45,116 @@ function RegistroServicio() {
       }
       const data = await response.json();
       console.log("Servicio creado:", data);
-      alert("Servicio creado exitosamente");
+      setMostrarConfirmacion(false);
+      setDatos({
+        nombreServicio: "",
+        descripcionServicio: "",
+        precioServicio: "",
+        imagenServicio: null
+      });
+      setTimeout(() => {
+        navigate("/GestionarCatalogo");
+      }, 1500);
     } catch (error) {
       console.error(error);
       alert("Error al crear el servicio");
+      setMostrarConfirmacion(false);
     }
   }
-  return ( 
-     <div className={stylesRegistroServicio['contenedor']}> 
-     <Header />
-     <BarraMenu />
 
+  // Renderizado del componente
+  return ( 
+    <LayoutAdmin>
+     <div className={stylesRegistroServicio['contenedor']}> 
      <div className={stylesRegistroServicio["contenedor-2"]}>
      
-     <div className={stylesRegistroServicio["div-atras"]} >
-             <img src="Atras.svg" alt="" />
-            <a href="/inicio">Atras</a>
-            </div>
-     
-     <h2>REGISTRAR NUEVO SERVICIO</h2>
-     
-     <hr className={stylesRegistroServicio.hrPersonalizada} />
-    <form className={stylesRegistroServicio["div-padre"]}>
-        
-      <h1>Añada la nueva informacion del servicio y guarde los cambios</h1>
-       
-
-      <div className={stylesRegistroServicio["div-hijo-1"]}>
-        <span>Nombre del servicio</span>
-        <input
-          type="text"
-          name="nombreServicio"
-          placeholder="Nombre del servicio"
-          onChange={handleChange}
-        />
-
-        <span>Precio del servicio</span>
-        <input
-          type="number"
-          name="precioServicio"
-          placeholder="Precio servicio"
-          onChange={handleChange}
-        />
-
-        <input 
-        id={stylesRegistroServicio["input-img"]}
-        type="file" 
-        name="imagenServicio"
-        accept="image/*"
-        onChange={handleChange} />
-      </div>
-      {/* ------------------------------------------------------------------- */}
-
-      <div className={stylesRegistroServicio["div-hijo-2"]}>
-        <span>Descripcion del servicio</span>
-        <textarea
-          name="descripcionServicio"
-          placeholder="..."
-          onChange={handleChange}
-        />
-      </div>
-
-      <div className={stylesRegistroServicio["div-hijo-3"]}>
-      <button type="button" onClick={guardarServicio}>
-        Guardar cambios
+      <button className={stylesRegistroServicio["btnAtras"]} onClick={() => navigate(-1)} type="button">
+        <img src="Atras.svg" alt="Atrás" />
+        Atrás
       </button>
-      <button id={stylesRegistroServicio["boton_2"]}>Cancelar</button>
-      </div>
-    </form>
-    </div>
-    </div>
      
+      <h2>REGISTRAR NUEVO SERVICIO</h2>
+      <hr className={stylesRegistroServicio.hrPersonalizada} />
+
+      <form className={stylesRegistroServicio["formContainer"]}>
+        <div className={stylesRegistroServicio["columnIzquierda"]}>
+          <div className={stylesRegistroServicio["formGroup"]}>
+            <label className={stylesRegistroServicio["label"]}>Nombre del servicio</label>
+            <input
+              type="text"
+              name="nombreServicio"
+              placeholder="Nombre del servicio"
+              value={datos.nombreServicio}
+              onChange={handleChange}
+              className={stylesRegistroServicio["input"]}
+            />
+          </div>
+
+          <div className={stylesRegistroServicio["formGroup"]}>
+            <label className={stylesRegistroServicio["label"]}>Precio del servicio</label>
+            <input
+              type="number"
+              name="precioServicio"
+              placeholder="Precio en COP"
+              value={datos.precioServicio}
+              onChange={handleChange}
+              className={stylesRegistroServicio["input"]}
+            />
+          </div>
+
+          <div className={stylesRegistroServicio["formGroup"]}>
+            <label className={stylesRegistroServicio["label"]}>* Imagen del servicio</label>
+            <input
+              type="file"
+              id="imagenServicio"
+              name="imagenServicio"
+              accept="image/*"
+              onChange={handleChange}
+              className={stylesRegistroServicio["fileInput"]}
+            />
+            <label htmlFor="imagenServicio" className={stylesRegistroServicio["btnImagen"]}>
+              Agregar imagen
+            </label>
+            {datos.imagenServicio && 
+              <span className={stylesRegistroServicio["nombreArchivo"]}>
+                {datos.imagenServicio.name}
+              </span>
+            }
+          </div>
+        </div>
+
+        <div className={stylesRegistroServicio["formGroup"]}>
+          <label className={stylesRegistroServicio["label"]}>Descripción del servicio</label>
+          <textarea
+            name="descripcionServicio"
+            placeholder="Ingrese la descripción del servicio"
+            value={datos.descripcionServicio}
+            onChange={handleChange}
+            className={stylesRegistroServicio["textarea"]}
+          />
+        </div>
+
+        <button 
+          type="button" 
+          onClick={() => setMostrarConfirmacion(true)}
+          className={stylesRegistroServicio["btnAñadir"]}
+        >
+          Añadir
+        </button>
+      </form>
+    </div>
+    </div>
+
+    <ConfirmModal
+      isOpen={mostrarConfirmacion}
+      title="Registrar nuevo servicio"
+      message={`¿Estás seguro de que deseas registrar el servicio "${datos.nombreServicio}"? Verifique que todos los datos sean correctos.`}
+      confirmText="Confirmar"
+      cancelText="Cancelar"
+      onConfirm={guardarServicio}
+      onClose={() => setMostrarConfirmacion(false)}
+    />
+    </ LayoutAdmin > 
   );
 }
 

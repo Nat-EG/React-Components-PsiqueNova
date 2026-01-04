@@ -9,145 +9,156 @@ body {
   flex-wrap: wrap;
   align-content: flex-start;
   background-color: #F5F3EE;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .contenedor-2 {
-width: 70%;
-min-height: 100%;
-
+  width: 90%;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .contenedor-2 h2{
-    width: 100%;
-    margin-left: 2%;
-    color: #71B0C5;
-
+    color: var(--primaryB);
+    font-size: 30px;
+    margin: 0;
 }
 
 .hrPersonalizada {
   border: none;            
   height: 2px;               
-  background-color: #71B0C5; 
-  width: 70%;                
-  margin-left: 1%;      
+  background-color: var(--primaryB); 
+  width: 100%;
 }
-  
-.div-atras{
+
+.btnAtras {
   display: flex;
-  width: 65%; 
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--textTitle);
+  font-size: 16px;
+  padding: 0;
+  gap: 10px;
+  width: fit-content;
 }
 
-.div-atras a {
-margin-top: 1%;
-text-decoration: none;
-color: #5E5951;
-
+.btnAtras img {
+  width: 30px;
 }
 
-/* -------------------------------- */
-.div-padre {
-  width: 70%;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 3%;
-  margin-left: 2%;
-  background-color: #F5F3EE;
-  padding: 1%;
-  align-content: flex-start;
-  justify-content: space-between;
-  
+.btnAtras:hover {
+  color: var(--primaryB);
 }
 
-
-.div-padre h1{
-    width: 100%;
-    font-size: 20px;
-    color: #5E5951;
-
+/* FORMULARIO */
+.formContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  max-width: 900px;
+  margin-top: 20px;
 }
 
-/* ----------------hijo 1 y 2 ------------------------------------ */
-.div-hijo-1,
-.div-hijo-2 {
-  width: 48%; 
+.columnIzquierda {
   display: flex;
   flex-direction: column;
-  padding: 1%;
-  margin-bottom: 3%;
+  gap: 25px;
 }
 
-/* ---------------------------------------------------- */
-
-
-.div-hijo-1 span{
-    text-align: start;
-    color: #5E5951;
-}
-
-.div-hijo-1 input{
-    padding: 3%;
-    border: none;
-    border: solid 1px rgb(207, 207, 228);
-    border-radius: 5px;
-}
-
-.div-hijo-1 input:focus-within{
-   border: solid 1px #71B0C5;
-   outline:none ;
-}
-
-#input-img{
- border: none;  
- color:#5E5951; 
-}
-
-/* ------------------------------------------------- */
-
-
-
-.div-hijo-2 span{
-    text-align: start;
-    color:#5E5951;
-}
-
-.div-hijo-2 textarea{
-    padding: 1%;
-    border: none;
-    min-height: 130px;
-    border: solid 1px rgb(207, 207, 228);
-    border-radius: 5px;
-}
-
-.div-hijo-2 textarea:focus-within{
-   outline:none ;
-   border: solid 1px #71B0C5;
-}
-
-
-/* __________hijo 3____________________________ */
-
-.div-hijo-3 {
-  width: 50%; 
+.formGroup {
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.div-hijo-3 button {
-    padding: 2%;
-    margin-left: 1%;
-    margin-right: 1%;
-    width: 48%;
-    background-color: #71B0C5;
-    border-bottom: none;
-    border-right: none;
-    border-left: none;
-    border-top:none;
-    color: white;
-
+.label {
+  color: var(--textTitle);
+  font-weight: 600;
+  font-size: 16px;
 }
-#boton_2 {
-    background-color: #B1B1B1;
+
+.input,
+.textarea {
+  padding: 14px;
+  border: 1px solid var(--borderInput);
+  border-radius: 6px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  background-color: var(--inputFill);
+  color: var(--textBody);
+  transition: border-color 0.3s ease;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--primaryB);
+}
+
+.textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.fileInput {
+  display: none;
+}
+
+.btnImagen {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 10px 16px;
+  border: 1px solid var(--primaryB);
+  border-radius: 6px;
+  background-color: var(--surface1);
+  color: var(--primaryB);
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnImagen:hover {
+  background-color: var(--primaryB);
+  color: white;
+}
+
+.nombreArchivo {
+  font-size: 13px;
+  color: var(--textSubtle);
+  margin-top: 5px;
+}
+
+.btnAñadir {
+  padding: 14px 32px;
+  width: 20%;
+  background-color: var(--primaryB);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+  margin-top: 10px;
+  grid-column: 1 / -1;
+}
+
+.btnAñadir:hover {
+  background-color: #5aa5b8;
+}
+
+.btnAñadir:active {
+  transform: scale(0.98);
 }
 

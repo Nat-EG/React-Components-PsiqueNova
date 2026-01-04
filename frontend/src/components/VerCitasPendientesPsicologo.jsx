@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "../styles/VerCitasPendientesPsicologo.module.css";
-import Header from "./Header";
-import BarraMenuPsicologo from "./BarraMenuPsicologo";
+import LayoutPsicologo from "./Layouts/LayoutPsicologo.jsx";
 import InputModal from "./modals/InputModal.jsx";
 
 export default function VerCitasPendientesPsicologo() {
@@ -141,14 +140,16 @@ export default function VerCitasPendientesPsicologo() {
   };
 
   return (
+    <LayoutPsicologo> 
     <div className={styles.Contenedor}>
-      <Header />
-      <BarraMenuPsicologo />
+      
 
       <div className={styles.ContenedorPrincipal}>
         <div className={styles["div-atras"]}>
-          <img src="Atras.svg" alt="" />
-          <a href="/InicioPsicologo">Atrás</a>
+          <a href="/InicioPsicologo">
+            <img src="Atras.svg" alt="" />
+            Atrás
+          </a>
         </div>
 
         <h2>VER CITAS PENDIENTES</h2>
@@ -317,5 +318,6 @@ export default function VerCitasPendientesPsicologo() {
         }}
       />
     </div>
+    </LayoutPsicologo>
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import stylesBarraMenuAdministrador from "../styles/BarraMenuAdministrador.module.css";
 import CerrarSesion from "./CerrarSesion";
+import IconoInicio from '../includes/IconoInicio.svg';
 
 function BarraMenuAdministrador() {
   /* Estado para controlar la visibilidad del submenú "Gestionar Catálogo de Servicios" */
@@ -23,7 +24,10 @@ function BarraMenuAdministrador() {
     <div className={stylesBarraMenuAdministrador["div-padre-barraMenu"]}>
       <div className={stylesBarraMenuAdministrador["div-barra"]}>
         <h1>¡Te damos la bienvenidad!</h1>
-        <a href="/InicioAdministrador">Inicio</a>
+        
+        <div className={stylesBarraMenuAdministrador["opcion-menu"]}>
+          <img src={IconoInicio} alt="Icono Inicio" /><a href="/InicioAdministrador">Inicio</a>
+        </div>
         <hr className={stylesBarraMenuAdministrador.hrPersonalizada} />
         <div>
           <button onClick={toggleSubmenuCatalogo} className={stylesBarraMenuAdministrador["submenu-button"]}>

@@ -5,21 +5,26 @@ body {
 .contenedor {
   display: flex;
   width: 100%;
+  height: 100vh;
   flex-wrap: wrap;
   background-color: #F5F3EE;
   height: 100vh;
+  position: relative;
 }
 
 .contenedor-imagen {
-    width: 20%;
-    height: 50%;
-    margin-top: 25%;
-    margin-left: 60%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40%;
+    height: 70%;
    
 }
 
 .contenedor-imagen img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
+    object-position: bottom right;
    
 }

@@ -1,56 +1,335 @@
-body {
-    background-color: #B1B1B1;
-    font-family: 'Open Sans';
+
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
 }
 
-.contenedor {
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  background-color: #F5F3EE;
-  height: 100vh;
-  
-}
-.contenedor-tabla{
-  width: 80%;
-  min-height: 80%;
-  
-
-}
-.contenedor-tabla h2{
-  width: 100%;
-  margin-left: 2%;
-  color: #71B0C5;
-
+/* CONTENEDOR DEL HEADER */
+.headerWrapper {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
 }
 
-.hrPersonalizada {
-  border: none;              
-  height: 2px;              
-  background-color: #71B0C5; 
-  width: 70%;                
-  margin-left: 1%;        
-}
-  
-.div-atras{
-  display: flex;
-  width: 65%; 
+/* TITULO */
+.title {
+    color: var(--primaryB);
+    font-size: 30px;
+    margin: 0;
 }
 
-.div-atras a {
-margin-top: 1%;
-text-decoration: none;
-color: #5E5951;
-
+/* LÍNEA */
+.hr {
+    width: 90%;
+    margin: 10px auto 30px; 
+    border: 2px solid var(--primaryB);
 }
 
-
-
-.IconoEditar {
-  width: 20px;
-  
+/* ATRÁS */
+.btnAtras {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--textTitle);
+    font-size: 16px;
+    padding: 0;
 }
+
+.iconAtras {
+    width: 30px;
+    margin-right: 12px;
+}
+
+.btnAtras:hover {
+    color: var(--primaryB);
+}
+
+.title {
+    color: var(--primaryB);
+    font-size: 30px;
+    margin: 0;
+}
+
+/* LÍNEA */
+.hr {
+    border: 2px solid var(--primaryB);
+    width: 90%;
+    margin: 10px auto 30px;
+}
+
+/* CONTENEDOR PRINCIPAL DE LA TABLA */
+.tableMainContainer {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* BUSCADOR */
+.searchContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.searchContainer label {
+    padding: 0 10px;
+    color: var(--textBody);
+    font-weight: 600;
+}
+
+.inputSearch {
+    width: 200px;
+    padding: 7px 10px;
+    border: 2px solid var(--borderInput);
+    background-color: var(--inputFill);
+    border-radius: 6px;
+    font-size: 16px;
+    color: var(--textBody);
+}
+
+.inputSearch:focus {
+    border-color: var(--primaryB);
+}
+
+/* TABLA */
+.tableContainer {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--textBody);
+    font-size: 14px;
+}
+
+.table thead {
+    border-bottom: 2px solid var(--primaryB);
+}
+
+.table th {
+    padding: 10px;
+    font-weight: 600;
+    color: var(--textTitle);
+}
+
+.table td {
+    padding: 10px;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: var(--surface2);
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: var(--surface1);
+}
+
+.table td,
+.table th {
+    border-right: 2px solid var(--background);
+}
+
+/* BADGES */
+.badgeActivo {
+    background: #A6D885;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.badgeInactivo {
+    background: #E25454;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ACCIONES */
+.actionsContainer {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnEditar {
+    background: var(--surface1);
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgb(102, 105, 106);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btnEditar img {
+    width: 22px;
+    height: 25px;
+    color: var(--textBody);
+}
+
+.btnEditar:hover {
+    background: var(--primaryB);
+    transform: scale(1.1);
+}
+
+.btnEliminar {
+    background: var(--surface1);
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgb(102, 105, 106);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btnEliminar img {
+    width: 22px;
+    height: 25px;
+    color: var(--textBody);
+}
+
+.btnEliminar:hover {
+    background: #E25454;
+    transform: scale(1.1);
+}
+
+/* FOOTER */
+.footerTable {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* EXPORTAR */
+.btnExportarExcel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    padding: 10px 20px;
+    background-color: var(--primaryB);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--background);
+    font-size: 14px;
+    min-width: 150px;
+    height: 40px;
+}
+
+.btnExportarExcel:hover {
+    background-color: var(--textSubtle);
+    color: white;
+}
+
+/* NAV - PAGINACIÓN */
+
+.footerTable nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 25px;
+    flex-wrap: nowrap;
+}
+
+.rowSelector {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--textTitle);
+    font-weight: 600;
+}
+
+.rowSelector select {
+    padding: 4px 8px;
+    border: 2px solid var(--borderInput);
+    border-radius: 5px;
+    background-color: var(--inputFill);
+    margin: 10px;
+}
+
+/*Paginación*/
+
+.paginationNav {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 4px;
+}
+
+.pageItem button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    color: var(--textBody);
+}
+
+.pageItem button:hover {
+    background-color: var(--primaryB);
+    color: white;
+    border-radius: 4px;
+}
+
+.pageInfo {
+    font-size: 14px;
+    color: var(--textTitle);
+    font-weight: 500;
+}
+
+.headerWrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 90% !important;
+
+    /* Esto rompe el centrado global */
+    margin-left: 0 !important;
+    margin-right: auto !important;
+
+    text-align: left !important;
+    padding-left: 5% !important;
+}
+
+.btnAtras {
+    align-self: flex-start !important;
+    margin: 0 !important;
+}
+
 
 .Eliminar {
   width: 20px;

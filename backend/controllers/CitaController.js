@@ -37,7 +37,6 @@ export const obtenerCitasPsicologo = async (req, res) => {
       .populate("psicologo", "nombresApellidos");
 
     res.json(citas);
-    res.json(citas);
   } catch (error) {
     res.status(500).json({ mensaje: "Error al obtener las citas del psicólogo" });
   }

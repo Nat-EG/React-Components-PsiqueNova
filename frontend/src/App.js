@@ -25,12 +25,10 @@ function App() {
         <Route path="/catalogo" element={<CatalogoServicios />} />
         <Route path="/lugarSeguro" element={<LugarSeguro />} />
         <Route path="/historial" element={<HistorialVentas />} />
-        <Route path='/InicioPaciente' Component={InicioPaciente} />
-        <Route path='/RegistroServicio' Component={RegistroServicio} />
-        <Route path='/TablaUsuarios' Component={TablaUsuarios} />
-        <Route path='/Login' Component={Login} />
-        <Route path='/Editar/:id' Component={Editar} />
-         <Route path='/Eliminar/:id' Component={Eliminar} />
+        <Route path='/InicioPaciente' element={<InicioPaciente />} />
+        <Route path='/RegistroServicio' element={<RegistroServicio />} />
+        <Route path='/TablaUsuarios' element={<TablaUsuarios />} />
+        
 
       </Routes>
     </BrowserRouter>

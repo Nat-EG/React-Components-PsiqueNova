@@ -13,11 +13,11 @@ body {
 }
 
 .ContenedorCalendario {
-  width: 80%;
+  width: 100%;
   min-height: 60%;
   background-color: #F5F3EE;
+ 
 }
-
 
 
 .ContenedorCalendario h2{

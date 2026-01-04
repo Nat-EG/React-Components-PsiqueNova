@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import styles from "../styles/GestionarDisponibilidadPsicologo.module.css";
-import BarraMenuPsicologo from "./BarraMenuPsicologo";
-import Header from "./Header";
+import LayoutPsicologo from "./Layouts/LayoutPsicologo.jsx";
 import {
   fetchAgendas,
   crearAgenda,
@@ -224,9 +223,9 @@ export default function GestionarDisponibilidadPsicologo({ colorPrimario = " #A6
 
   // estructura del componente
   return (
+    <LayoutPsicologo> 
     <div className={styles.Contenedor}>
-      <Header />
-      <BarraMenuPsicologo />
+      
       
       <div className={styles.ContenedorCalendario}>
         <div className={styles["div-atras"]}>
@@ -371,5 +370,6 @@ export default function GestionarDisponibilidadPsicologo({ colorPrimario = " #A6
         </section>
       </div>
     </div>
+    </LayoutPsicologo>
   );
 }
