@@ -24,12 +24,14 @@
     padding: 0.5%;
     font-size: 20px;
     background-color: #DCD7CB;
+    
 }
 
 .div-barra a {
   text-decoration: none;
   color: var(--textBody);
   margin: 30px 10px;
+  font-family: 'Open Sans', sans-serif;
 
 }
 
@@ -44,6 +46,7 @@
  margin: 30px;
  text-align: center;
  margin-right: 50px;
+ font-family: 'Open Sans', sans-serif;
 }
 
 .hrPersonalizada {
@@ -69,11 +72,11 @@
   font-size: 20px;
   color: #5E5951;
   padding: 2%;
-  font-family: 'Open Sans';
   display: flex;
   align-items: center;
   color: var(--textBody);
   margin: 30px 10px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .submenu-button:hover {

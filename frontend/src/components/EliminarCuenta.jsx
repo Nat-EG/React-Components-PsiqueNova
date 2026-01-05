@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../styles/EliminarCuenta.module.css';
+
 // Importación de imagenes desde src/includes
 import BackUpIcon from "../includes/Back UpiconSvg.co.svg";
 
@@ -48,6 +49,7 @@ const EliminarCuenta = () => {
         }
     };
     return (
+      
         <div className={styles.container}>
             {/* Botón de regresar atrás */}
             <button type='button' className={styles.btnAtras} onClick={() => window.history.back()}>
@@ -81,6 +83,7 @@ const EliminarCuenta = () => {
             />
          
         </div>
+       
 
     );
 };

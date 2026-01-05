@@ -64,7 +64,13 @@
     margin: 0 50px;
     color: var(--textBody);
     box-shadow: 0 2px 8px var(--primaryB);
+
 }
+
+.resumen p {
+    margin: 15px 0;
+}
+
 h2 {
     color: var(--textBody);
     margin: 10px 50px;

@@ -22,7 +22,7 @@ const CerrarSesion = () => {
     
 
     // Redirigir al login
-    navigate('/login');
+    navigate('/');
   };
 
   // Renderizar el botón de cerrar sesión y el modal de confirmación

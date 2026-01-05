@@ -26,7 +26,7 @@
 }
 
 /* LÍNEA */
-.hr {
+.wrapper hr {
   border: none;
   border-top: 2px solid var(--primaryB); 
   width: 90%;
@@ -107,10 +107,15 @@
 /* TABLA */
 .tableContainer {
     width: 100%;
+    position: relative;
+}
+
+.tableScroll {
     overflow-x: auto;
 }
 
 .table {
+    position: relative;
     width: 100%;
     border-collapse: collapse;
     color: var(--textBody);
@@ -287,4 +292,10 @@
     align-self: flex-start !important;
     margin: 0 !important;
     
+}
+.dateFilterWrapper {
+    position: fixed;
+    top: 210px; 
+    left: 860px;
+    z-index: 99999;
 }

@@ -19,9 +19,21 @@ const ResumenCita = () => {
         const servicioLS = localStorage.getItem("servicioSeleccionado");
         const psicologoLS = localStorage.getItem("psicologoSeleccionado");
 
-        if (!usuarioLS || !servicioLS || !psicologoLS) {
+        const fechaLS = localStorage.getItem("fechaCita");
+        const horaInicioLS = localStorage.getItem("horaInicio");
+        const horaFinLS = localStorage.getItem("horaFin");
+
+        // Validación general
+        if (
+            !usuarioLS ||
+            !servicioLS ||
+            !psicologoLS ||
+            !fechaLS ||
+            !horaInicioLS ||
+            !horaFinLS
+        ) {
             alert("Faltan datos para mostrar el resumen de la cita.");
-            navigate("/InicioPaciente");
+            navigate("/seleccionarPsicologo");
             return;
         }
 
@@ -29,9 +41,9 @@ const ResumenCita = () => {
         setServicio(JSON.parse(servicioLS));
         setPsicologo(JSON.parse(psicologoLS));
 
-        setFechaCita(localStorage.getItem("fechaCita"));
-        setHoraInicio(localStorage.getItem("horaInicio"));
-        setHoraFin(localStorage.getItem("horaFin"));
+        setFechaCita(fechaLS);
+        setHoraInicio(horaInicioLS);
+        setHoraFin(horaFinLS);
     }, [navigate]);
 
     const confirmarCita = async () => {

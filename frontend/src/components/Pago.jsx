@@ -21,7 +21,7 @@ const Pago = () => {
     useEffect(() => {
         if (!usuario || !servicio || !psicologo) {
             alert("Faltan datos para procesar el pago.");
-            navigate("/InicioPaciente");
+            navigate("/inicioPaciente");
         }
     }, [navigate, usuario, servicio, psicologo]);
 
@@ -36,6 +36,14 @@ const Pago = () => {
 
   try {
     await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+        alert("Sesión expirada. Por favor, inicie sesión nuevamente.");
+        navigate("/login");
+        return;
+    }
+
 
     const response = await fetch("http://localhost:4000/api/pagos", {
       method: "POST",
@@ -63,7 +71,14 @@ const Pago = () => {
     }
 
     alert("Pago realizado y cita creada con éxito");
-    navigate("/InicioPaciente");
+
+        localStorage.removeItem("fechaCita");
+        localStorage.removeItem("horaInicio");
+        localStorage.removeItem("horaFin");
+        localStorage.removeItem("psicologoSeleccionado");
+        localStorage.removeItem("servicioSeleccionado");
+
+    navigate("/inicioPaciente");
 
   } catch (error) {
     console.error(error);
@@ -95,7 +110,7 @@ const Pago = () => {
                 <p><strong>Psicólogo:</strong> {psicologo.nombresApellidos}</p>
                 <p><strong>Fecha:</strong> {fecha}</p>
                 <p><strong>Hora:</strong> {horaInicio} - {horaFin}</p>
-                <p className={styles.precio}>Total: ${servicio.precioServicio}</p>
+                <p className={styles.precio}> <strong>Total:</strong> ${servicio.precioServicio}</p>
             </div>
 
             <h2>Método de pago</h2>

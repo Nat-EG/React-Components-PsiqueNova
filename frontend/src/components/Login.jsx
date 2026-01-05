@@ -48,7 +48,7 @@ function Login() {
         navigate("/InicioPsicologo");
 
       // Redirigir al inicio paciente si es rol paciente
-      if (data.usuario.rol === "administrador")
+      if (data.usuario.rol === "admin")
         navigate("/InicioAdmin");
       
     } catch (error) {
@@ -64,11 +64,11 @@ function Login() {
       <div className={stylesLogin["div-padre"]}>
         <form className={stylesLogin["div-1"]} onSubmit={handleLogin}>
           <div className={stylesLogin["logo-seguramente"]}>
-            <img src="LogoLogin.png" alt="" />
+            <img src="LogoSinFondo.svg" alt="" />
           </div>
 
           <div className={stylesLogin["div-titulos"]}>
-            <h1>¡Te damos la bienvenidad!</h1>
+            <h1>¡Te damos la bienvenida!</h1>
             <h3>
               Ingresa tus datos para acceder a{" "}
               <span className={stylesLogin.palabraVerde}>PsiqueNova</span>
@@ -113,7 +113,7 @@ function Login() {
         </form>
 
         <div className={stylesLogin["div-2"]}>
-          <img src="fd.png" alt="" />
+          <img src="fd.svg" alt="" />
         </div>
 
         <div className={stylesLogin["div-3"]}></div>

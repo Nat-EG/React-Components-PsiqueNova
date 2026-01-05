@@ -42,19 +42,27 @@ export default function TablaHistorialVentas() {
 
 
       // Adaptar estructura backend → tabla
-      const ventasFormateadas = data.map((venta) => ({
-        idFactura: venta.idFactura.slice(-6).toUpperCase(),
+      const ventasFormateadas = data.map((venta) => {
+  const fechaDate = new Date(venta.createdAt);
 
-        fechaHora: new Date(venta.createdAt).toLocaleString("es-CO", {
-            timeZone: "America/Bogota",
-        }),
+  return {
+    idFactura: venta.idFactura.slice(-6).toUpperCase(),
 
-        nombrePaciente: venta.paciente?.nombresApellidos || "—",
-        idPaciente: venta.paciente?.documentoIdentidad || "—",
-        psicologo: venta.psicologo?.nombresApellidos || "—",
-        servicio: venta.servicio?.nombreServicio || "—",
-        valor: venta.valor,
-        }));
+    // 🔹 FECHA REAL (para ordenar y filtrar)
+    fechaRaw: fechaDate,
+
+    // 🔹 FECHA FORMATEADA (solo para mostrar)
+    fechaHora: fechaDate.toLocaleString("es-CO", {
+      timeZone: "America/Bogota",
+    }),
+
+    nombrePaciente: venta.paciente?.nombresApellidos || "—",
+    idPaciente: venta.paciente?.documentoIdentidad || "—",
+    psicologo: venta.psicologo?.nombresApellidos || "—",
+    servicio: venta.servicio?.nombreServicio || "—",
+    valor: venta.valor,
+  };
+});
 
 
       setVentas(ventasFormateadas);
@@ -91,16 +99,18 @@ export default function TablaHistorialVentas() {
 
     const filteredByDate = filteredData.filter((row) => {
         if (!dateRange.start && !dateRange.end) return true;
-        const fecha = new Date(row.fechaHora);
+
+        const fecha = row.fechaRaw;
         const inicio = dateRange.start ? new Date(dateRange.start) : null;
         const fin = dateRange.end ? new Date(dateRange.end) : null;
+
         return (!inicio || fecha >= inicio) && (!fin || fecha <= fin);
     });
 
     const sortedData = [...filteredByDate].sort((a, b) => {
-        const dateA = new Date(a.fechaHora);
-        const dateB = new Date(b.fechaHora);
-        return sortOrder === "asc" ? dateA - dateB : dateB - dateA;
+    return sortOrder === "asc"
+        ? a.fechaRaw - b.fechaRaw
+        : b.fechaRaw - a.fechaRaw;
     });
 
     const toggleSort = () => setSortOrder(sortOrder === "asc" ? "desc" : "asc");
@@ -143,6 +153,7 @@ export default function TablaHistorialVentas() {
                 </div>
 
                 <div className={styles.tableContainer}>
+                    <div className={styles.tableScroll}>
                     <table className={styles.table}>
                         <thead>
                             <tr>
@@ -162,14 +173,6 @@ export default function TablaHistorialVentas() {
                                         onClick={() => setShowFilter(!showFilter)}
                                     />
 
-                                    {showFilter && (
-                                        <DateRangeFilter
-                                            startDate={dateRange.start}
-                                            endDate={dateRange.end}
-                                            onStartChange={(value) => updateFilter("start", value)}
-                                            onEndChange={(value) => updateFilter("end", value)}
-                                        />
-                                    )}
                                 </th>
 
                                 <th>Nombre Paciente</th>
@@ -179,6 +182,7 @@ export default function TablaHistorialVentas() {
                                 <th>Valor</th>
                             </tr>
                         </thead>
+
 
                         <tbody>
                             {paginatedData.length > 0 ? (
@@ -202,7 +206,19 @@ export default function TablaHistorialVentas() {
                             )}
                         </tbody>
                     </table>
+                    </div>
                 </div>
+                {showFilter && (
+
+                            <div className={styles.dateFilterWrapper}>
+                            <DateRangeFilter
+                                startDate={dateRange.start}
+                                   endDate={dateRange.end}
+                                onStartChange={(value) => updateFilter("start", value)}
+                                onEndChange={(value) => updateFilter("end", value)}
+                            />
+                            </div>
+                        )}
 
                 <div className={styles.footerTable}>
                     <button className={styles.btnExportarExcel} onClick={exportToExcel}>

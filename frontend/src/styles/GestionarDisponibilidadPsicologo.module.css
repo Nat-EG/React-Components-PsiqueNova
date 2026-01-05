@@ -1,6 +1,6 @@
 body {
     background-color: #B1B1B1;
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
 }
 
 .Contenedor {
@@ -54,6 +54,13 @@ color: #5E5951;
   justify-content: space-between;
   align-items: center;
   border-radius: 10px;
+  margin: 20px;
+}
+.header p {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--textBody);
+  margin-top: 20px;
 }
 
 .badge {
@@ -61,16 +68,27 @@ color: #5E5951;
   padding: 6px 10px;
   border-radius: 999px;
   font-size: 12px;
+
 }
+
+.formCard h3 {
+  color: var(--textBody);
+  margin-bottom: 10px;
+}
+
 
 .formCard,
 .listCard,
 .calendarCard {
-  background: #fff;
+  background: var(--inputFill);
   border: 1px solid #e5e7ef;
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+  margin:20px;
+  
+
+
 }
 
 .form {
@@ -83,6 +101,7 @@ color: #5E5951;
   font-weight: 600;
   display: block;
   margin-bottom: 4px;
+  color: var(--textBody);
 }
 
 .field input,
@@ -96,6 +115,7 @@ color: #5E5951;
   border-radius: 10px;
   padding: 12px;
   background: #fafbff;
+  width: 30%;
 }
 
 .calendarHeader {
@@ -182,17 +202,21 @@ color: #5E5951;
 
 .rangosHeader {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 12px;
+  
 }
 
 .rangosHeader button {
   border: none;
   background: #eef1ff;
-  color:  #A6D885;
+  color:  var(--textSubtle);
+  font-weight: 600;
   padding: 6px 10px;
   border-radius: 8px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .rangoRow {
@@ -201,6 +225,7 @@ color: #5E5951;
   gap: 8px;
   align-items: center;
   margin-bottom: 6px;
+  width: 30%;
 }
 
 .primary {
@@ -211,6 +236,9 @@ color: #5E5951;
   padding: 10px 12px;
   cursor: pointer;
   font-weight: 600;
+  font-size: 16px;
+  width: 30%;
+
 }
 
 .primary:disabled {
@@ -277,15 +305,22 @@ color: #5E5951;
 }
 
 .day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 10px;
   border: 1px solid #e5e7ef;
   border-radius: 10px;
-  background: #fff;
+  background: var(--surface2);
+  color: var(--textBody);
+  height: 50px;
+  
 }
 
 .dayWithAgenda {
   border-color:  #A6D885;
-  background: #eef1ff;
+  background: var(--surface1);
+  box-shadow: 0 5px 10px var(--primaryG);
 }
 
 .bloquesLista {
@@ -394,13 +429,29 @@ color: #5E5951;
   gap: 4px;
 }
 
-/* Ajusta listCard para mejor espaciado */
-.listCard {
-  margin: 20px 0;
-}
+
 
 .listCard h3 {
-  color: #4A463E;
+  color: var(--textBody);
+  margin-bottom: 16px;
+  font-size: 18px;
+  
+}
+
+.removeBtn {
+  background: var(--feedbackError);
+  border: none;
+  color:  white;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  width: 20%;
+}
+
+.calendarCard h3 {
+  color: var(--textBody);
   margin-bottom: 16px;
   font-size: 18px;
 }

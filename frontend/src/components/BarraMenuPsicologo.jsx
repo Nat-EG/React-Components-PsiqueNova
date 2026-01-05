@@ -17,7 +17,7 @@ function BarraMenuPsicologo() {
   return (
     <div className={stylesBarraMenuPsicologo["div-padre-barraMenu"]}>
       <div className={stylesBarraMenuPsicologo["div-barra"]}>
-        <h1>¡Te damos la bienvenidad!</h1>
+        <h1>¡Te damos la bienvenida!</h1>
         
         <div className={stylesBarraMenuPsicologo["opcion-menu"]}>
           <img src={IconoInicio} alt="Icono Inicio" /><a href="/InicioPsicologo">Inicio</a>
@@ -37,7 +37,7 @@ function BarraMenuPsicologo() {
               </div>
               <hr className={stylesBarraMenuPsicologo.hrPersonalizada} />
               <div className={stylesBarraMenuPsicologo["opcion-menu"]}>
-                <img src="IconoVerCitas.svg" alt="" /><a href="/VerCitasPendientesPsicologo">Ver citas pendientes</a>
+                <img src="IconoVerCitas.svg" alt="" /><a href="/CitasPendientesPsicologo">Ver citas pendientes</a>
               </div>
               <hr className={stylesBarraMenuPsicologo.hrPersonalizada} />
             </div>

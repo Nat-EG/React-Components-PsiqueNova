@@ -1,4 +1,4 @@
-import stylesBarraMenuPaciente from "../styles/BarraMenuPaciente.module.css";
+import stylesBarraMenuPaciente from "../styles/BarraMenuAdministrador.module.css";
 import CerrarSesion from "./CerrarSesion";
 
 import IconoInicio from '../includes/IconoInicio.svg';
@@ -12,7 +12,7 @@ function BarraMenuPaciente() {
   return (
     <div className={stylesBarraMenuPaciente["div-padre-barraMenu"]}>
       <div className={stylesBarraMenuPaciente["div-barra"]}>
-        <h1>¡Te damos la bienvenidad!</h1>
+        <h1>¡Te damos la bienvenida!</h1>
 
         <div className={stylesBarraMenuPaciente["opcion-menu"]}>
           <img src={IconoInicio} alt="Icono Inicio" /><a href="/inicioPaciente">Inicio</a>

@@ -1,6 +1,4 @@
 import stylesInicioPsicologo from "../styles/InicioPsicologo.module.css";
-import Header from "./Header.jsx";
-import BarraMenuAdmin from "./BarraMenu.jsx";
 import LayoutAdmin from "./Layouts/LayoutAdmin.jsx";
 
 function InicioAdmin () {

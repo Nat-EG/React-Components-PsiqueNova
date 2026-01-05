@@ -27,9 +27,9 @@
     margin: 0;
 }
 
-.hrPersonalizada {
+.contenedor-2 hr{
   border: none;            
-  height: 2px;               
+  height: 1.5px;               
   background-color: var(--primaryB); 
   width: 100%;
 }

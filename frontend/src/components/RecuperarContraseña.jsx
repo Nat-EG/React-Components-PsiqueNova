@@ -48,7 +48,7 @@ function RecuperarContraseña() {
       <div className={stylesRecuperar["div-padre"]}>
         <form className={stylesRecuperar["div-1"]} onSubmit={handleRecuperar}>
           <div className={stylesRecuperar["logo-seguramente"]}>
-            <img src="LogoLogin.png" alt="" />
+            <img src="LogoSinFondo.svg" alt="" />
           </div>
 
           <div className={stylesRecuperar["div-titulos"]}>
@@ -71,7 +71,7 @@ function RecuperarContraseña() {
 
           <div className={stylesRecuperar["div-hijo-2"]}>
             <div className={stylesRecuperar["div-enlaces"]}>
-              <a href="/registro">¿Aún no estás registrado?</a>
+              <a href="/registroPaciente">¿Aún no estás registrado?</a>
 
               {/* Botón del formulario */}
               <button type="submit">Enviar</button>
@@ -80,7 +80,7 @@ function RecuperarContraseña() {
         </form>
 
         <div className={stylesRecuperar["div-2"]}>
-          <img src="fd.png" alt="" />
+          <img src="fd.svg" alt="" />
         </div>
 
         <div className={stylesRecuperar["div-3"]}></div>

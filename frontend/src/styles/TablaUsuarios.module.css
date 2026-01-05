@@ -59,7 +59,7 @@
 }
 
 /* LÍNEA */
-.hr {
+.wrapper hr{
     border: 2px solid var(--primaryB);
     width: 90%;
     margin: 10px auto 30px;

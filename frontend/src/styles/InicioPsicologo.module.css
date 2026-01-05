@@ -13,20 +13,18 @@
 }
 
 /* IMAGEN */
-.contenedor-imagen {
 
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 40%;
-    height: 70%;
-   
+.contenedor-imagen {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 50%;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .contenedor-imagen img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: bottom right;
-   
+  height: 100%;
+  width: auto;
+  object-fit: contain;
 }

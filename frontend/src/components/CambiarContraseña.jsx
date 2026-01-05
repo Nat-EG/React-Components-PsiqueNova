@@ -78,7 +78,7 @@ function ResetPassword() {
     <form className={stylesReset["div-1"]} onSubmit={handleReset}>
                 
       <div className={stylesReset["logo-seguramente"]}>
-        <img src="LogoLogin.png" alt="Logo" />
+        <img src="LogoSinFondo.svg" alt="Logo" />
       </div>
 
       <div className={stylesReset["div-titulos"]}>
@@ -135,7 +135,7 @@ function ResetPassword() {
 
 
     <div className={stylesReset["div-2"]}>
-      <img src="fd.png" alt="Imagen decorativa" />
+      <img src="fd.svg" alt="Imagen decorativa" />
     </div>
         </div>
       

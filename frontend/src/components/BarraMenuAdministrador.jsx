@@ -1,7 +1,7 @@
 import { useState } from "react";
 import stylesBarraMenuAdministrador from "../styles/BarraMenuAdministrador.module.css";
 import CerrarSesion from "./CerrarSesion";
-import IconoInicio from '../includes/IconoInicio.svg';
+
 
 import IconoInicio from '../includes/IconoInicio.svg';
 import IconoCatalogo from '../includes/IconoCatalogo.svg';
@@ -36,11 +36,11 @@ function BarraMenuAdministrador() {
   return (
     <div className={stylesBarraMenuAdministrador["div-padre-barraMenu"]}>
       <div className={stylesBarraMenuAdministrador["div-barra"]}>
-        <h1>¡Te damos la bienvenidad!</h1>
+        <h1>¡Te damos la bienvenida!</h1>
 
         
         <div className={stylesBarraMenuAdministrador["opcion-menu"]}>
-          <img src={IconoInicio} alt="Icono Inicio" /><a href="/InicioAdministrador">Inicio</a>
+          <img src={IconoInicio} alt="Icono Inicio" /><a href="/InicioAdmin">Inicio</a>
         </div>
         <hr className={stylesBarraMenuAdministrador.hrPersonalizada} />
 
@@ -50,20 +50,20 @@ function BarraMenuAdministrador() {
 
 
         <div>
-          <button onClick={toggleSubmenuCatalogo} className={stylesBarraMenu["submenu-button"]}>
+          <button onClick={toggleSubmenuCatalogo} className={stylesBarraMenuAdministrador["submenu-button"]}>
             <img src={IconoCatalogo} alt="" /> Gestionar catálogo de servicios
           </button>
           {submenuCatalogo && (
-            <div className={stylesBarraMenu["submenu"]}>
-              <div className={stylesBarraMenu["opcion-menu"]}>
+            <div className={stylesBarraMenuAdministrador["submenu"]}>
+              <div className={stylesBarraMenuAdministrador["opcion-menu"]}>
                 <img src={IconoRegistrarServicio} alt="" /> <a href="/RegistroServicio">Registrar nuevo servicio</a>
               </div>
-              <hr className={stylesBarraMenu.hrPersonalizada} />
-              <div className={stylesBarraMenu["opcion-menu"]}>
+              <hr className={stylesBarraMenuAdministrador.hrPersonalizada} />
+              <div className={stylesBarraMenuAdministrador["opcion-menu"]}>
                 <img src={IconoActualizarCatalogo} alt="" /><a href="/actualizarCatalogo">Actualizar catálogo de servicios</a>
               </div>
-              <hr className={stylesBarraMenu.hrPersonalizada} />
-              <div className={stylesBarraMenu["opcion-menu"]}>
+              <hr className={stylesBarraMenuAdministrador.hrPersonalizada} />
+              <div className={stylesBarraMenuAdministrador["opcion-menu"]}>
                 <img src={IconoRegistroVentas} alt="" /><a href="/historialVentas">Historial de ventas</a>
 
               </div>
@@ -75,16 +75,16 @@ function BarraMenuAdministrador() {
 
         <div>
 
-          <button onClick={toggleSubmenuUsuarios} className={stylesBarraMenu["submenu-button"]}>
+          <button onClick={toggleSubmenuUsuarios} className={stylesBarraMenuAdministrador["submenu-button"]}>
             <img src={IconoGestionarUs} alt="" /> Gestionar Usuarios
           </button>
           {submenuUsuarios && (
-            <div className={stylesBarraMenu["submenu"]}>
-              <div className={stylesBarraMenu["opcion-menu"]}>
+            <div className={stylesBarraMenuAdministrador["submenu"]}>
+              <div className={stylesBarraMenuAdministrador["opcion-menu"]}>
                 <img src={IconoRegistrarUsuario} alt="" /> <a href="/RegistroPsicologo">Registrar usuario psicólogo</a>
               </div>
-              <hr className={stylesBarraMenu.hrPersonalizada} />
-              <div className={stylesBarraMenu["opcion-menu"]}>
+              <hr className={stylesBarraMenuAdministrador.hrPersonalizada} />
+              <div className={stylesBarraMenuAdministrador["opcion-menu"]}>
                 <img src={IconoActualizarEliminarUsuario} alt="" /><a href="/TablaUsuarios">Editar o eliminar usuarios</a>
 
               </div>
@@ -97,9 +97,9 @@ function BarraMenuAdministrador() {
       
 
 
-      <div className={stylesBarraMenu["div-barra"]}>
-        <div className={stylesBarraMenu["opcion-menu"]}>
-          <img src={IconoConfig} alt="" /> <a href="/configuracion">Ajustes</a>
+      <div className={stylesBarraMenuAdministrador["div-barra"]}>
+        <div className={stylesBarraMenuAdministrador["opcion-menu"]}>
+          <img src={IconoConfig} alt="" /> <a href="/Ajustes">Ajustes</a>
 
         </div>
         <div className={stylesBarraMenuAdministrador["opcion-menu"]}>

@@ -1,6 +1,6 @@
 body {
     background-color: #F5F3EE;
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
 }
 
  .contenedor {
@@ -39,10 +39,24 @@ body {
 .div-titulos{
   display: flex;
   flex-direction: column;
-  margin: auto;
+  margin: 20px;
   width: 100%;
   text-align: center;
   box-sizing: border-box;
+}
+
+.div-titulos h1{
+    color: var(--textTitle);
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.div-titulos h3{
+    color: var(--textSubtitle);
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: normal;
 }
 
 .div-hijo-1{
@@ -58,6 +72,7 @@ body {
 }
 
 .div-hijo-1 span{
+    margin-top: 10px;
     text-align: start;
     color: #4A463E;
     font-weight: bold;
