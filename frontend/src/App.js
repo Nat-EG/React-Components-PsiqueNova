@@ -68,12 +68,7 @@ function App() {
         <Route path="/disponibilidad/:psicologoId" element={<DisponibilidadPsicologo />} />
         <Route path="/resumenCita" element={<ResumenCita />} />
         <Route path="/realizarPago" element={<Pago />} />
-
         <Route path="/lugarSeguro" element={<LugarSeguro />} />
-
-
-        
-        
 
       </Routes>
     </BrowserRouter>

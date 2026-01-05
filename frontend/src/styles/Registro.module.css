@@ -1,14 +1,8 @@
 
 
-
-body, html {
-  font-family: 'Open Sans', sans-serif;
+.container {
   background-color: var(--background);
-  margin: 0;
-  padding: 0;
-  height: 100%;
 }
-
 
 
 
