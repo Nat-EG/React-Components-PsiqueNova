@@ -61,7 +61,7 @@ function ResetPassword() {
       }
 
       alert("Contraseña restablecida exitosamente.");
-      navigate("/login");
+      navigate("/");
 
     } catch (error) {
       console.error("Error al restablecer contraseña:", error);
