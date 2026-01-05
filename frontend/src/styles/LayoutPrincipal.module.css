@@ -4,8 +4,17 @@
 
 .layoutRoot {
     min-height: 100vh;
+    background-color: var(--background);
     display: flex;
     flex-direction: column;
+}
+
+body, html {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--background);
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
 .layoutBody {
@@ -16,7 +25,6 @@
 
 .layoutContent {
     flex: 1;
-    background-color: var(--background);
     overflow-y: auto;
     padding-top: 20px;
 }
