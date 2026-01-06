@@ -17,7 +17,7 @@ function ResetPassword() {
   useEffect(() => {
     if (!token) {
       alert("Token inválido");
-      navigate("/login");
+      navigate("/");
     }
   }, [token, navigate]);
 
