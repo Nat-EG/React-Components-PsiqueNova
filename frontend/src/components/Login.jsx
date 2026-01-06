@@ -35,8 +35,6 @@ function Login() {
         return;
       }
 
-      
-
       // Guardar usuario 
     localStorage.setItem("token", data.token);
     localStorage.setItem("usuario", JSON.stringify(data.usuario));
