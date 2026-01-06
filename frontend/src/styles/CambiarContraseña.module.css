@@ -20,14 +20,14 @@ body {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
-  min-height: 500px;
+  min-height: 100vh;
   box-sizing: border-box;
 }
 /* -------------------- COLUMNA IZQUIERDA -------------------- */
 .div-1{
     display: flex;
     flex-wrap: wrap;
-    width: 50%;
+    width: 55%;
     background-color: #F5F3EE;
     box-sizing: border-box;
     align-content: flex-start;
@@ -35,6 +35,8 @@ body {
 
 .logo-seguramente{
   display: flex;
+  justify-content: flex-start;
+  margin: 10px;
   width: 100%;
   height: 100px;
   box-sizing: border-box;
@@ -42,9 +44,6 @@ body {
 
 }
 
-.logo-seguramente img {
-  height: 70px;
-}
 
 
 
@@ -52,24 +51,30 @@ body {
 .div-titulos{
   display: flex;
   flex-direction: column;
-  margin: auto;
-  width: 100%;
   text-align: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 70%;
+  
   box-sizing: border-box;
 }
 
 .div-padre h1 {
-    width: 100%;
-    font-size: 25px;
-    color: #4A463E;
+    color: var(--textTitle);
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
     
 }
 
 .div-padre h3 {
-    width: 100%;
-    font-size: 20px;
-  color: #5E5951;
-} 
+    color: var(--textBody);
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+}
 
 /* -------------------- FORMULARIO -------------------- */
 .div-hijo-1 {
@@ -117,7 +122,7 @@ body {
 }
 
 .input-container input:focus {
-  border-bottom-color: #8FEB51;
+  border-bottom-color: #8dcf63;
 }
 
 /* Ojito */
@@ -158,20 +163,42 @@ body {
 }
 
 .div-hijo-2 button:hover {
-  background-color: #8FEB51;
+  background-color: #8dcf63;
 }
 
 /* -------------------- COLUMNA DERECHA -------------------- */
 .div-2{
+    width: 45%;
+    min-height: 100vh;
+    margin-left: auto;
+    position: relative;
     display: flex;
-    flex-wrap: wrap;
-    width: 50%;
+    justify-content: center;
+    align-items: center;
+    
+    background: 
+          url(../includes/PatronGeometrico.svg) repeat,
+          linear-gradient(to right, var(--primaryG), var(--primaryB));
+    background-size: 176px 48px, cover;
+
     box-sizing: border-box;
+    overflow: visible;
     
 }
 .div-2 img {
-  height: 100vh;
-  width: 100%; 
+  position: absolute;
+
+  width: 680px; 
+  height: 720px;
+  object-fit: cover;
+
+  left: -120px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+  z-index: 2;
     
 }
 

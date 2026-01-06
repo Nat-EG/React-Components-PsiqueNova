@@ -18,20 +18,22 @@ body {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
-  min-height: 500px;
+  min-height: 100vh;
   box-sizing: border-box;
 }
 
 .div-1{
     display: flex;
     flex-wrap: wrap;
-    width: 50%;
+    width: 55%;
     background-color: #F5F3EE;
     box-sizing: border-box;
     align-content: flex-start;
 }
 .logo-seguramente{
   display: flex;
+  justify-content: flex-start;
+  margin: 10px;
   width: 100%;
   height: 100px;
   box-sizing: border-box;
@@ -39,9 +41,11 @@ body {
 .div-titulos{
   display: flex;
   flex-direction: column;
-  margin: 20px;
-  width: 100%;
   text-align: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 70%;
+  
   box-sizing: border-box;
 }
 
@@ -53,9 +57,11 @@ body {
 }
 
 .div-titulos h3{
-    color: var(--textSubtitle);
+    color: var(--textBody);
     font-size: 18px;
+    line-height: 1.5;
     margin-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
 }
 
@@ -73,14 +79,16 @@ body {
 
 .div-hijo-1 span{
     margin-top: 10px;
+    margin-bottom: 10px;
     text-align: start;
-    color: #4A463E;
+    color: var(--textBody);
     font-weight: bold;
     
 }
 
 .div-hijo-1 input{
   border: none;
+  border-radius: 5px;
   padding: 3%;
   border-bottom: 2px solid #A6D885; 
   width: 60%;
@@ -90,38 +98,48 @@ body {
 }
 
 .div-hijo-1 input:focus {
-  border-bottom-color: #8feb51; 
+  border-bottom-color: #8dcf63; 
 } 
 
 
 
 /* ------------------------------------------------------ */
 .div-2{
+    width: 45%;
+    min-height: 100vh;
+    margin-left: auto;
+    position: relative;
     display: flex;
-    flex-wrap: wrap;
-    width: 50%;
+    justify-content: center;
+    align-items: center;
+    
+    background: 
+          url(../includes/PatronGeometrico.svg) repeat,
+          linear-gradient(to right, var(--primaryG), var(--primaryB));
+    background-size: 176px 48px, cover;
+
     box-sizing: border-box;
+    overflow: visible;
     
 }
 .div-2 img {
-  height: 100vh;
-  width: 100%; 
+  position: absolute;
+
+  width: 680px; 
+  height: 720px;
+  object-fit: cover;
+
+  left: -120px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+  z-index: 2;
     
 }
 
 
-.div-padre h1 {
-    width: 100%;
-    font-size: 25px;
-    color: #4A463E;
-    
-}
-
-.div-padre h3 {
-    width: 100%;
-    font-size: 20px;
-  color: #5E5951;
-} 
 
 
 /* ---------------hijo 2---------------------------------- */
@@ -158,6 +176,7 @@ body {
     padding: 2%;
     width: 49%;
     background-color: #A6D885;
+    border-radius: 5px;
     border-bottom: none;
     border-right: none;
     border-left: none;

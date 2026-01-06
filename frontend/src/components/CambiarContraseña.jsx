@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import imagenDerecha from "../includes/ImagenDerechaLogin.jpg";
 import stylesReset from "../styles/CambiarContraseña.module.css";
 
 function ResetPassword() {
@@ -135,7 +136,7 @@ function ResetPassword() {
 
 
     <div className={stylesReset["div-2"]}>
-      <img src="fd.svg" alt="Imagen decorativa" />
+      <img src={imagenDerecha} alt="Imagen decorativa" />
     </div>
         </div>
       

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import imagenDerecha from "../includes/ImagenDerechaLogin.jpg";
 import stylesRecuperar from "../styles/RecuperarContraseña.module.css";
 
 function RecuperarContraseña() {
@@ -35,7 +36,7 @@ function RecuperarContraseña() {
       alert("Se ha enviado un enlace de recuperación a tu correo electrónico.");
 
       // Redirigir al login
-      navigate("/login");
+      navigate("/");
 
     } catch (error) {
       console.error("Error al recuperar contraseña:", error);
@@ -80,7 +81,7 @@ function RecuperarContraseña() {
         </form>
 
         <div className={stylesRecuperar["div-2"]}>
-          <img src="fd.svg" alt="" />
+          <img src={imagenDerecha} alt="" />
         </div>
 
         <div className={stylesRecuperar["div-3"]}></div>

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import imagenDerecha from "../includes/ImagenDerechaLogin.jpg";
 import stylesLogin from "../styles/Login.module.css";
+
 
 function Login() {
   const navigate = useNavigate();
@@ -113,7 +115,7 @@ function Login() {
         </form>
 
         <div className={stylesLogin["div-2"]}>
-          <img src="fd.svg" alt="" />
+          <img src={imagenDerecha} alt="" />
         </div>
 
         <div className={stylesLogin["div-3"]}></div>
