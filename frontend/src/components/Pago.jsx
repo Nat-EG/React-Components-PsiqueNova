@@ -106,7 +106,7 @@ const Pago = () => {
             <hr />
 
             <div className={styles.resumen}>
-                <p><strong>Servicio:</strong> {servicio.nombreServicio}</p>
+                <p><strong>Servicio:</strong> {servicio?.nombreServicio}</p>
                 <p><strong>Psicólogo:</strong> {psicologo.nombresApellidos}</p>
                 <p><strong>Fecha:</strong> {fecha}</p>
                 <p><strong>Hora:</strong> {horaInicio} - {horaFin}</p>
