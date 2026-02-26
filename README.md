@@ -1,69 +1,180 @@
-# Getting Started with Create React App
+# Psique-Nova
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicación web para la comercialización de servicios psicológicos y gestión de citas, desarrollada bajo arquitectura cliente-servidor con autenticación segura basada en JWT.<br>
+Proyecto académico desarrollado en el programa Tecnología en Análisis y Desarrollo de Software del Servicio Nacional de Aprendizaje.
 
-## Available Scripts
+## Descripcion general
 
-In the project directory, you can run:
+Psique-Nova permite la interacción entre tres roles:
+- Administrador
+- Psicologo
+- Paciente
 
-### `npm start`
+El sistema incluye:
+- Registro y login
+- Autenticación con JWT
+- Recuperación de contraseña mediante token temporal
+- Protección de rutas basada en roles
+- Gestion de agenda
+- Agendamiento, cancelación y reprogramación de citas
+- Simulación de pagos
+- Historial de ventas
+- Módulo de bienestar "Mi lugar seguro"
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Arquitectura del proyecto
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+El repositorio contiene frontend y backend en el mismo proyecto, organizado en carpetas independientes:<br>
+/frontend<br>
+/backend<br>
+Se implementa una arquitectura cliente-servidor con separación por capas:
+- Presentación: SPA desarrollada en React
+- Lógica de negocio: API RES desarrollada con Node.js y Express.
+- Persistencia: base de datos NoSQL en MongoDB
 
-### `npm test`
+La comunicación se realiza mediante peticiones HTTP usando JSON.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Backend-Estructura Técnica
+### Configuracion principal
+- Uso de dotenv para variables de entorno
+- Conexión de base de datos mediante módulo independiente
+- Middleware global para
+  * CORS
+  * Parseo de JSON
+- Modularización por rutas
 
-### `npm run build`
+Ejemplo de rutas:<br>
+/api/usuarios<br>
+/api/auth<br>
+/api/servicios<br>
+/api/pagos<br>
+/api/ventas<br>
+/api/agendas<br>
+/api/citas<br>
+/api/disponibilidad<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Se implementa separación por capas
+- Routes
+- Controllers
+- Models
+- Middleware
+- Config (.env)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Seguridad implementada
+### Autenticacion
+El sistema implementa autenticación basada en JSON Web Token (JWT) siguiendo el siguiente flujo <br>
+#### 1. Registro de usuario
+El usuario envía sus datos al endpoint:<br>
+POST /api/auth/registro<br>
 
-### `npm run eject`
+El backend:
+- Vaida los datos.
+- Hashea la contraseña utilizando bcrypt.
+- Guarda el usuario en MongoDB con la contraseña encriptada
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### 2. Inicio de sesión
+El usuario envía credenciales al endpoint:<br>
+POST /api/auth/login <br>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+El backend:
+- Busca el usuario por email.
+- Compara la contraseña ingresada con el hash almacenado.
+- Si es válida, genera un JWT firmado con JWT_SECRET.
+- Retorna el token al cliente. <br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+El token contiene informacion como:
+- id del usuario
+- rol de usuario
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### 3. Acceso a rutas protegidas
+El frontend envía el token en el header:
+Authorization: Bearer <token>
 
-## Learn More
+Middleware de autenticación:
+- Extrae token desde el header Authorization.
+- Verifica token con jwt.verify().
+- Si es válido, adjunta los datos del usuario (id y rol) a la request.
+- Maneja errores 401 en caso de token inválido o expirado.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### 4. Recuperación de contraseña
+El usuario solicita recuperación.<br>
+El backend:
+- Generación de resetToken aleatorio usando crypto.
+- Token con expiración de 1 hora.
+- Almacenamiento de resetToken y resetTokenExpiry en la base de datos<br>
+Se envía el enlace al usuario.<br>
+El sistema valida el token antes de permitir el cambio de contraseña.
 
-### Code Splitting
+### Decisiones técnicas
+- Se utiliza JWT para mantener el sistema stateless.
+- las contraseñas nunca se almacenan en texto plano.
+- La autorización se basa en roles (admin, psicólogo, paciente).
+- Las rutas críticas están protegidas mediante middleware.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Modelo de Datos
+Colecciones principales:
+- Usuario
+- Servicio
+- Agenda
+- Cita
+- Pago
+- Venta
 
-### Analyzing the Bundle Size
+Relaciones gestionadas mediante ObjectId
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Instalacion
+### Requisitos
+- Node.js v18+
+- npm
+- MongoDB Atlas
+- Git
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Clonar repositorio
 
-### Advanced Configuration
+git clone https://github.com/Nat-EG/React-Components-PsiqueNova.git<br>
+cd React-Components-PsiqueNova
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Configuración Backend
+cd backend <br>
+npm install
 
-### Deployment
+Crear archivo .env basado en .env.example<br>
+MONGO_URI=
+EMAIL_USER=
+EMAIL_PASS=
+JWT_SECRET=
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Ejecutar <br>
+npm run dev<br>
+
+Servidor en:
+http://localhost:4000
+
+### Configuración Frontend
+cd frontend<br>
+npm install<br>
+npm start <br>
+
+Aplicación en: http://localhost:3000<br>
+
+## Buenas prácticas implementadas
+- Uso de variables de entorno
+- Separación por capas
+-  Manejo de errores
+-  Protección de rutas
+-  Hash de contraseña
+-  Control de acceso por rol
+-  Organización modular
+-  Uso de Git para el control de versiones.
+
+## Autoras
+Natalia Echavarría Grajales<br>
+Anyi Paola Gómez Arias
+
+Tecnología en Análisis y Desarrollo de Software
+(https://facebook.github.io/create-react-app/docs/deployment)
 
 ### `npm run build` fails to minify
 
